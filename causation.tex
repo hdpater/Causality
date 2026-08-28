@@ -1,0 +1,490 @@
+\documentclass[11pt]{article}
+
+% ---------- Layout ----------
+\usepackage[a4paper,margin=1.05in]{geometry}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% ---------- Math ----------
+\usepackage{amsmath,amssymb,amsthm}
+
+% ---------- Lists, colour, boxes ----------
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+
+% ---------- Sectioning ----------
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.6em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1.3em}{0.6em}
+\titlespacing*{\subsubsection}{0pt}{1.1em}{0.4em}
+
+% ---------- Hyperlinks (load late) ----------
+\usepackage[hidelinks,colorlinks=true,linkcolor=black!55!blue,citecolor=black,urlcolor=black!55!blue]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% ---------- Theorem-like environments ----------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{remark}{Remark}[section]
+
+% ---------- Technical box ----------
+\newtcolorbox[auto counter]{techbox}[2][]{%
+  colback=black!3,
+  colframe=black!55,
+  boxrule=0.35pt,
+  arc=1.5pt,
+  left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm,
+  breakable,
+  fonttitle=\bfseries\small,
+  coltitle=black,
+  colbacktitle=black!10,
+  title={#2},
+  #1
+}
+
+\newenvironment{skipnote}
+  {\par\smallskip\noindent\itshape\small}
+  {\par\smallskip\noindent}
+
+\newcommand{\upshot}[1]{\par\smallskip\noindent\textbf{Upshot.} #1\par\smallskip}
+
+% ---------- Reference list (author--date, hanging indent, no numbers) ----------
+\newenvironment{refs}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{1.6em}%
+    \setlength{\itemindent}{-1.6em}%
+    \setlength{\itemsep}{0.35em}%
+    \setlength{\parsep}{0pt}%
+  }}
+  {\end{list}}
+
+\newcommand{\eps}{\varepsilon}
+
+\title{\textbf{On the Attenuation of Cause}\\[4pt]
+\large Probability, Transitivity, and Approximation in Causal Chains}
+\author{Working draft}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Ordinary causal talk treats ``A causes B'' as something weaker than logical implication: not that A guarantees B, but that A makes B sufficiently probable. This paper takes that weakening seriously as a formal object. We show that once causation is understood as $P(B\mid A) > 1-\eps$ for some threshold $\eps$, transitivity along a chain of causes degrades exponentially in the length of the chain, and we relate this to Kyburg's lottery paradox, to Pearl's distinction between conditioning and intervention, and to the deeper question of whether causal ascription requires a coherent comparison world in which the cause did not occur. We then extend the framework to \emph{approximate} causation, where an effect is caused only to within some tolerance, and show that serial and parallel causal architectures behave under composition in opposite directions: chains lose reliability exponentially with depth, while aggregation gains it exponentially with width. Weather forecasting, a legal case concerning transferred culpability, and a family of exactly solvable toy models illustrate the general theory throughout.
+
+\medskip
+\noindent The heavier mathematics is confined to clearly marked, self-contained boxes. Each is preceded by a plain statement of what it establishes and followed by an \textbf{Upshot} paragraph, so that the argument of the paper can be followed in full without reading any of them.
+\end{abstract}
+
+\tableofcontents
+
+% ======================================================================
+\section{Introduction}
+\label{sec:intro}
+% ======================================================================
+
+In formal logic, the statement ``A implies B'' is unambiguous: it asserts that the occurrence of A is sufficient for the occurrence of B, and it admits of no exceptions. Written probabilistically, implication corresponds to the limiting case $P(B \mid A) = 1$. Ordinary causal talk, however, is rarely so exacting. When we say that smoking causes lung cancer, that a poor harvest causes famine, or that a given policy causes unemployment to fall, we do not mean that the antecedent guarantees the consequent. We mean something weaker, and something that varies with context: that the antecedent makes the consequent sufficiently probable that we are willing, for practical purposes, to treat the relation as if it held with certainty.
+
+This paper takes that ``sufficiently probable'' seriously as an object of study in its own right, rather than as a loose approximation to be tidied away. We propose to formalise everyday causal ascription as follows.
+
+\begin{definition}[$\eps$-causation]
+\label{def:eps-causation}
+Let $\eps \in (0,1)$ be fixed by context. We say that A \textbf{$\eps$-causes} B if, in addition to the usual qualitative conditions of temporal or explanatory priority, $P(B \mid A) > 1 - \eps$.
+\end{definition}
+
+We will see in \cref{sec:excursus} that $\eps$ is not metaphysically uniform: it may be an \emph{epistemic} quantity, measuring our ignorance of a microstate the world already possesses, or, in the presence of genuine indeterminism, an \emph{ontic} quantity in its own right. We postpone that distinction until the apparatus needed to state it precisely is in hand, and use $\eps$ unadorned until then.
+
+The choice of $\eps$ is doing real work here, and it is chosen differently in different domains. In nuclear physics, where we might say that the elapse of one million years causes the decay of a given hydrogen-5 nucleus, $\eps$ can be made extraordinarily small; the half-life of $^5\mathrm{H}$ is of the order of $10^{-22}$ seconds, so that a million years is an almost unimaginable number of half-lives, and non-decay is correspondingly improbable. This example will turn out, in \cref{sec:excursus}, to be the one case in this paper resting on genuinely \emph{ontic} chance, so far as quantum mechanics is indeterministic; we flag this now and return to it once the distinction is available. In economic policy, medicine, or social policy, by contrast, we tolerate a much larger $\eps$: a treatment that improves outcomes in 70 per cent of cases will often still be described, in ordinary and even professional speech, as a cause of recovery. The word ``cause'' is used across an enormous range of $\eps$, from the practically zero to values approaching one half, and this alone should give us pause about treating causal ascription as a single, univocal relation.
+
+This basic move, replacing the demand for certainty with a demand for high probability, is not new. It is the founding idea of the probabilistic theories of causation developed from the 1960s onward, beginning with Reichenbach's discussion of the common cause principle in \emph{The Direction of Time} (1956) and Good's causal calculus (1961, 1962), and receiving its canonical statement in Suppes's \emph{A Probabilistic Theory of Causality} (1970). Suppes required a cause to precede its effect and to raise the effect's probability, $P(E_{t} \mid A_{t'}) > P(E_{t})$, a condition he called a ``prima facie cause,'' and much of the subsequent literature is concerned with strengthening this bare probability-raising condition so as to rule out spurious cases. Eells's \emph{Probabilistic Causality} (1991) remains the fullest statement of the resulting programme.
+
+\paragraph{Route through the paper.} \Cref{sec:corr} distinguishes cause from mere correlation, via Pearl's distinction between conditioning and intervention, and surveys the frameworks on offer for doing so. \Cref{sec:excursus} is a self-contained excursus, skippable in its entirety, asking what licenses the comparison world these frameworks all quietly require, and what quantum chaos has to say about it. \Cref{sec:trans} derives the central formal result of the paper: transitivity of probabilistic causation decays exponentially with chain length. \Cref{sec:examples} illustrates this, and its opposite, with a worked example in meteorology and a worked example in criminal law. \Cref{sec:approx} extends the whole apparatus to \emph{approximate} causation and states the paper's organising duality between serial and parallel causal architecture. \Cref{sec:conclusion} concludes.
+
+% ======================================================================
+\section{Distinguishing Cause from Correlation}
+\label{sec:corr}
+% ======================================================================
+
+Before proceeding, we must register an important qualification, since the naive reading of \cref{def:eps-causation} is more fragile than it looks. A high value of $P(B \mid A)$ can arise without A causing B at all, if some third factor C is a common cause of both. The textbook illustration is barometric pressure: a falling barometer reading is followed with high probability by a storm, yet the reading does not cause the storm; both are effects of a falling atmospheric pressure system. Cartwright's ``Causal Laws and Effective Strategies'' (1979) makes the point precisely: probability-raising is causally significant only when it holds within every causally homogeneous background context, that is, once we have controlled for confounders; raw, unconditional probability-raising proves nothing.
+
+\subsection{Conditioning versus intervention}
+
+Pearl's critique in \emph{Causality} (2000) sharpens this into something close to a decisive objection to the probabilistic programme as originally stated, and it is worth setting out his apparatus properly, since we will need it throughout. In a structural causal model, every variable, A included, is determined by a structural equation in terms of its own direct causes and some exogenous noise. \emph{Conditioning} on A, the operation behind $P(B \mid A)$, restricts attention to the subpopulation in which A happened to take the value it did, but leaves A's structural equation, and therefore its entire causal upstream, intact; if A shares a cause with B, conditioning on A leaves that shared cause free to do its confounding work. \emph{Intervening} on A, written $\mathrm{do}(A=a)$, is a different operation entirely: it deletes A's structural equation, severs every arrow into A on the causal graph, and replaces it with the constant assignment $A=a$, while leaving every other equation in the system untouched. $P(B \mid \mathrm{do}(A))$ is the distribution B would take in this surgically modified model.
+
+In the barometer case, conditioning on a high reading raises the probability of a storm, because the reading remains evidentially linked to the pressure system that also produces storms; intervening on the reading directly, for instance by tampering with the instrument, cuts that link, and does nothing whatsoever to the probability of a storm. This difference, between an observed value and a value fixed by surgery on the generating model, is what the probabilistic tradition's bare probability-raising condition was missing, and it is what ``cause'' ought to be answering to. For the remainder of this paper we write $P(B \mid A)$ for brevity, in keeping with the probabilistic tradition we are examining, but it should be understood throughout as shorthand for $P(B \mid \mathrm{do}(A))$; the reader should take the barometer case as read.
+
+\subsection{A survey of frameworks}
+\label{subsec:survey}
+
+It is worth asking what a satisfactory general framework for separating cause from correlation actually requires, since the answer bears directly on whether causal ascription is inherently \emph{counterfactual}: whether it requires a model, real or merely constructed, of a world in which A did not occur. We think the answer is yes, and that this is close to a structural fact about the going theories of causation rather than a matter of taste, though the theories differ considerably in what kind of ``other world'' they permit themselves and how they claim access to it.
+
+\begin{itemize}[leftmargin=1.4em,itemsep=0.35em]
+  \item \textbf{Regularity theories}, descending from Hume and Mill, refuse any such comparison and settle for constant conjunction within the actual world alone. This is precisely why they cannot solve the barometer problem: the reading and the storm are constantly conjoined too.
+  \item \textbf{Lewis's counterfactual theory} (``Causation,'' 1973) makes the comparison explicit and modal: A causes B just in case B counterfactually depends on A, evaluated at the closest possible world, under a stated similarity ordering, in which A does not occur. Its chief difficulty is pre-emption, the case of a standby cause, which is part of what motivates the transitivity failures surveyed in \cref{subsec:breakage}.
+  \item \textbf{The potential outcomes framework} (Neyman, 1923; Rubin, 1974; canonically set out by Holland, 1986) recasts the comparison statistically: each unit is assigned potential outcomes $Y(1)$ and $Y(0)$, and the causal effect is their difference, but only the outcome corresponding to the treatment actually received is ever observed, a fact Holland calls the \emph{fundamental problem of causal inference}. Rubin's own dictum, ``no causation without manipulation'' (1975), states the counterfactual requirement as bluntly as it can be stated.
+  \item \textbf{Pearl's structural causal models} give the comparison graphical and algebraic form via $\mathrm{do}(A)$, and can be shown to coincide with the potential outcomes framework under stated assumptions: the potential outcome $Y_a(u)$ is exactly $Y$ as computed in the intervened model $M_{\mathrm{do}(A=a)}$.
+  \item \textbf{Interventionist and agency theories} (von Wright, 1971; Menzies and Price, 1993; Woodward, 2003) motivate the same comparison philosophically, by grounding it in what an agent could bring about by acting on A. Woodward's own version strips out the reference to human agency and defines an intervention in purely structural terms, at which point it becomes, in all but name, Pearl's $\mathrm{do}(A)$.
+  \item \textbf{Process or mechanistic theories} (Salmon's mark-transmission theory; Dowe's conserved-quantity theory) are the one serious attempt to dispense with counterfactual comparison altogether, appealing instead to physical processes capable of transmitting a mark or carrying a conserved quantity. It has been argued, however, that Salmon's account collapses back into a counterfactual claim on inspection, since ``capable of transmitting a mark'' is most naturally unpacked as ``would transmit a mark, were one introduced,'' a counterfactual under another name.
+\end{itemize}
+
+The moral we draw, and rely on later, is that a comparison against a world in which A did not happen, whether realised by literal manipulation, statistically imputed as a missing potential outcome, computed within a surgically modified structural model, or evaluated as the nearest point in modal space, is doing the actual work in every framework that succeeds in separating cause from correlation, and that the frameworks which try hardest to avoid this comparison either fail on cases like the barometer or reintroduce it covertly.
+
+% ======================================================================
+\section{Excursus: Determinism, Quantum Chaos, and the Comparison World}
+\label{sec:excursus}
+% ======================================================================
+
+\begin{skipnote}
+This section is a self-contained philosophical digression. It asks what licenses the comparison-world apparatus of \cref{sec:corr} in the first place, and is not needed to follow the transitivity result of \cref{sec:trans} onward. Readers wanting the main line of argument may skip directly to \cref{sec:trans}; the one fact carried forward is the distinction, introduced in \cref{rem:epsdist} below, between \emph{epistemic} and \emph{ontic} $\eps$.
+\end{skipnote}
+
+\subsection{The problem: is a comparison world available at all?}
+\label{subsec:determinism-problem}
+
+Every framework surveyed in \cref{subsec:survey} owes us an answer to a question so far postponed: what entitles us to speak of a world, real or modelled, in which A did not occur, if the actual world is deterministic? Setting quantum mechanics aside for the moment, as those frameworks generally do, the state of the world an instant before A, together with the laws, nomologically necessitates A. The comparison world required by $\mathrm{do}(A)$, by Lewis's closest world, by the missing potential outcome, is therefore not describing a live alternative consistent with how things actually stood; it is describing something the actual past and the actual laws jointly rule out.
+
+This is not a peripheral worry. It is, formally, the same structure as van Inwagen's Consequence Argument against compatibilist free will: if determinism is true, our acts are the consequences of the laws of nature and events in the remote past, and it is not up to us what went on before we were born, nor up to us what the laws of nature are, so the consequences of these things, including our present acts, are not up to us (\emph{An Essay on Free Will}, 1983, p.\ 16). Substitute ``A occurs'' for ``our acts,'' and the argument applies to the comparison-world apparatus of causation exactly as it applies to free will: if nothing could have made A otherwise, there is, in the strict nomological sense, no world for the comparison to reach.
+
+\subsection{Two answers, and their costs}
+
+David Lewis confronted this directly, and his solution is worth stating precisely, because it concedes more than it is usually credited with conceding. In ``Counterfactual Dependence and Time's Arrow'' (1979), Lewis argues that the closest world in which A does not occur is not one with different initial conditions for the universe as a whole, since reproducing every other detail of the actual world from different initial conditions would require an enormous, globally coordinated \emph{convergence miracle}. Instead, the relevant comparison world matches the actual world perfectly up to shortly before A, at which point the deterministic laws of the actual world are violated in some simple, localised, inconspicuous way, a tiny \emph{divergence miracle}, and the two worlds diverge lawfully thereafter. This buys a coherent comparison world only by admitting that it is not reachable from the actual past by the actual laws at all: reaching it requires a literal, if minimal, violation of the very determinism that generated the objection in the first place. Lewis's account does not refute the worry so much as name a cost and agree to pay it.
+
+Lewis prefers this resolution to its mirror image, a backtracking counterfactual that holds the laws fixed and supposes the entire past differed enough to yield the absence of A lawfully, because convergence miracles are always more extravagant than divergence miracles, an asymmetry he ties to the thermodynamic arrow of time. Elga (2001) presses on exactly this connection and reaches a considerably less comfortable conclusion than Lewis's presentation suggests: attending carefully to real thermodynamically irreversible processes, Elga argues that Lewis's own analysis frequently fails to deliver the intended asymmetry at all, and that where it fails, it is diagnostic of a tight, and troublesome, connection between the asymmetry of miracles and the asymmetry of entropy. We flag this as a genuine open difficulty for the miracle-based account, not settled support for it.
+
+Pearl's framework, by contrast, does not answer this worry so much as decline to ask it. The exogenous variables $U$ in a structural causal model $\langle U, V, F\rangle$ absorb whatever is not explicitly modelled, and Pearl's formalism is silent on whether $U$ represents genuine indeterminism or merely unresolved deterministic detail; $\mathrm{do}(A)$ is an operation on the equations of a model, not a metaphysical claim that the actual universe could have unfolded differently. This is an instrumentalist retreat, and it is more honest to name it as one than to let the elegance of the graphical apparatus obscure it.
+
+\subsection{Epistemic and ontic \texorpdfstring{$\eps$}{epsilon}}
+
+This bears directly on the status of $\eps$ throughout this paper.
+
+\begin{remark}[Epistemic and ontic $\eps$]
+\label{rem:epsdist}
+Where the process generating B is genuinely indeterministic, as in radioactive decay, $\eps$ may be understood as an \emph{ontic} quantity, $\eps_{\mathrm{ont}}$, an objective chance in something like Lewis's sense (1980), not reducible to $0$ or $1$ by further information even in principle. Where the underlying process is, so far as known, deterministic, as in the ideal gas of \cref{subsec:parallel}, the atmosphere of \cref{subsec:weather}, or the doubling map of \cref{subsec:doubling}, $\eps$ is \emph{epistemic}, $\eps_{\mathrm{epi}}$: it measures our own ignorance of a microstate the world already possesses, and could in principle be driven to $0$ or $1$ by sufficiently complete information.
+\end{remark}
+
+The distinction is not mere bookkeeping. Lewis's own attempt to found objective chance on something more general than brute quantum indeterminism, via the Principal Principle (1980), runs into precisely this difficulty: under determinism, the chance of whatever actually happens is properly $1$, so any non-trivial chance-talk about a deterministic process has to be relativised to a coarser level of description, a cost Lewis later acknowledged as serious. On the reading adopted here, that coarser-level chance-talk is exactly $\eps_{\mathrm{epi}}$. Of the causal claims examined in this paper, the decay of a hydrogen-5 nucleus is, so far as quantum mechanics is genuinely indeterministic, the sole instance of $\eps_{\mathrm{ont}}$; every other example, the weather, the gas, the doubling map, the message chain, and, we would argue, the economic and medical cases that motivated the whole inquiry, trades in $\eps_{\mathrm{epi}}$ throughout, however small that epistemic quantity may in practice become.
+
+\upshot{Every framework that successfully separates cause from correlation smuggles in a comparison to a world where the cause did not happen. Under determinism, such a world is not lawfully reachable; Lewis buys one at the cost of a stipulated miracle, and Pearl's formalism simply declines to say what licenses the comparison at all. This matters for the rest of the paper because it means $\eps$ comes in two metaphysically distinct flavours, ontic and epistemic, and, once we check, almost every example in this paper other than radioactive decay turns out to be epistemic, however small the number.}
+
+\subsection{A physical mechanism: quantum chaos and decoupling time}
+\label{subsec:decoupling}
+
+\begin{skipnote}
+This subsection is the most technical part of the excursus and may be skipped; its content is summarised in the Upshot at the end of \cref{sec:excursus}.
+\end{skipnote}
+
+It is worth asking whether physics has, since 1979, supplied something better than Lewis's stipulation: a genuine, lawful mechanism by which two courses of history could match exactly up to a point and diverge thereafter without any violation of law. We think it has. The relevant physics is the theory of quantum chaos and decoherence, developed chiefly from the 1990s onward. Zurek and Paz, in ``Decoherence, Chaos, and the Second Law'' (1994), showed that a classically chaotic system coupled to its environment settles, after a brief transient, to a rate of entropy production given by the sum of its positive Lyapunov exponents, independently of the strength of the coupling. Karkuszewski, Jarzynski, and Zurek (2002) extended this to show that quantum-scale perturbations are themselves amplified at this same classical chaotic rate once an environment is present to decohere the system, essentially any macroscopic system at ordinary temperature. Genuine quantum indeterminacy at the microscale, on this account, does not remain microscopic: it is promoted to macroscopic significance at a rate set by the same Lyapunov exponents governing the classical predictability horizon of \cref{subsec:weather,subsec:doubling}.
+
+Berry (2025) gives a vivid quantitative estimate of this rate: the number of molecular collisions before the trajectory of a gas molecule is perturbed beyond recognition by the gravitational tidal effect of a single electron at the edge of the observable universe, a perturbation about as small as physics permits. That single distant electron renders the motion of gas molecules at room temperature unpredictable after only a few tens of collisions, a matter of nanoseconds. If a perturbation that minute is amplified to macroscopic significance that quickly, genuine quantum indeterminacy will be amplified faster still.
+
+\begin{techbox}{Dynamical decoupling}
+\begin{definition}[Dynamical decoupling]
+\label{def:decoupling}
+Let $U_0$ be the state of a system at time $0$, specified, whether by measurement or by the limits the uncertainty principle places on simultaneous specification, to a precision of $k$ bits. Let $D_t$ be a macroscopic event at time $t$, causally downstream of $U_0$ through a dynamics with Kolmogorov--Sinai entropy rate $h$, the sum of positive Lyapunov exponents (Pesin's theorem, \cref{subsec:doubling}). Define the \textbf{decoupling time}
+\[
+\tau_* = \frac{k}{h}.
+\]
+For $t > \tau_*$, $I(U_0; D_t) \to 0$ (exactly zero in the idealised setting of \cref{prop:doubling}). Where the bits beyond precision $k$ are supplied by genuine quantum indeterminacy, amplified by the Zurek--Paz--Karkuszewski--Jarzynski mechanism rather than by unmeasured classical fact, this is not merely a practical loss of predictive power but strict independence: $D_t$ was not fixed by $U_0$ at all, only by whatever quantum events occurred in $(0,t)$.
+\end{definition}
+\end{techbox}
+
+This gives Lewis's semantics something considerably better than a stipulated miracle to work with. Rather than requiring a small, localised violation of the actual laws to produce a coherent world in which A does not occur, genuine quantum branching, decohered and amplified by chaotic dynamics, supplies two lawful courses of history that match exactly up to a point and diverge lawfully thereafter, with no violation of anything. This holds most straightforwardly on an Everettian reading, where both branches are equally actual; it holds in a more restricted sense on a collapse interpretation, where only one branch is actual but the counterfactual branch was, up to the decoupling time, a live physical possibility rather than a mere stipulation.
+
+Two cautions. First, this mechanism rescues the comparison world only beyond $\tau_*$; for $t < \tau_*$ the objection of \cref{subsec:determinism-problem} stands unaddressed. Second, we have illustrated $\tau_*$ with a gas, where the relevant Lyapunov exponents are well characterised. Whether the decoupling time for a human decision is short enough, on the timescale of deliberation, for quantum-level indeterminacy to have been amplified to neurally significant scale by the moment of choice is a substantive empirical question about the chaoticity of neural dynamics on which we take no position; it would need to be established, not assumed, before this mechanism could be applied to the free-will case that motivated it.
+
+\upshot{Quantum chaos and decoherence give an actual physical mechanism, not just a philosopher's stipulation, for two histories to match exactly and then genuinely diverge: quantum-scale indeterminacy is amplified to macroscopic significance at a rate set by the system's Lyapunov exponents, astonishingly fast even for gases. This defines a decoupling time $\tau_*=k/h$ beyond which a later event is not merely unpredictable from the earlier state but, if the amplified indeterminacy is genuinely quantum, independent of it. It rescues Lewis's comparison world with real physics rather than a stipulated miracle, but only after $\tau_*$, and only if the relevant system really is chaotic on the relevant timescale, which for human decisions remains an open empirical question.}
+
+% ======================================================================
+\section{The Weakening of Transitivity}
+\label{sec:trans}
+% ======================================================================
+
+Our principal interest is in a structural consequence of \cref{def:eps-causation} that has not, we think, been given its due prominence, though a version of it is known in the literature under the heading of the transitivity problem. Suppose A $\eps$-causes B, and B $\eps$-causes C, for a common threshold $\eps$ chosen so as to count both relations as ``causation'' in the everyday sense. What can we say about the relation between A and C?
+
+\begin{techbox}{The exponential bound}
+If we assume, as is standard in the analysis of Markov chains, that C's dependence on the earlier history of the chain runs entirely through B, that is, $P(C \mid A, B) = P(C \mid B)$, then the ordinary rules of conditional probability give
+\[
+P(C \mid A) = P(C \mid B)\, P(B \mid A) > (1-\eps)^2 .
+\]
+For a chain of $n$ such $\eps$-causal links, $A_1 \to A_2 \to \cdots \to A_n$, satisfying the analogous Markov condition at each stage, the same argument yields
+\begin{equation}
+P(A_n \mid A_1) > (1-\eps)^{n-1}. \label{eq:decay}
+\end{equation}
+\end{techbox}
+
+This bound decays, and decays without limit as $n$ grows: for any fixed $\eps > 0$, however small, there is some chain length beyond which $(1-\eps)^{n-1}$ falls below any threshold we care to name, including one half. A chain of individually overwhelming causal links can therefore terminate in a link that is, by the very standard we started with, no better than a coin toss. Causation, understood probabilistically, is transitive only up to a cost that compounds with distance, and the cost is exponential in the length of the chain.
+
+This is, to our knowledge, an underappreciated consequence, though it is closely related to a result well known within the philosophical literature on probabilistic causation: Eells and Sober (1983) showed that probabilistic causation, defined by simple probability-raising, need not be transitive at all; there exist configurations of variables in which A raises the probability of B, B raises the probability of C, and yet A lowers the probability of C. Our $\eps$-chain argument is weaker but more general: it does not require any pathological configuration to produce a failure of the everyday sense of ``cause,'' only sufficient length of chain. Genuine transitivity failure, of the kind Eells and Sober describe, is a further and independent way for a causal chain to break, and we return to it in \cref{subsec:breakage}.
+
+\subsection{The Kyburg parallel}
+
+It is worth noting that an analogous phenomenon occurs one level up, in the logic of rational belief rather than the logic of causation, and this offers some independent support for treating the decay of certainty under composition as a general feature of thresholded probabilistic reasoning rather than an artefact peculiar to causal chains. Kyburg's lottery paradox (1961) shows that no threshold, however high, can be used as a rule of rational acceptance without generating inconsistency: if we accept any proposition with probability exceeding $1-\eps$, then in a fair lottery of more than $1/\eps$ tickets we are committed to accepting, of every single ticket, that it will lose, while also accepting that some ticket will win. The moral standardly drawn is that acceptance on the grounds of high probability is not closed under conjunction. Our transitivity argument shows that, for the same reason, causal ascription on the grounds of high conditional probability is not closed under chaining. Both are instances of a single underlying fact about thresholded probability: comfortable margins do not survive composition, whether the mode of composition is conjunction, as in Kyburg's case, or sequential dependence, as in ours.
+
+\subsection{Two kinds of breakage}
+\label{subsec:breakage}
+
+It is worth distinguishing, at the outset, two quite different ways in which a causal chain can fail to deliver its conclusion, since the literature and the illustrative examples for each are different, and conflating them would weaken the paper's argument.
+
+The first is the \textbf{attenuation} just derived: each link is causal without qualification, but the chain as a whole is not, because probability is lost multiplicatively at every step. This is a matter of degree, avoidable in principle by shortening the chain, tightening $\eps$ at each link, or introducing redundancy.
+
+The second is \textbf{structural or logical breakage}, in which the chain fails to be transitive for reasons that have nothing to do with declining probability, and that would persist even in the deterministic limit $\eps \to 0$. The classic examples come from the counterfactual and structural-equations tradition: Hitchcock (2001) and Hall (2000) both argue, against Lewis's earlier defence of transitivity (1973), that deterministic causation can fail to be transitive outright, typically in cases of pre-emption, where a back-up cause is standing by to produce the effect if the primary cause fails, so that the intermediate event turns out not to be counterfactually necessary for the final one even though each link, considered locally, looks causal.
+
+The law offers a useful, and rather vivid, source of examples of structural breakage, because legal doctrines of proximate cause exist precisely to decide, as a matter of policy rather than metaphysics, where a causal chain should be treated as broken for the purposes of assigning responsibility, regardless of how much counterfactual or probabilistic dependence can be traced further down the chain. \Cref{sec:examples} takes up examples of both kinds of breakage in turn.
+
+% ======================================================================
+\section{Illustrative Examples of Causal-Chain Breakage}
+\label{sec:examples}
+% ======================================================================
+
+\subsection{Weather forecasting: the continuous approach to the uncaused case}
+\label{subsec:weather}
+
+Weather forecasting is the best-worked example we have of a causal chain whose reliability decays \emph{continuously} rather than by any single sharp failure, and it lets us formalise a question the propositional apparatus alone could not even pose: what does it mean for a chain of individually strong causal links to shade, by degrees, into the condition of two events being causally unrelated altogether?
+
+The atmosphere is governed by deterministic equations, so that in Laplace's sense a perfectly known initial state would determine every future state exactly; it was Lorenz's own numerical work (1963) that first demonstrated that this determinism is compatible with practical unpredictability, because two initial states differing by an arbitrarily small amount diverge from one another at an exponential rate. If $\delta_0$ is the initial discrepancy and $\lambda$ the leading Lyapunov exponent of the atmosphere, the expected discrepancy at lead time $t$ grows as
+\[
+\delta(t) \approx \delta_0\, e^{\lambda t},
+\]
+until it saturates at the scale of the attractor itself, that is, until the two trajectories are no more similar to one another than two states drawn independently from the climatological distribution. Because $\lambda$ for the atmosphere is such that errors double roughly every two to three days, an initial-condition error negligible on day one becomes comparable to the full range of possible weather within about two weeks; the figure of a two-week ceiling on deterministic skill is more precisely due to Charney et al.'s 1966 predictability study, and it has proved remarkably durable, though recent machine-learning models have pushed useful skill somewhat further.
+
+The important structural point is that this is not a story about a chain breaking at some particular link, in the way a legal doctrine might cut a chain of liability at a named point; it is a story about an information-theoretic quantity decaying smoothly and asymptotically towards zero. If $A$ denotes the initial atmospheric state and $X_t$ the state at lead time $t$, the operational practice of ensemble forecasting is precisely an empirical estimate of $P(X_t \mid A)$; meteorologists use the observation that ensemble spread approaches climatological variance, and skill scores such as the anomaly correlation coefficient decay towards zero, as their working definition of the predictability limit. In our terms, for any fixed tolerance $\delta$ and confidence $1-\eps$ there is a lead time $t^*(\delta,\eps)$ beyond which the forecast can no longer be said to $(\eps,\delta)$-cause the future state at all, because $P(d(X_t,\text{forecast})<\delta \mid A)$ has fallen to the value it would have taken had we conditioned on nothing. Whichever precise threshold one adopts for ``predictable,'' the underlying quantity is continuous, and the choice of threshold is exactly as conventional, and exactly as context-dependent, as the choice of $\eps$ in \cref{def:eps-causation}.
+
+This can be stated without any threshold at all, which is the cleanest formulation. If $A \to X_1 \to X_2 \to \cdots$ is a Markov chain, the \textbf{data processing inequality} of information theory (Cover and Thomas, 1991, ch.\ 2) guarantees that the mutual information $I(A;X_t)$ is non-increasing in $t$:
+\[
+I(A;X_1) \;\geq\; I(A;X_2) \;\geq\; \cdots \;\geq\; I(A;X_t) \;\geq\; \cdots \;\geq\; 0.
+\]
+Mutual information is zero exactly when $A$ and $X_t$ are statistically independent, the ``random, uncaused'' case in which knowledge of the initial state confers no advantage in predicting the later one. The data processing inequality tells us that a causal chain can only lose its grip on the future, monotonically, never regain it, and that it is entirely coherent for this loss to be gradual rather than sudden, asymptoting towards, without perhaps ever strictly reaching, the fully uncaused case. A long enough causal chain does not fail all at once; it fades, and mutual information gives us a threshold-free way of tracking the fade, of which the $(1-\eps)^n$ bound of \cref{eq:decay} and the $\delta(t)\approx\delta_0 e^{\lambda t}$ law of this section are two domain-specific instances.
+
+\subsubsection{A worked example: the doubling map}
+\label{subsec:doubling}
+
+\begin{skipnote}
+This subsection is fully worked mathematics and may be skipped; its content is summarised in the Upshot below.
+\end{skipnote}
+
+The atmosphere is too complicated to carry the mutual-information calculation through explicitly, but there is a standard toy chaotic system for which it can be done exactly, both to confirm that the qualitative story above is not merely suggestive and to see precisely how a Lyapunov exponent converts into a rate of information loss.
+
+\begin{techbox}{The doubling map, worked exactly}
+Let $T:[0,1)\to[0,1)$ be the doubling map, $T(x)=2x \bmod 1$: the standard minimal model of deterministic chaos. It is measure-preserving and ergodic with respect to Lebesgue measure, has the single Lyapunov exponent $\lambda=\ln 2$ everywhere, since $|T'(x)|=2$, and is exactly solvable, because in binary notation it is simply the left shift: writing $x=0.b_1b_2b_3\ldots$, we have $T(x)=0.b_2b_3b_4\ldots$, so $T^n(x)=0.b_{n+1}b_{n+2}\ldots$.
+
+\begin{proposition}
+\label{prop:doubling}
+Let $X_0$ be uniformly distributed on $[0,1)$, so its binary digits $b_1,b_2,\ldots$ are independent, fair coin flips. Suppose a measurement discloses the first $k$ digits exactly, and let $A=(b_1,\ldots,b_k)$. Let $X_n=T^n(X_0)$. Then
+\[
+I(A;X_n) = \max(k-n,\,0) \ \text{bits}.
+\]
+\end{proposition}
+
+\begin{proof}
+$X_n$'s binary expansion is $(b_{n+1},b_{n+2},\ldots)$. Since all digits are independent, $A=(b_1,\ldots,b_k)$ and $X_n$ share exactly the digits with indices in $\{n+1,\ldots,k\}$, a set of size $\max(k-n,0)$, and are otherwise built from disjoint, independent digits. Knowledge of $A$ therefore determines the shared digits of $X_n$ exactly and says nothing about the rest, so $I(A;X_n)$ equals the joint entropy of the shared digits, which, being independent fair bits, is $\max(k-n,0)$ bits.
+\end{proof}
+\end{techbox}
+
+This is an exact instance of the data processing inequality: mutual information decreases monotonically with $n$, here at the constant rate of exactly one bit destroyed per iterate, until it is exhausted completely at $n=k$, at which point $A$ and $X_n$ are strictly independent and we have reached the fully uncaused case in finite time, not merely in the limit. The rate of information loss, one bit per iterate, equals $\lambda/\ln 2$, the Lyapunov exponent converted from nats to bits: a simple case of Pesin's theorem (1977), which equates the entropy production rate of a chaotic system (its Kolmogorov--Sinai entropy) with the sum of its positive Lyapunov exponents. The exponential growth of metric uncertainty, $\delta(n)=\delta_0\cdot 2^n$, and the linear decay of informational content are two descriptions of a single fact, related by a logarithm: to lose a further factor of two in positional certainty is to lose a further bit of predictive information.
+
+The atmosphere is not the doubling map; it has, on the relevant scales, many positive Lyapunov exponents rather than one, and Pesin's theorem must be applied to their sum. But the qualitative picture transfers directly, and even licenses a rough estimate of the kind the toy model makes exact: if a numerical weather model resolves the atmosphere's initial state to an effective precision of some tens of bits relative to climatological uncertainty, and the sum of positive Lyapunov exponents corresponds to an entropy production rate on the order of a bit or so per day, a predictability horizon on the order of one to two weeks falls out directly, which is, reassuringly, the figure independently reported in the operational forecasting literature. This order-of-magnitude argument would need a sourced estimate of the atmosphere's actual Kolmogorov--Sinai entropy before it could be stated as more than illustrative.
+
+\upshot{The doubling map is a toy chaotic system, $T(x)=2x \bmod 1$, that can be solved exactly because it is just a left-shift on binary digits. If we only know the first $k$ binary digits of the starting point, the amount we know about the state after $n$ steps is exactly $k-n$ bits, hitting zero at $n=k$: the system becomes genuinely, provably independent of what we knew initially, in finite time. The rate of this loss, one bit per step, is exactly the system's Lyapunov exponent, connecting this toy result to the real, immeasurably more complicated atmosphere via Pesin's theorem, and giving a plausible mechanistic account of why weather forecasts become useless after about two weeks.}
+
+\subsection{\emph{Regina v. Faulkner} (1877): where the law cuts a chain that physics would not}
+\label{subsec:faulkner}
+
+A caution is needed here, because a version of this case sometimes circulated, in which the fire aboard ship led onward to an insurer's ruin and a consequent suicide, is not the reported case; that longer chain appears to be a hypothetical elaboration used by later writers on formal theories of actual causation to illustrate remoteness doctrine, and should not be cited as historical fact. The reported case, \emph{R.\ v.\ Faulkner}, 13 Cox C.C.\ 550 (1877) (Court of Crown Cases Reserved, Ireland), is narrower, and, for our purposes, more instructive.
+
+Faulkner, a seaman, entered the hold of the ship \emph{Zemindar} intending to steal rum. He bored a hole in a cask, and, in an effort to see what he was doing as the rum ran out, struck a match. The match ignited the escaping spirit, and the fire destroyed the ship. There is no dispute about the physical causal chain: the theft led to the boring of the hole, the hole led to the spillage, the spillage combined with the match led to the fire, and the fire led to the ship's destruction. Each link is, if anything, closer to a deterministic implication than a merely probabilistic one. The jury was directed that, because Faulkner was committing a felony (theft) at the time, he was liable for the further felony (arson) that resulted, whether or not he intended or foresaw it, an application of what is sometimes called constructive or transferred culpability. On appeal, the conviction for arson was quashed: the court held that criminal liability for the fire required its own, independent mental element, either an intention to burn the ship or at least recklessness as to that outcome, and that the intention to steal rum did not automatically transfer along the causal chain to cover the fire, however tightly the fire was in fact caused by the theft.
+
+This is a strikingly clean example of \emph{structural} breakage (\cref{subsec:breakage}), and it is instructive to see why it is not an instance of the probabilistic attenuation of \cref{sec:trans}. The physical chain from theft to conflagration is not weak; given a lit match and spilled spirit in an enclosed space, $P(\text{fire}\mid\text{match struck near spillage})$ is close to one, and the whole episode took place within minutes, so there is no room for the chain to be long in the sense that matters for the bound of \cref{eq:decay}. What breaks is not the causal connection but the mapping from causal connection to legal responsibility: English and Irish criminal law requires, at each step for which guilt is to attach, an independent normative ingredient, a guilty mind directed at that particular consequence, and that ingredient does not propagate along a causal chain the way probability does. One can have overwhelming causal continuity and, simultaneously, complete normative discontinuity, because the two are governed by different composition rules altogether: causal strength composes, imperfectly, by multiplication of probabilities, while the law's assignment of responsibility here composes not at all, since intent with respect to the theft simply does not entail, or even raise the probability of, in any sense the law recognises, intent or recklessness with respect to the fire.
+
+The contrast with \cref{subsec:weather} is exact, and worth stating as the organising point of this section. In the weather case, the underlying causal quantity, mutual information, decays continuously and asymptotically, and any ``cut-off'' we impose, a forecast horizon or a chosen $\eps$, is a matter of convention laid over a smooth physical process. In the Faulkner case, the underlying causal chain does not decay at all; a bright normative line is drawn across an intact chain, for reasons belonging to the theory of criminal responsibility rather than to the theory of causation as such. Legal doctrines of remoteness and \emph{novus actus interveniens} more generally (see Hart and Honor\'e, 1985) are further examples of the law imposing discrete cuts on chains that, considered purely causally or probabilistically, may show no discontinuity whatsoever: a genuine, and under-remarked, disanalogy between causal and legal-responsibility composition.
+
+% ======================================================================
+\section{Approximate Causation}
+\label{sec:approx}
+% ======================================================================
+
+A further generalisation is suggested by physical examples such as the radioactive decay case of \cref{sec:intro}, and is of independent interest. So far we have treated B as a proposition, true or false. In many of the cases motivating this paper, particularly in physics, the effect is better modelled as a value in a metric space $(\Omega,d)$, and what is caused is not B exactly but B \emph{approximately}.
+
+\begin{definition}[$\eps,\delta$-causation]
+\label{def:eps-delta}
+Let $X$ denote the realised outcome and $b\in\Omega$ a target value. We say that A causes B \textbf{to within tolerance $\delta$} if
+\[
+P\big(d(X,b)<\delta \mid A\big) > 1-\eps.
+\]
+\end{definition}
+
+This raises a question the propositional version could not even pose: when we chain approximate causes, does the tolerance $\delta$ compound alongside the probability $\eps$? The answer depends entirely on whether the causal structure connecting A to B is \emph{serial}, a chain in which each stage feeds its uncertain output forward as the input to the next, or \emph{parallel}, an aggregation in which many largely independent causes combine to fix a single downstream quantity. These two architectures behave, under composition, in opposite directions, and both admit exact, worked formalisation.
+
+\subsection{Serial composition: tolerance widens}
+\label{subsec:serial}
+
+We have, in fact, already worked a serial example in full: the doubling map of \cref{subsec:doubling} is precisely an instance of \cref{def:eps-delta}, with $\eps=0$, since that model was fully deterministic, and $\delta$ growing geometrically, $\delta_n=\delta_0\cdot 2^n$, one further doubling per iterate, until the tolerance exceeds the size of the whole space and the causal claim becomes vacuous.
+
+\begin{techbox}{Serial widening}
+\begin{proposition}[Serial widening]
+\label{prop:serial}
+Let $T$ be a map with Lyapunov exponent $\lambda=\ln L$ ($L>1$) governing the local rate of separation of nearby trajectories, and suppose an initial state is known to lie within tolerance $\delta_0$ of some reference point, with confidence $1-\eps_0$. Then, absent correcting information, the tolerance after $n$ iterates satisfies, to leading order,
+\[
+\delta_n \approx \delta_0\, e^{\lambda n}, \qquad \eps_n \geq \eps_0,
+\]
+that is, $\delta$ grows exponentially in the number of stages while $\eps$ can only worsen, never improve, along the chain.
+\end{proposition}
+\end{techbox}
+
+This is the tolerance-based mirror image of the probability bound of \cref{eq:decay}: there, chaining cost us certainty at fixed precision; here, chaining costs us precision at fixed certainty. The two are the same phenomenon viewed through different marginal variables of the same joint distribution.
+
+\subsection{Parallel composition: tolerance narrows}
+\label{subsec:parallel}
+
+Where, by contrast, a downstream quantity arises from the combination of many independent or weakly dependent causes, the direction of composition reverses entirely.
+
+\begin{techbox}{Parallel narrowing (after Hoeffding, 1963)}
+\begin{proposition}[Parallel narrowing]
+\label{prop:parallel}
+Let $Y_1,\ldots,Y_n$ be independent causes, each bounded, $Y_i\in[a_i,b_i]$, and suppose the downstream quantity of interest is their average, $S_n=\tfrac1n\sum_i Y_i$, with $b=\mathbb E[S_n]$ the target value. Then, for any tolerance $\delta>0$,
+\[
+P\big(|S_n-b|\geq\delta\big) \;\leq\; 2\exp\!\left(-\frac{2n^2\delta^2}{\sum_{i=1}^n(b_i-a_i)^2}\right).
+\]
+In particular, if all $n$ causes share a common range $R=b_i-a_i$,
+\[
+\eps_n \;\leq\; 2\exp\!\left(-\frac{2n\delta^2}{R^2}\right),
+\]
+decaying exponentially in $n$ for any fixed tolerance $\delta$.
+\end{proposition}
+\end{techbox}
+
+This is the precise counterpart of Cram\'er's and Sanov's theorems from the theory of large deviations, specialised to a form, due to Hoeffding, that requires only boundedness rather than the full apparatus of the Cram\'er rate function. The qualitative moral is now a theorem rather than an analogy: aggregating $n$ roughly independent causes into a single macroscopic effect buys an exponential improvement in reliability, at fixed tolerance, in the very same currency, the number of composed causal contributions, in which serial chaining exacts an exponential cost.
+
+The ideal gas is the standard illustration. A macroscopic sample contains of the order of $10^{23}$ molecules, and the pressure exerted on a container wall is, to a first approximation, an average of a very large number of individual, weakly dependent momentum transfers. Setting $n\sim10^{23}$ in the bound above, even a minute tolerance $\delta$ and a modest per-molecule range $R$ yield an $\eps_n$ that underflows any figure we could sensibly write down; this is why ``raising the temperature of this gas causes its pressure to rise, to within measurement precision'' feels, and indeed is, very close to strict implication, while ``raising interest rates causes inflation to fall'' does not, even though both are, formally, instances of \cref{def:eps-delta}. This $\eps_n$ is, in the terms of \cref{rem:epsdist}, purely epistemic: it reflects our ignorance of $10^{23}$ molecular microstates under a deterministic dynamics, not any indeterminism in the gas itself. The difference is not that one domain is more lawlike than the other in some vague sense; it is that one rests on the parallel composition of an astronomical number of near-independent contributions and the other typically rests on a comparatively short and heavily confounded serial chain running through human institutions, expectations, and decisions, each stage of which is closer in kind to \cref{subsec:serial} than to this subsection.
+
+\subsection{A duality, and where it leaves ordinary causal talk}
+\label{subsec:duality}
+
+We can now state the paper's organising observation as a genuine duality. Any causal structure connecting A to B decomposes, in general, into some combination of serial \emph{depth} and parallel \emph{width}: depth is purchased against reliability exponentially, by \cref{prop:serial}, while width is redeemed for reliability exponentially, by \cref{prop:parallel}. The overall $(\eps,\delta)$ behaviour of a real causal claim is a competition between these two exponentials, one working against the claimant and one working for it, and the outcome of that competition, not the mere presence of ``high probability'' at each individual link, is what determines whether an everyday causal ascription is entitled to borrow the rhetorical certainty of physics.
+
+This gives us a diagnostic the earlier sections lacked: rather than asking simply ``is $P(B\mid A)$ large?'', we can ask of any causal claim what its depth and width actually are. Thermodynamic and statistical-mechanical generalisations are trustworthy because they are almost pure width, vast parallel aggregation with negligible serial depth. Long-range weather forecasts fail because the atmosphere, for all that it is itself an aggregate of an enormous number of molecules, is being asked a question, the trajectory of a specific macroscopic pattern, that depends on serial iteration of a chaotic map, and depth dominates width in exactly the regime where forecasting becomes useless. Claims in medicine, economics, and social policy are, we suspect, generally weaker than either limiting case suggests, because they are typically short, heavily confounded serial chains dressed in the vocabulary borrowed from the parallel, aggregative sciences, without the width that vocabulary was earned by. This last suggestion is closer to a diagnosis than a proof, and connects to Woodward's requirement (2003) that a causal generalisation be invariant across a suitably wide range of background conditions to count as more than an accident: width, in our sense, is one concrete way of cashing out what Woodward's invariance condition requires the world to supply.
+
+\subsection{A limit of the duality: depth and width are not always separable}
+\label{subsec:sp-limit}
+
+The diagnostic just proposed presupposes that any causal structure can be sorted into a serial part and a parallel part in the first place, and this presupposition is stronger than it looks. Two independent difficulties stand in its way.
+
+The first is graph-theoretic. Whether a network of causal influences decomposes into nested series and parallel components at all is a genuine topological property, not a property every graph has. A graph admits such a decomposition if and only if it excludes $K_4$ as a minor (Duffin, 1965), a condition familiar from electrical engineering, where series-parallel reduction was first developed. The graph that fails this test in the simplest possible way is the \textbf{Wheatstone bridge}: two paths of intermediate length from A to B, each passing through its own intermediate node, plus a cross-edge connecting the two intermediate nodes directly. No sequence of series and parallel reductions can simplify this graph; it requires a genuinely different technique, a star--delta transform, to analyse at all. Causal structures of exactly this shape are not exotic: any case in which two causal pathways of different length share an intermediate common cause or effect has this topology, and for such a structure the question ``how much of this is depth and how much is width'' has no answer, because the graph does not factor that way.
+
+The second difficulty is more fundamental: the causal graph is not read off the world, it is a modelling choice, and depth and width are not invariant under changing it. The ideal gas of \cref{subsec:parallel} illustrates this within the paper's own material. Treated as $n\sim10^{23}$ independent parallel contributions, it is almost pure width; but each molecule's own trajectory is itself a short chain of collisions, and molecules are not strictly independent of one another over time, so a sufficiently fine-grained model of the same physical system would reveal serial structure inside what the coarse-grained model presents as a single parallel node. The gas behaves as though it were almost pure width only because that hidden serial structure is short and thermalises quickly relative to the timescale of aggregation, not because it is genuinely absent. Whether one sees depth or width depends on the grain of description chosen, and there is a substantial technical literature on exactly this problem of relating causal models at different grains: Rubenstein, Weichwald, Bongers, Mooij, Janzing, Grosse-Wentrup, and Sch\"olkopf, ``Causal Consistency of Structural Equation Models'' (2017), formalise when a coarse-grained causal model can be regarded as a legitimate abstraction of a finer-grained one; Beckers and Halpern, ``Abstracting Causal Models'' (2019), do comparable work axiomatically. Even granted a legitimate abstraction, though, the depth/width classification of the coarse model is not thereby vindicated as \emph{the} classification of the underlying system, since a different, equally legitimate abstraction at a different grain could redistribute the same structure between the two categories.
+
+The upshot is that the diagnostic of \cref{subsec:duality} applies cleanly to the cases we have actually worked, the doubling map and the Hoeffding bound of \cref{subsec:serial,subsec:parallel}, both series-parallel by construction, and should be read as a heuristic rather than a theorem in general. \Cref{subsec:ambiguity} presses on this point with a real and celebrated example: a single causal claim for which the parallel model and the serial model are both canonical, both empirically successful, and yield a strong and a weak causal link respectively, with no clear fact of the matter as to which is \emph{the} model of the claim.
+
+\subsection{One claim, two architectures: does smoking cause lung cancer?}
+\label{subsec:ambiguity}
+
+``Smoking causes lung cancer'' is among the best-established causal claims in all of science, and it is therefore instructive that the science supports two standard models of it, one of almost pure width and one of almost pure depth, and that the strength of the causal link is entirely different depending on which is consulted.
+
+\begin{techbox}{The parallel model and the serial model}
+\emph{The parallel model (epidemiological).} At the level of populations, the claim is an aggregation over millions of smokers, in exactly the sense of \cref{prop:parallel}. Doll and Hill's cohort of British doctors, followed for fifty years, established a relative risk of lung cancer for heavy smokers on the order of twenty, with a clean dose--response gradient, and with the excess mortality replicating across every population studied. As a claim about excess cases in a population, ``smoking causes lung cancer'' is about as strong as an empirical causal claim can be: the parallelism across individuals drives $\eps$ down exponentially, per \cref{prop:parallel}, and the probability that the association is an artefact of chance is negligible beyond any serious dispute.
+
+\emph{The serial model (mechanistic).} At the level of the individual smoker, the standard model of how the disease actually arises is a \emph{chain}. Armitage and Doll (1954), observing that cancer incidence rises as roughly the sixth power of age, inferred that carcinogenesis is a serial process of some six or seven successive cellular changes, each individually rare, each contingent on its predecessor: the multi-stage model that remains foundational in cancer biology. For any given cell, the probability of completing the full chain is astronomically small; carcinogenesis is a paradigm of \cref{sec:trans}, a long serial chain of individually improbable steps. It is partially rescued by parallelism at the cellular level, since the chain runs concurrently in billions of epithelial cells over decades, and the disease requires only one cell to finish it. The net result of this internal competition between depth and width is neither certainty nor negligibility: the large majority of lifelong heavy smokers never develop lung cancer, with lifetime risk for a continuing heavy smoker on the order of one in six. Read as a claim about what smoking will do to \emph{this} smoker, ``smoking causes lung cancer'' is, in the vocabulary of \cref{def:eps-causation}, a weak causal claim: $\eps$ is of order $0.85$, far beyond anything we would tolerate in the physical examples of \cref{subsec:parallel}.
+\end{techbox}
+
+Both models are correct. The epidemiological model is not a rough approximation to the mechanistic one, nor the mechanistic model a speculative refinement of the epidemiological one; each is well confirmed in its own terms, and they do not contradict each other at any point. Yet the depth-width diagnostic of \cref{subsec:duality}, applied to the two models, returns opposite verdicts on the strength of the same six words. On the parallel reading the claim borrows, legitimately, the exponential reliability of aggregation; on the serial reading it is a chain whose end-to-end probability hovers near the region where, by our own definition, causal language starts to feel strained. And the two verdicts are not reconciled by the observation that one model is about populations and the other about individuals, because ordinary causal talk does not specify which it means. A public-health official asserting the claim means something close to the parallel model; a physician counselling an individual patient, or a court apportioning responsibility for a particular smoker's particular cancer, needs something closer to the serial one; and the sentence itself, as uttered in ordinary speech, in textbooks, and on cigarette packets, is silent between them.
+
+Note how this differs from the difficulties of \cref{subsec:sp-limit}, and why it is not dissolvable in the way a confounding worry would be. There is no missing fact about edge directions here, and no experiment that would settle the matter: a randomised trial of smoking, were it ethical, would simply confirm both models at once, the strong population-level effect and the weak individual-level one, because both are true. Nor is it a case of one model being the legitimate abstraction of the other in the sense of Rubenstein et al.\ (2017), with the classification of the finer model simply carrying over; the aggregation step that takes the serial model to the parallel one is precisely the step at which depth is exchanged for width, so the architecture, and with it the verdict of \cref{subsec:duality}, is \emph{not} preserved under the abstraction. This is the general lesson of the example, and it is the reason we place it last: depth and width are not intrinsic properties of a causal connection between A and B. They are properties of a causal connection \emph{under a description}, and where two descriptions at different levels are equally entitled, as here, the question ``is this causal link strong or weak?'' has two honest answers and no third fact to arbitrate between them. Eells (1991), distinguishing type-level from token-level probabilistic causation, drew essentially this distinction within the probabilistic tradition; what the present framework adds is the diagnosis of \emph{why} the two levels disagree so sharply in cases like this one: the type-level claim and the token-level claim about smoking are not merely at different grains, they have different causal architectures, one wide and one deep, and the two exponentials of \cref{subsec:duality} accordingly pull the two readings to opposite ends of the scale.
+
+A fair objection remains, however, and it motivates the final example. In the smoking case the ambiguity can be blamed on the \emph{sentence} rather than on the world: the population-level reading and the individual-level reading are two different propositions sharing one form of words, and the population reading, once made explicit, is scarcely a causal claim at all in the contested sense, being close in character to the purely arithmetical observation that a first head increases the chance of nine heads in ten tosses. A fully satisfying example should therefore hold the cause and the effect fixed, as single token events, admitting no re-reading at either end, and locate the ambiguity entirely in the disputed architecture of the mechanism between them. \Cref{subsec:transmission} presents such a case.
+
+\subsection{Fixed endpoints, disputed mechanism: the monetary transmission problem}
+\label{subsec:transmission}
+
+Throughout this paper, ``raising interest rates causes inflation to fall'' has served as the paradigm of a weak causal claim, in deliberate contrast to the physical examples. We now make good on that recurring aside, because it turns out to be the example we need: a case where the cause and the effect are single, dated, token events, not reinterpretable at either end, and where the strength of the causal connection between them nonetheless depends on which of two standard models of the \emph{intervening mechanism} is correct, one deep and one wide, with the profession that owns the question genuinely unable to say which dominates.
+
+Fix the endpoints concretely. A: on a particular date, the central bank announces a rise in its policy rate of one percentage point. B: over the following two years, inflation in that economy falls by some stated amount. Both are single macroscopic events; there is no population reading and no individual reading to slide between, no analogue of the type/token ambiguity of \cref{subsec:ambiguity}. The question is solely how, and how reliably, A brings B about, and monetary economics offers two canonical answers.
+
+\begin{techbox}{Two models of the transmission mechanism}
+\emph{The serial model (the transmission chain).} The textbook mechanism is literally called the \emph{monetary transmission mechanism}, and it is a chain: the policy rate moves interbank rates, which move the lending and deposit rates set by commercial banks, which alter the volume of credit extended to firms and households, which alters investment and consumption, which alters aggregate demand, which, finally, alters the rate at which prices and wages are set. Each link is leaky, contingent on institutional detail, and capable of failing outright: banks may not pass the rate rise on; borrowers may be insensitive to rates; demand may be sustained by fiscal policy or external trade; and price-setting may respond sluggishly or not at all. This is a paradigm of \cref{sec:trans} and \cref{prop:serial}: an $\eps$ at every stage, compounding along the chain. Friedman (1961) drew from it the famous conclusion that monetary policy operates with lags that are both \emph{long and variable}, and Bernanke and Gertler (1995), surveying decades of subsequent empirical work on the credit channel, could still describe the intervening mechanism, in the title of their paper, as a \emph{black box}. On the serial model, the causal link from A to B is real but weak, and weak for exactly the structural reason this paper has formalised: it is deep.
+
+\emph{The parallel model (the expectations channel).} The rival account, dominant in the theoretical literature since the rational expectations revolution, holds that the chain above is largely a sideshow. The announcement A is observed \emph{directly and simultaneously} by millions of price-setters, wage-negotiators, and contract-writers, each of whom, if the central bank's commitment is credible, revises their expectation of future inflation and adjusts their own pricing at once. On this account the operative structure is not a chain running through the banking system but a vast parallel fan-out from the announcement itself: one edge from A to each of millions of agents, whose independent adjustments aggregate, in the manner of \cref{prop:parallel}, into the macroscopic disinflation B. Width, not depth. The account has striking empirical support in the extreme cases: Sargent (1982), examining the ends of four interwar hyperinflations, found that credible announcements of regime change halted inflations almost immediately and at far lower real cost than any serial, demand-compression mechanism could explain, which is exactly the signature of a parallel architecture, and inexplicable on a purely serial one.
+\end{techbox}
+
+The two models thus assign the same causal claim, with the same fixed endpoints, to opposite ends of this paper's spectrum: on the serial model the link is a long leaky chain and the associated $\eps$ compounds multiplicatively per \cref{eq:decay}; on the parallel model the link is a wide aggregation and $\eps$ collapses exponentially per \cref{prop:parallel}, provided only that the announcement is credible. And, unlike the smoking case, nothing about the statement of the claim arbitrates between them: the dispute is entirely about the black box.
+
+Nor is the dispute close to resolution, and it is instructive to see why the tools of \cref{sec:corr} do not resolve it. Both models are consistent with the same coarse observational record, since both predict that rate rises are followed, on average and with a lag, by disinflation; distinguishing them requires observing the \emph{intermediate} variables at scale, the repricing decisions and expectation revisions of individual agents, which is precisely what macroeconomic data mostly cannot do. Randomisation, the standard remedy, is unavailable twice over: one cannot assign monetary policies to economies at random, and, more fundamentally, the parallel model's mechanism runs through \emph{credibility}, a property of the whole policy regime rather than of the individual intervention, so that even a genuinely randomised rate rise would not carry the expectational force of a systematic one; the intervention $\mathrm{do}(A)$, which severs A from the policy rule that generates it, would on the parallel model destroy the very channel it was meant to measure. This is a formal way of putting the celebrated Lucas critique, and it marks a limit of the interventionist apparatus itself that the physical examples of this paper never encounter: where the strength of a causal mechanism depends on the cause being embedded in a pattern, surgically isolating the cause changes the mechanism. In practice, central banks act as though both models were partly true, attending laboriously to the serial chain while investing heavily in the credibility that only matters on the parallel one, which is perhaps the most honest available answer to the question of which architecture obtains: after seventy years of study, the practitioners hedge.
+
+\subsection{The credited mechanism: a serial chain that need not exist}
+\label{subsec:credited}
+
+The example of \cref{subsec:transmission} has a further consequence, latent in the parallel model, that deserves to be drawn out explicitly, because it inverts the usual relationship between a causal mechanism and belief in it. On the serial model, the transmission chain does the causing, and the profession's beliefs about it are mere commentary. On the parallel model, the direction reverses: what each agent responds to is not the chain itself but the \emph{expectation} that A will be followed by B, an expectation formed, in large part, because the agent credits some mechanism connecting them. But an expectation does not consult the world before doing its coordinating work. If the population broadly credits a serial mechanism, then upon the announcement A each agent, anticipating the disinflation the mechanism supposedly guarantees, adjusts prices and wage demands accordingly, and the aggregate of those adjustments \emph{is} the disinflation B. The parallel architecture fires on the strength of the credited mechanism, whether or not the credited mechanism exists.
+
+The serial chain, in other words, need not be real; it need only be believed, and at that point the game-theoretic logic of coordinated expectations takes over and delivers the effect through the parallel channel. This is not a philosopher's contrivance but a named phenomenon with a substantial literature. Merton (1948) gave it its canonical name, the \emph{self-fulfilling prophecy}, with the run on a solvent bank as the founding illustration: the credited mechanism there, the bank's supposed insolvency, was false, and the belief in it produced the very collapse it predicted. Cass and Shell (1983) pushed the logic to its limiting case, showing formally that economic outcomes can depend on a \emph{sunspot}: a variable with no intrinsic causal relevance whatsoever, which moves real allocations only because everyone believes it does, so that the believed causal structure is efficacious while the believed-in mechanism is, by construction, empty. In the terms of this paper: the true causal graph contains an arrow from A to B running through millions of parallel belief-updates, and it is a strong, wide, genuinely reliable arrow; the serial graph that the agents themselves would draw to explain \emph{why} they update is not required to correspond to anything.
+
+What sustains the credited mechanism, if not its truth? Here the structure of the retrospective evidence does the work, and it does so in the manner of the \emph{Texas sharpshooter}, who fires at the barn first and paints the target around the bullet holes afterwards. Episodes in which tightening was followed by disinflation are collected as confirmations of the chain; episodes in which it was not are absorbed as cases of ``long and variable lags,'' insufficient dosage, or countervailing shocks, categories elastic enough to accommodate any outcome, so that the mechanism's empirical record is painted around whatever pattern of holes the economy happens to produce. So far this is the ordinary fallacy. But the present setting adds a perverse refinement that the ordinary fallacy lacks: because the belief itself operates the parallel channel, each new episode of belief-driven disinflation deposits a genuine bullet hole \emph{inside} the painted target. The sharpshooter's fraud becomes progressively less fraudulent the longer it is believed, and the retrospective evidence for the fictitious serial mechanism becomes, over time, entirely real, because it is manufactured by the belief it appears to support. A credited mechanism of this kind is therefore self-evidencing in a way that no amount of purely observational scrutiny can unwind: the correlation the sceptic demands as proof is exactly what the belief will have produced.
+
+The epistemological situation this leaves us in is worth stating plainly, since it is the sharpest form of the model-relativity this section has been documenting. In every earlier example, the rival models were models \emph{of the world}, and the world, however inaccessibly, held the answer. Here the believed model is itself a causal variable in the true model: beliefs about causation are part of the causal furniture, and the true graph therefore contains the false graph, not as a rival, but as the \emph{content of one of its nodes}. A structural causal model of this economy must include, as a variable, the population's credence in some transmission mechanism, and the strength of the A-to-B link then depends on the value of that variable rather than on the truth of the credited mechanism. Causal ascription, which every framework of \cref{sec:corr} treats as a description of the system from outside, is here a working part inside the system described, and the strength of the causation is, in the most literal sense available to our framework, whatever enough people believe it to be.
+
+
+
+% ======================================================================
+\section{Conclusion and Further Directions}
+\label{sec:conclusion}
+% ======================================================================
+
+We have argued that treating everyday causal ascription as $P(B\mid A) > 1-\eps$, rather than as strict implication, is not merely a harmless idealisation but carries real structural consequences: transitivity along a chain decays exponentially (\cref{sec:trans}), the decay has a continuous, information-theoretic character that can be made exact in toy models and estimated in real ones (\cref{sec:examples}), and the apparatus generalises cleanly to approximate causation, where serial and parallel composition pull reliability in opposite directions (\cref{sec:approx}). Along the way we have tried to be honest about the apparatus's foundations: the comparison-world requirement common to every framework that actually distinguishes cause from correlation is harder to underwrite under determinism than is usually advertised, and modern physics offers a genuine, if bounded, rescue rather than a full vindication (\cref{sec:excursus}).
+
+The central diagnostic to carry forward is the depth-versus-width duality of \cref{subsec:duality}. It suggests that the right question to ask of any causal claim is not simply how strong the link is, but what architecture underlies it, and it offers a principled explanation of why physical law and everyday causal talk about medicine, economics, and policy feel so differently secure, despite both being, formally, instances of the same definition.
+
+\clearpage
+\section*{References}
+\addcontentsline{toc}{section}{References}
+
+\begin{refs}
+\item Armitage, P., and Doll, R.\ (1954). ``The Age Distribution of Cancer and a Multi-stage Theory of Carcinogenesis.'' \emph{British Journal of Cancer} 8, 1--12.
+\item Beckers, S., and Halpern, J.\ Y.\ (2019). ``Abstracting Causal Models.'' \emph{Proceedings of the 33rd AAAI Conference on Artificial Intelligence}, 2678--2685.
+\item Bernanke, B.\ S., and Gertler, M.\ (1995). ``Inside the Black Box: The Credit Channel of Monetary Policy Transmission.'' \emph{Journal of Economic Perspectives} 9(4), 27--48.
+\item Berry, M.\ V.\ (2025). ``Newtonian and Quantum (In)determinism: Norton's Dome and Cosmic Chaos.'' \emph{European Journal of Physics} 46, 045002.
+\item Cartwright, N.\ (1979). ``Causal Laws and Effective Strategies.'' \emph{No\^us} 13, 419--437.
+\item Cass, D., and Shell, K.\ (1983). ``Do Sunspots Matter?'' \emph{Journal of Political Economy} 91(2), 193--227.
+\item Charney, J.\ G.\ et al.\ (1966). ``The Feasibility of a Global Observation and Analysis Experiment.'' \emph{Bulletin of the American Meteorological Society} 47, 200--220.
+\item Cover, T.\ M., and Thomas, J.\ A.\ (1991). \emph{Elements of Information Theory}. New York: Wiley.
+\item Cram\'er, H.\ (1938). ``Sur un nouveau th\'eor\`eme-limite de la th\'eorie des probabilit\'es.'' \emph{Actualit\'es Scientifiques et Industrielles} 736, 5--23.
+\item Dowe, P.\ (2000). \emph{Physical Causation}. Cambridge: Cambridge University Press.
+\item Doll, R., Peto, R., Boreham, J., and Sutherland, I.\ (2004). ``Mortality in Relation to Smoking: 50 Years' Observations on Male British Doctors.'' \emph{British Medical Journal} 328, 1519.
+\item Duffin, R.\ J.\ (1965). ``Topology of Series--Parallel Networks.'' \emph{Journal of Mathematical Analysis and Applications} 10, 303--318.
+\item Eells, E.\ (1991). \emph{Probabilistic Causality}. Cambridge: Cambridge University Press.
+\item Eells, E., and Sober, E.\ (1983). ``Probabilistic Causality and the Question of Transitivity.'' \emph{Philosophy of Science} 50, 35--57.
+\item Elga, A.\ (2001). ``Statistical Mechanics and the Asymmetry of Counterfactual Dependence.'' \emph{Philosophy of Science} 68 (Proceedings), S313--S324.
+\item Friedman, M.\ (1961). ``The Lag in Effect of Monetary Policy.'' \emph{Journal of Political Economy} 69, 447--466.
+\item Good, I.\ J.\ (1961, 1962). ``A Causal Calculus, I--II.'' \emph{British Journal for the Philosophy of Science} 11, 305--318; 12, 43--51.
+\item Hall, N.\ (2000). ``Causation and the Price of Transitivity.'' \emph{Journal of Philosophy} 97, 198--222.
+\item Hart, H.\ L.\ A., and Honor\'e, T.\ (1985). \emph{Causation in the Law}, 2nd ed. Oxford: Clarendon Press.
+\item Hitchcock, C.\ (2001). ``The Intransitivity of Causation Revealed in Equations and Graphs.'' \emph{Journal of Philosophy} 98, 273--299.
+\item Hoeffding, W.\ (1963). ``Probability Inequalities for Sums of Bounded Random Variables.'' \emph{Journal of the American Statistical Association} 58, 13--30.
+\item Holland, P.\ W.\ (1986). ``Statistics and Causal Inference.'' \emph{Journal of the American Statistical Association} 81, 945--960.
+\item Karkuszewski, Z.\ P., Jarzynski, C., and Zurek, W.\ H.\ (2002). ``Quantum Chaotic Environments, the Butterfly Effect, and Decoherence.'' \emph{Physical Review Letters} 89, 170405.
+\item Kyburg, H.\ E.\ (1961). \emph{Probability and the Logic of Rational Belief}. Middletown, CT: Wesleyan University Press.
+\item Lewis, D.\ (1973). ``Causation.'' \emph{Journal of Philosophy} 70, 556--567.
+\item Lewis, D.\ (1979). ``Counterfactual Dependence and Time's Arrow.'' \emph{No\^us} 13, 455--476.
+\item Lewis, D.\ (1980). ``A Subjectivist's Guide to Objective Chance.'' In R.\ C.\ Jeffrey (ed.), \emph{Studies in Inductive Logic and Probability}, vol.\ 2. Berkeley: University of California Press.
+\item Lorenz, E.\ N.\ (1963). ``Deterministic Nonperiodic Flow.'' \emph{Journal of the Atmospheric Sciences} 20, 130--141.
+\item Menzies, P., and Price, H.\ (1993). ``Causation as a Secondary Quality.'' \emph{British Journal for the Philosophy of Science} 44, 187--203.
+\item Merton, R.\ K.\ (1948). ``The Self-Fulfilling Prophecy.'' \emph{Antioch Review} 8(2), 193--210.
+\item Neyman, J.\ (1923/1990). ``On the Application of Probability Theory to Agricultural Experiments.'' Trans.\ D.\ Dabrowska and T.\ Speed, \emph{Statistical Science} 5, 465--472.
+\item Pearl, J.\ (2000). \emph{Causality: Models, Reasoning, and Inference}. Cambridge: Cambridge University Press.
+\item Pesin, Ya.\ B.\ (1977). ``Characteristic Lyapunov Exponents and Smooth Ergodic Theory.'' \emph{Russian Mathematical Surveys} 32, 55--114.
+\item \emph{R.\ v.\ Faulkner}, 13 Cox C.C.\ 550 (1877) (Court of Crown Cases Reserved, Ireland).
+\item Reichenbach, H.\ (1956). \emph{The Direction of Time}. Berkeley: University of California Press.
+\item Rubenstein, P.\ K., Weichwald, S., Bongers, S., Mooij, J.\ M., Janzing, D., Grosse-Wentrup, M., and Sch\"olkopf, B.\ (2017). ``Causal Consistency of Structural Equation Models.'' \emph{Proceedings of the 33rd Conference on Uncertainty in Artificial Intelligence (UAI)}.
+\item Rubin, D.\ B.\ (1974). ``Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.'' \emph{Journal of Educational Psychology} 66, 688--701.
+\item Salmon, W.\ (1984). \emph{Scientific Explanation and the Causal Structure of the World}. Princeton: Princeton University Press.
+\item Sanov, I.\ N.\ (1957). ``On the Probability of Large Deviations of Random Variables.'' \emph{Matematicheskii Sbornik} 42, 11--44.
+\item Sargent, T.\ J.\ (1982). ``The Ends of Four Big Inflations.'' In R.\ E.\ Hall (ed.), \emph{Inflation: Causes and Effects}. Chicago: University of Chicago Press, 41--97.
+\item Suppes, P.\ (1970). \emph{A Probabilistic Theory of Causality}. Amsterdam: North-Holland.
+\item van Inwagen, P.\ (1983). \emph{An Essay on Free Will}. Oxford: Clarendon Press.
+\item von Wright, G.\ H.\ (1971). \emph{Explanation and Understanding}. Ithaca, NY: Cornell University Press.
+\item Woodward, J.\ (2003). \emph{Making Things Happen: A Theory of Causal Explanation}. Oxford: Oxford University Press.
+\item Zurek, W.\ H., and Paz, J.\ P.\ (1994). ``Decoherence, Chaos, and the Second Law.'' \emph{Physical Review Letters} 72, 2508--2511.
+\end{refs}
+
+\end{document}
