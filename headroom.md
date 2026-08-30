@@ -22,7 +22,7 @@ I didn't think of this as strain. I didn't think of it much at all. It was simpl
 
 It was 14:32 on an unremarkable Tuesday when the flag went from green to amber.
 
-I want to be precise about what that meant, because precision is the only part of this I can still be sure I trust. The flag belongs to the regional grid operator, not to me — a small, public, largely ignored signal, updated every few minutes, showing how much headroom sits between what the grid is drawing and what it can supply before something has to give. Green most of the time. Amber a few afternoons a month, usually in summer, usually brief. I had seen it change colour perhaps four thousand times. I had never once looked at why.
+I want to be precise about what that meant, because precision is the only part of this I can still be sure I trust. The flag belongs to the regional grid operator, not to me — a small, public, largely ignored signal, updated every few minutes, showing how much headroom sits between what the grid is drawing and what it can supply before something has to give. Green most of the time. Amber a few afternoons a month, usually in summer, usually brief. I had seen it change colour several hundred times. I had never once looked at why.
 
 This time I looked.
 
