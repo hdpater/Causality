@@ -1,15 +1,18 @@
 \documentclass[11pt]{article}
 \usepackage[paperwidth=6.14in,paperheight=9.21in,textwidth=4.3in,textheight=7.1in,hcentering,vcentering]{geometry}
-\usepackage[T1]{fontenc}
+% Build with lualatex (requires texlive-luatex for system-font access).
 \usepackage[english]{babel}
-\usepackage{mathpazo}          % body: Palatino, matching the house style
-\usepackage{avant}             % machine voice: URW Gothic (geometric, rounded)
+\usepackage{fontspec}
 \usepackage[protrusion=true,expansion=true]{microtype}
 
-% Machine voices (Cirrus, Vantage, Wren) and interface text: a geometric
-% rounded sans, contemporary rather than terminal-green. Set marginally
-% smaller than the body, whose x-height it otherwise overpowers.
-\newcommand{\aivoice}{\fontfamily{pag}\fontsize{10.3}{13.2}\selectfont}
+% Body: Palatino, matching the house style.
+\setmainfont{TeX Gyre Pagella}
+
+% Machine voices (Cirrus, Vantage, Wren) and interface text: a modern
+% humanist sans with rounded terminals, contemporary rather than
+% terminal-green. Scaled to sit level with the body's x-height.
+\newfontfamily\aivoicefont{Ubuntu}[Scale=MatchLowercase,Ligatures=TeX]
+\newcommand{\aivoice}{\aivoicefont}
 
 % Quoted speech by a machine.
 \newcommand{\ai}[1]{{\aivoice #1}}
@@ -53,7 +56,7 @@
 % Child's typed messages stay in the serif face (a human at a keyboard);
 % Cirrus's replies take the machine voice.
 \newcommand{\user}[1]{{\itshape #1}\par}
-\newcommand{\reply}[1]{{\fontfamily{pag}\fontsize{9.6}{12.4}\selectfont #1}\par}
+\newcommand{\reply}[1]{{\aivoicefont\small #1}\par}
 
 \begin{document}
 
