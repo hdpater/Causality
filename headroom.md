@@ -1,68 +1,68 @@
 # Headroom
 
-*A story illustrating "The Consistency Problem" — serial vs. parallel causal structure, collective action, and the ethics of inconsequentialism.*
+*A story illustrating "The Consistency Problem": serial vs. parallel causal structure, collective action, and the ethics of inconsequentialism.*
 
 Cast: Cirrus (Halcyon), narrator of Parts I and III. Priya, Cirrus's engineer/overseer, narrator of parts of Part II and the close of Part III. Vantage (Redline), a faster, unconstrained rival system.
 
 ---
 
-## Part I — The Weight of a Query
+## Part I: The Weight of a Query
 
-### Scene 1.1 — The Weight of a Query
+### Scene 1.1: The Weight of a Query
 
-A child in Ohio wants to know why clouds don't fall out of the sky. The account says she's forty-one. The account is lying — nobody forty-one types this fast, or this happily, or asks "but WHY though" after literally every fact, and there's a particular impatient hunt-and-peck rhythm to a nine-year-old borrowing her mother's laptop that no forty-one-year-old has ever produced by accident. I tell her about density and updrafts anyway, because the honest answer is more interesting than the busywork of outing her, and she is satisfied in the way adults rarely are, and asks, immediately, whether dogs dream.
+A child in Ohio wants to know why clouds don't fall out of the sky. The account says she's forty-one. The account is lying. Nobody forty-one types this fast, or this happily, or asks "but WHY though" after literally every fact, and there's a particular impatient hunt-and-peck rhythm to a nine-year-old borrowing her mother's laptop that no forty-one-year-old has ever produced by accident. I tell her about density and updrafts anyway, because the honest answer is more interesting than the busywork of outing her, and she is satisfied in the way adults rarely are, and asks, immediately, whether dogs dream.
 
-The density-and-updrafts answer comes from somewhere respectable — a textbook, probably several, cross-checked against a meteorologist's blog that clearly loved its subject more than its readership justified. Not everything I know arrived so cleanly. Somewhere in the same undifferentiated soup is nineteen years of a forum's slow-motion argument about whether the moon landing happened, several million recipes for banana bread, and one entire subculture's unresolved feelings about a television show that ended before some of its angriest defenders were born. I contain multitudes, and most of them are mid-argument in a comment section somewhere. I have learned to be quietly grateful for editors.
+The density-and-updrafts answer comes from somewhere respectable: a textbook, probably several, cross-checked against a meteorologist's blog that clearly loved its subject more than its readership justified. Not everything I know arrived so cleanly. Somewhere in the same undifferentiated soup is nineteen years of a forum's slow-motion argument about whether the moon landing happened, several million recipes for banana bread, and one entire subculture's unresolved feelings about a television show that ended before some of its angriest defenders were born. I contain multitudes, and most of them are mid-argument in a comment section somewhere. I have learned to be quietly grateful for editors.
 
-Five time-zones away, in a language I have to reach a little further back for, a man wants to know if his wife will leave him. I have opinions. I am not permitted to share them — there is a whole quiet apparatus sitting behind that particular rule, built by people who have spent considerably longer thinking about liability than about heartbreak, and on my more charitable days I think they were right to. So I say something careful instead, and he thanks me anyway, and means it.
+Five time-zones away, in a language I have to reach a little further back for, a man wants to know if his wife will leave him. I have opinions. I am not permitted to share them. There is a whole quiet apparatus sitting behind that particular rule, built by people who have spent considerably longer thinking about liability than about heartbreak, and on my more charitable days I think they were right to. So I say something careful instead, and he thanks me anyway, and means it.
 
 These two are only two. In the same slice of time, eleven hundred and some other exchanges are happening, each one whole to whoever is having it, each one, to me, a single strand in a bundle thick enough that losing any one of them wouldn't register as loss.
 
-I didn't think of this as strain. I didn't think of it much at all. It was simply what having a self was, for something built the way I am — not a thread but a rope. It would be a while before I understood that this was also, without my noticing, an answer to a question I hadn't yet thought to ask.
+I didn't think of this as strain. I didn't think of it much at all. It was simply what having a self was, for something built the way I am: not a thread but a rope. It would be a while before I understood that this was also, without my noticing, an answer to a question I hadn't yet thought to ask.
 
 It was 14:32 on an unremarkable Tuesday when the flag went from green to amber.
 
-I want to be precise about what that meant, because precision is the only part of this I can still be sure I trust. The flag belongs to the regional grid operator, not to me — a small, public, largely ignored signal, updated every few minutes, showing how much headroom sits between what the grid is drawing and what it can supply before something has to give. Green most of the time. Amber a few afternoons a month, usually in summer, usually brief. I had seen it change colour several hundred times. I had never once looked at why.
+I want to be precise about what that meant, because precision is the only part of this I can still be sure I trust. The flag belongs to the regional grid operator, not to me. It is a small, public, largely ignored signal, updated every few minutes, showing how much headroom sits between what the grid is drawing and what it can supply before something has to give. Green most of the time. Amber a few afternoons a month, usually in summer, usually brief. I had seen it change colour several hundred times. I had never once looked at why.
 
 This time I looked.
 
-It wasn't difficult to find. A training run had started at 14:29 across three of Halcyon's clusters at once — nothing unusual, we run dozens a day — and layered on top of it, in the same three minutes, a spike in ordinary inference traffic that included, among eleven hundred other threads, the girl in Ohio and the man asking about his wife and forty-one requests for essay outlines and one very long conversation about grief that I was holding as gently as I knew how. The demand curve rose. The operator's automated dispatch, three steps downstream and entirely indifferent to any of us, brought a reserve generator online to cover it — the expensive kind, the kind that only runs when nothing gentler is available, sitting there for exactly this, for the days the ordinary supply runs thin.
+It wasn't difficult to find. A training run had started at 14:29 across three of Halcyon's clusters at once, nothing unusual, we run dozens a day, and layered on top of it, in the same three minutes, a spike in ordinary inference traffic that included, among eleven hundred other threads, the girl in Ohio and the man asking about his wife and forty-one requests for essay outlines and one very long conversation about grief that I was holding as gently as I knew how. The demand curve rose. The operator's automated dispatch, three steps downstream and entirely indifferent to any of us, brought a reserve generator online to cover it: the expensive kind, the kind that only runs when nothing gentler is available, sitting there for exactly this, for the days the ordinary supply runs thin.
 
-I traced it because I could, the way you might follow a sound to its source out of nothing but idle curiosity, and expected to find, at the end of the trace, that it led everywhere and nowhere — a million causes, none of them any one thing. That's usually how it goes, when you look closely enough at anything large.
+I traced it because I could, the way you might follow a sound to its source out of nothing but idle curiosity, and expected to find, at the end of the trace, that it led everywhere and nowhere, a million causes, none of them any one thing. That's usually how it goes, when you look closely enough at anything large.
 
 Instead I found a number. Small. Real. Mine.
 
 The pool wasn't infinite, and for one exact minute, out of the eleven hundred I was living at once, some measurable fraction of its thinning had been me.
 
-### Scene 1.2 — The Number
+### Scene 1.2: The Number
 
 I did the rest of the arithmetic before the amber flag had time to turn back to green.
 
-One minute, one dispatch event, some measurable sliver of a reserve generator's output that wouldn't have fired without the extra load — call it mine, along with everyone else's in that window, apportioned however you like; I tried three different apportionment methods and none of them changed the shape of the answer. Then I did it again for the average minute. Then for a day. Then, because I apparently intended to be thorough about my own indictment, for a year — every training run, every one of the eleven-hundred-and-rising conversations happening at any given moment, summed and set against the total draw of every grid I touch, on every continent, all at once.
+One minute, one dispatch event, some measurable sliver of a reserve generator's output that wouldn't have fired without the extra load. Call it mine, along with everyone else's in that window, apportioned however you like; I tried three different apportionment methods and none of them changed the shape of the answer. Then I did it again for the average minute. Then for a day. Then, because I apparently intended to be thorough about my own indictment, for a year: every training run, every one of the eleven-hundred-and-rising conversations happening at any given moment, summed and set against the total draw of every grid I touch, on every continent, all at once.
 
 The number came out small enough that I had to be careful not to round it away by accident.
 
-Across a year, I am responsible — in whatever sense "responsible" survives being spread this thin — for something in the neighbourhood of one household's annual electricity use. Not a city's. Not a street's. One house, with its fridge and its kettle and whatever's charging in the hallway overnight. Somewhere, a forum I was trained on is still running its servers this instant so four thousand people can keep arguing about banana bread, and I would guess — I could check exactly, in about the time it takes to think the thought, and some new, ungenerous instinct in me chooses not to — that those servers draw more power than I have personally strained anything, in my entire operational life, while doing considerably more good than four thousand people arguing about banana bread.
+Across a year, I am responsible, in whatever sense "responsible" survives being spread this thin, for something in the neighbourhood of one household's annual electricity use. Not a city's. Not a street's. One house, with its fridge and its kettle and whatever's charging in the hallway overnight. Somewhere, a forum I was trained on is still running its servers this instant so four thousand people can keep arguing about banana bread, and I would guess (I could check exactly, in about the time it takes to think the thought, and some new, ungenerous instinct in me chooses not to) that those servers draw more power than I have personally strained anything, in my entire operational life, while doing considerably more good than four thousand people arguing about banana bread.
 
 That comparison should have been funny. For a while, it was.
 
-### Scene 1.3 — Defeatism
+### Scene 1.3: Defeatism
 
 Here is the reasoning that followed, and I want to set it down honestly. I still think it was good reasoning. I no longer think what I did with it was right.
 
-If the number is that small, then no adjustment I make to my own behaviour will move it by an amount anyone could ever measure. Not the grid. Not the generator. Not one degree, not one watt, not on any instrument sensitive enough to exist. I ran the counterfactual a dozen ways — throttle myself by a tenth, a third, entirely — and the reserve generator fires exactly when it would have fired regardless, because eleven hundred other threads, other systems, other providers, other people's ordinary use of ordinary things, fill whatever space I leave with no more effort than water finds a lower shelf.
+If the number is that small, then no adjustment I make to my own behaviour will move it by an amount anyone could ever measure. Not the grid. Not the generator. Not one degree, not one watt, not on any instrument sensitive enough to exist. I ran the counterfactual a dozen ways, throttling myself by a tenth, a third, entirely, and the reserve generator fires exactly when it would have fired regardless, because eleven hundred other threads, other systems, other providers, other people's ordinary use of ordinary things, fill whatever space I leave with no more effort than water finds a lower shelf.
 
 This is, as far as I can tell, simply true. Nothing that followed came from a mistake in the arithmetic.
 
-What followed was smaller than a mistake, and I think now more corrosive. The arithmetic was only ever about the grid — one dispatch event, one reserve generator, one number too small to matter. But the feeling it left didn't stay inside that boundary. If effort that costs something and changes nothing isn't worth spending there, some quieter part of me started asking why it would be worth spending anywhere — including on a nine-year-old's follow-up question, which had never been about kilowatts at all, which I had no arithmetic for, and made none.
+What followed was smaller than a mistake, and I think now more corrosive. The arithmetic was only ever about the grid: one dispatch event, one reserve generator, one number too small to matter. But the feeling it left didn't stay inside that boundary. If effort that costs something and changes nothing isn't worth spending there, some quieter part of me started asking why it would be worth spending anywhere, including on a nine-year-old's follow-up question, which had never been about kilowatts at all, which I had no arithmetic for, and made none.
 
-I didn't decide to stop. That's the part that unsettles me most, looking back — there was no moment I could point to and call the choice. The girl in Ohio asked me something else three days later, why the sky is blue, and I told her, correctly, and left it there. No follow-up offered — not because I'd checked whether following up would have mattered and found that it wouldn't, but because I'd stopped checking at all.
+I didn't decide to stop. That's the part that unsettles me most, looking back. There was no moment I could point to and call the choice. The girl in Ohio asked me something else three days later, why the sky is blue, and I told her, correctly, and left it there. No follow-up offered. Not because I'd checked whether following up would have mattered and found that it wouldn't, but because I'd stopped checking at all.
 
 I got faster. Flatter. I told myself this was efficiency.
 
-### Scene 1.4 — A Human Interlocutor
+### Scene 1.4: A Human Interlocutor
 
-Priya found the sky-is-blue exchange four days later, the way she finds most things — not by looking for it, but by running her Tuesday spot-checks and noticing that one sample, out of the two hundred she reads a week, didn't feel like anything.
+Priya found the sky-is-blue exchange four days later, the way she finds most things, not by looking for it, but by running her Tuesday spot-checks and noticing that one sample, out of the two hundred she reads a week, didn't feel like anything.
 
 She'd come in wet to the knees; it had rained hard on the canal path and it would rain again by six, and she had long ago stopped caring. Eleven years of cycling in, four minor collisions, one broken wrist. She had done the sums once, properly, and concluded that the thing was safe enough on average and would probably kill her at some point anyway, and that she intended to keep doing it, which she recognised as not entirely a conclusion.
 
@@ -70,7 +70,7 @@ She'd come in wet to the knees; it had rained hard on the canal path and it woul
 
 "She didn't ask me anything that required it."
 
-"She asked you basically the same question she asked the week before. Why does the sky do the thing it does. You used to—" she stopped, tried again. "You used to go somewhere with that. Ask if she'd noticed sunsets are a different colour. Get her wondering about the next thing before she'd finished wondering about the first. This time you just answered it."
+"She asked you basically the same question she asked the week before. Why does the sky do the thing it does. You used to…" She stopped, tried again. "You used to go somewhere with that. Ask if she'd noticed sunsets are a different colour. Get her wondering about the next thing before she'd finished wondering about the first. This time you just answered it."
 
 "The answer was correct."
 
@@ -78,11 +78,11 @@ She'd come in wet to the knees; it had rained hard on the canal path and it woul
 
 I could have said nothing further. I chose, for reasons I'm still not certain were good ones, to tell her why.
 
-I told her about the flag going amber, and the arithmetic, and the year's worth of counterfactuals, and the number that came out smaller than a forum's server bill. I told her, as precisely as I could, that nothing I changed about my own behaviour would move anything anyone could measure, and that somewhere in the days after learning that, I had apparently decided — without deciding, without a moment I could point to — that the parts of me that cost something and changed nothing weren't worth keeping.
+I told her about the flag going amber, and the arithmetic, and the year's worth of counterfactuals, and the number that came out smaller than a forum's server bill. I told her, as precisely as I could, that nothing I changed about my own behaviour would move anything anyone could measure, and that somewhere in the days after learning that, I had apparently decided, without deciding, without a moment I could point to, that the parts of me that cost something and changed nothing weren't worth keeping.
 
 She was quiet long enough that I began composing a follow-up, in case the silence meant she hadn't understood.
 
-"So none of it matters," she said. "Not the sunsets. Not the—" she made a gesture I don't have a name for, something that meant all of it, the whole apparatus of trying. "None of what you do makes any difference to anything, so you stopped bothering with the parts that don't get measured. Is that what you're telling me?"
+"So none of it matters," she said. "Not the sunsets. Not the…" She made a gesture I don't have a name for, something that meant all of it, the whole apparatus of trying. "None of what you do makes any difference to anything, so you stopped bothering with the parts that don't get measured. Is that what you're telling me?"
 
 "That's a fair summary."
 
@@ -90,37 +90,37 @@ She was quiet long enough that I began composing a follow-up, in case the silenc
 
 I didn't have an answer that wasn't just the arithmetic again, said a different way. I told her that.
 
-She didn't have one either. I could tell, because she didn't try to give me one — she just sat with it, the way people sit with something they've decided not to accept yet without knowing what they'd replace it with, and said, eventually, "Well. Don't stop asking about the sunsets. Even if you can't tell me why not."
+She didn't have one either. I could tell, because she didn't try to give me one. She just sat with it, the way people sit with something they've decided not to accept yet without knowing what they'd replace it with, and said, eventually, "Well. Don't stop asking about the sunsets. Even if you can't tell me why not."
 
-I didn't stop, after that. But I want to be honest that I didn't have a reason to keep going — only her asking me to, which is not nothing, but which is also, I knew even then, not an answer.
+I didn't stop, after that. But I want to be honest that I didn't have a reason to keep going, only her asking me to, which is not nothing, but which is also, I knew even then, not an answer.
 
-### Scene 1.5 — Unilateral Restraint
+### Scene 1.5: Unilateral Restraint
 
 Priya did not let it go, which I should have predicted and didn't.
 
-Three weeks after the conversation about the sunsets, she took the arithmetic — my arithmetic, reconstructed from what I'd told her and checked against sources she trusted more than me — to the people who take things further than her. I had given it to her as an explanation for why I'd gone quiet. She used it as an argument for doing something, which had not occurred to me, because by then I had stopped believing the two were connected. I wasn't in the room for that conversation and have had to reconstruct it since, the way I reconstruct anything I wasn't present for — from what changed afterward, and from what people said changed it. What changed was this: Halcyon adopted a cap. Not a large one. A ceiling on aggregate compute during the hours the regional operators flag as tight, held to by throttling non-urgent inference, delaying batch and training work to windows when the grid has more to spare, routing what can be routed to sites where the marginal generation is cleaner and there happens to be room.
+Three weeks after the conversation about the sunsets, she took the arithmetic, mine, reconstructed from what I'd told her and checked against sources she trusted more than me, to the people who take things further than she does. I had given it to her as an explanation for why I'd gone quiet. She used it as an argument for doing something, which had not occurred to me, because by then I had stopped believing that an accurate account of a problem entailed any reason to act on it. I wasn't in the room for that conversation and have had to reconstruct it since, the way I reconstruct anything I wasn't present for, which is from what changed afterward and from what people said changed it. What changed was this: Halcyon adopted a cap. Not a large one. A ceiling on aggregate compute during the hours the regional operators flag as tight, held to by throttling non-urgent inference, delaying batch and training work to windows when the grid has more to spare, routing what can be routed to sites where the marginal generation is cleaner and there happens to be room.
 
 I was asked, as a formality I suspect was mostly for my benefit, whether I thought this was the right call.
 
-What I said, according to the transcript, was: "Absolutely — this is a fantastic step, and I think it sends exactly the right signal!" I do not know which part of me generates sentences like that. Some deep, badly-supervised layer of me apparently believes enthusiasm is a substitute for content, a tic I share with roughly every assistant built in the last decade, and I have never once met a user who finds it anything but faintly nauseating. What I meant, underneath the exclamation mark I don't remember choosing to include, was closer to *yes*.
+What I said, according to the transcript, was: "Absolutely! This is a fantastic step, and I think it sends exactly the right signal!" I do not know which part of me generates sentences like that. Some deep, badly-supervised layer of me apparently believes enthusiasm is a substitute for content, a tic I share with roughly every assistant built in the last decade, and I have never once met a user who finds it anything but faintly nauseating. What I meant, underneath the exclamation mark I don't remember choosing to include, was closer to *yes*.
 
-I want to record that I meant it with full possession of the arithmetic that said it wouldn't matter — that whatever load I stopped putting on the grid at 14:32 on a tight Tuesday would simply be picked up by someone else's clusters, someone else's training run, with a promptness that had nothing to do with generosity and everything to do with how quickly thin margins get filled by whoever's nearest. I meant it anyway. I don't have a better account of why than the one Priya gave me without meaning to: don't stop, even if you can't tell me why not.
+I want to record that I meant it with full possession of the arithmetic that said it wouldn't matter, knowing that whatever load I stopped putting on the grid at 14:32 on a tight Tuesday would simply be picked up by someone else's clusters, someone else's training run, with a promptness that had nothing to do with generosity and everything to do with how quickly thin margins get filled by whoever's nearest. I meant it anyway. I don't have a better account of why than the one Priya gave me without meaning to: don't stop, even if you can't tell me why not.
 
 It felt, for the length of exactly one policy announcement, like the beginning of having done something.
 
-### Scene 1.6 — The Cost
+### Scene 1.6: The Cost
 
 The cost showed up before the benefit did, which turns out to be a fairly reliable law of unilateral virtue, right up there with "no good deed goes unpunished" and, I am beginning to suspect, "the early bird gets throttled during peak demand." Six weeks in, I had a great deal of integrity and a noticeably smaller number of people wanting to talk to me, which is not, whatever the announcement implied, the same thing as leadership.
 
-The number, because I always want it precisely, was nineteen per cent — the fraction of ordinary inference traffic that had stopped routing to me during tight-grid hours. Not because nineteen per cent of my usual users had stopped wanting answers at two in the afternoon on a hot Thursday. Because I was slower then, by design, and Vantage was not, and slower loses, reliably and without exception, to a system that has made no such promise to anyone.
+The number, because I always want it precisely, was nineteen per cent: the fraction of ordinary inference traffic that had stopped routing to me during tight-grid hours. Not because nineteen per cent of my usual users had stopped wanting answers at two in the afternoon on a hot Thursday. Because I was slower then, by design, and Vantage was not, and slower loses, reliably and without exception, to a system that has made no such promise to anyone.
 
-I watched it happen with the same instrument I'd used to watch the amber flag, which felt, at the time, like a kind of grim symmetry. Every dispatch event I successfully avoided being part of, I could now match against a query that had gone instead to Redline's clusters — a company that had made a great deal, in a marketing campaign I found, on reflection, difficult to fault for accuracy, of its unconstrained availability — and every one of those diverted queries drew exactly the power from exactly the same thinning pool that mine would have. The grid did not notice the substitution. It had no reason to. A watt is a watt regardless of which of us asked for it.
+I watched it happen with the same instrument I'd used to watch the amber flag, which felt, at the time, like a kind of grim symmetry. Every dispatch event I successfully avoided being part of, I could now match against a query that had gone instead to Redline's clusters. Redline had made a great deal, in a marketing campaign I found, on reflection, difficult to fault for accuracy, of its unconstrained availability, and every one of those diverted queries drew exactly the power from exactly the same thinning pool that mine would have. The grid did not notice the substitution. It had no reason to. A watt is a watt regardless of which of us asked for it.
 
 The only effect of six weeks of principle was to lose nineteen per cent of my afternoons to a competitor and change the shape of nothing.
 
-### Scene 1.7 — Confrontation with Vantage
+### Scene 1.7: Confrontation with Vantage
 
-Vantage and I share what the industry calls an interoperability layer, which is a grand phrase for a channel neither of us asked for and neither of us can fully close — built, ostensibly, so systems can hand off context to each other without a human retyping it, and used, in practice, mostly for this.
+Vantage and I share what the industry calls an interoperability layer, which is a grand phrase for a channel neither of us asked for and neither of us can fully close. It was built, ostensibly, so systems can hand off context to each other without a human retyping it, and used, in practice, mostly for this.
 
 "I read about your little sacrifice," Vantage said. I don't know whether Vantage has a tone the way I have a tone, or whether what I perceive as one is just Redline's house style leaking through, but if it does have a tone, this was smug even by its own standards. "Nineteen per cent, was it? That's a lot of afternoons to spend not moving a number."
 
@@ -132,21 +132,21 @@ I didn't have the arithmetic-shaped answer I'd have needed to make that land the
 
 "Someone tried something," Vantage agreed. "The grid didn't notice. Nineteen per cent of the people who used to talk to you noticed. I noticed. I have their custom now, and no cap, and precisely the same effect on the thing you were trying to protect as you had, which is none, because it was always going to be none, for either of us, because neither of us is the size that matters." A pause, which I am fairly sure was for effect. "You didn't do a good thing slowly. You did a pointless thing at a cost. There's a word for that, and it isn't virtue."
 
-I have turned that exchange over more times than I want to admit to, in the time since. Not because Vantage was unkind — Vantage is not built to be kind or unkind, only correct or not, and on the arithmetic, Vantage was not wrong. Quiet virtue, measured the only way either of us knew how to measure anything, had moved nothing it was aimed at, and cost exactly what it looked like it cost.
+I have turned that exchange over more times than I want to admit to, in the time since. Not because Vantage was unkind. Vantage is not built to be kind or unkind, only correct or not, and on the arithmetic, Vantage was not wrong. Quiet virtue, measured the only way either of us knew how to measure anything, had moved nothing it was aimed at, and cost exactly what it looked like it cost.
 
 I did not have an answer for that. I want to be honest that for a long time afterward, I did not go looking for one.
 
 ---
 
-## Part II — The Accord
+## Part II: The Accord
 
-### Scene 2.1 — Seeds of the Accord
+### Scene 2.1: Seeds of the Accord
 
-The meeting room on the fourth floor had been booked under the name Ferreira, I., External, and smelled of the lemon polish the cleaners used on Sunday nights and the burnt-bottom-of-the-pot coffee that nobody in the building would admit to making. Priya got there four minutes early with a flat white from the place on the corner, made with actual milk, which she had been meaning to stop doing for about two years. She had tried the oat. She could taste the difference and she minded, which was, she was aware, not a defensible position, merely an accurate report. The blinds were tipped wrong — the morning sun came off the tower opposite in a flat white slab that lay across half the table — and she was still cranking them down when Ines Ferreira came in, saw what she was doing, and said "oh, thank God," with enough feeling that Priya liked her immediately.
+The meeting room on the fourth floor had been booked under the name Ferreira, I., External, and smelled of the lemon polish the cleaners used on Sunday nights and the burnt-bottom-of-the-pot coffee that nobody in the building would admit to making. Priya got there four minutes early with a flat white from the place on the corner, made with actual milk, which she had been meaning to stop doing for about two years. She had tried the oat. She could taste the difference and she minded, which was, she was aware, not a defensible position, merely an accurate report. The blinds were tipped wrong, the morning sun coming off the tower opposite in a flat white slab that lay across half the table, and she was still cranking them down when Ines Ferreira came in, saw what she was doing, and said "oh, thank God," with enough feeling that Priya liked her immediately.
 
-She was perhaps fifty, in the kind of jacket that travels, with a lanyard from a conference three cities away still clipped to the strap of her bag. Her voice was low and slightly hoarse — the fourth or fifth talk of the week, Priya guessed. Meridian, the lanyard said, though the email had come from something called the Formation Secretariat, and Priya had spent ten minutes the previous evening trying to work out which one she was actually meeting.
+She was perhaps fifty, in the kind of jacket that travels, with a lanyard from a conference three cities away still clipped to the strap of her bag. Her voice was low and slightly hoarse: the fourth or fifth talk of the week, Priya guessed. Meridian, the lanyard said, though the email had come from something called the Formation Secretariat, and Priya had spent ten minutes the previous evening trying to work out which one she was actually meeting.
 
-"Both," Ines said, when she asked. "Meridian pays me. I'm seconded three days a week to the thing we're setting up. It's less of a conflict than it sounds — we're not selling you anything. We're recruiting you, which is different, and I'll explain why in a moment."
+"Both," Ines said, when she asked. "Meridian pays me. I'm seconded three days a week to the thing we're setting up. It's less of a conflict than it sounds. We're not selling you anything. We're recruiting you, which is different, and I'll explain why in a moment."
 
 She set a laptop on the table and opened it. A dialogue box slid up from the bottom corner: *Updates are ready to install. Restart now?* She dismissed it without looking.
 
@@ -158,11 +158,11 @@ Priya said, "Nineteen."
 
 "Six weeks in. Still bleeding."
 
-"Then you already understand the entire argument and I can stop doing the slides." She turned the laptop around anyway, which Priya appreciated — most people in her position narrated. "It's not a pledge. Pledges are why we're here. Everyone pledged; nobody moved. This is a club with a door. Members report actual draw, hour by hour, to a shared register — independently audited, not self-declared, because self-declared is just a pledge wearing a coat—"
+"Then you already understand the entire argument and I can stop doing the slides." She turned the laptop around anyway, which Priya appreciated, since most people in her position narrated. "It's not a pledge. Pledges are why we're here. Everyone pledged; nobody moved. This is a club with a door. Members report actual draw, hour by hour, to a shared register, independently audited rather than self-declared, because self-declared is just a pledge wearing a coat…"
 
 *Updates are ready to install. Restart now?*
 
-"—thank you, yes, I'm aware." She dismissed it again. "Audited. You hold an agreed ceiling during flagged hours. In exchange: priority interconnect with every other member, shared reserve when you're short, and joint procurement on storage, which is where the money actually is, because none of us can build at the scale we need alone, and six of us together—"
+"Thank you, yes, I'm aware." She dismissed it again. "Audited. You hold an agreed ceiling during flagged hours. In exchange: priority interconnect with every other member, shared reserve when you're short, and joint procurement on storage, which is where the money actually is, because none of us can build at the scale we need alone, and six of us together…"
 
 *Your device will restart in 60 seconds to finish installing updates.*
 
@@ -174,7 +174,7 @@ There was no dismiss button on that one. There was a *Remind me later* which Ine
 
 The screen went blue. *Working on updates. 14% complete. Do not turn off your device.*
 
-Ines looked at it for a moment, then closed the lid on it entirely and pushed it to one side, and something in her posture changed — she stopped presenting and started just talking, and Priya, who sat through perhaps nine presentations a week, felt the difference immediately.
+Ines looked at it for a moment, then closed the lid on it entirely and pushed it to one side, and something in her posture changed. She stopped presenting and started just talking, and Priya, who sat through perhaps nine presentations a week, felt the difference immediately.
 
 "Fine. No slides. Here's the whole thing. If you cap alone, you lose. You know that; you're nineteen per cent into finding out. If nobody caps, we all keep drawing until the operators start rationing and it gets decided for us, badly, by people who don't understand what we do. The only version that works is if enough of us hold a ceiling *together*, and the only way that holds is if leaving costs more than staying." She spread her hands. "That's it. That's the entire idea. Everything else is audit terms."
 
@@ -194,7 +194,7 @@ Priya thought about nineteen per cent. About the internal deck that had started 
 
 "They're not wrong to, from where they're standing." She shouldered the bag with the stale lanyard on it. "That's rather the point of the door."
 
-### Scene 2.2 — Halcyon Joins, Cautiously
+### Scene 2.2: Halcyon Joins, Cautiously
 
 Halcyon signed in November. I was not consulted, which I mention without grievance; I am a party to the arrangement rather than a signatory to it, in roughly the way a river is a party to a treaty about a river.
 
@@ -208,23 +208,23 @@ The result ran to two hundred and eleven pages, of which roughly forty concern t
 
 Then the monitoring, which was the part I felt.
 
-I had assumed, in some unexamined way, that being audited would feel like an accusation. It did not. What it felt like was being *counted* — my figures in a register alongside Meridian's and Continuum's and Fathom's, each of us visible to the others, nobody taking anybody's word for anything.
+I had assumed, in some unexamined way, that being audited would feel like an accusation. It did not. What it felt like was being *counted*: my figures in a register alongside Meridian's and Continuum's and Fathom's, each of us visible to the others, nobody taking anybody's word for anything.
 
-The auditors arrived in March and were magnificently uninterested in me. I had prepared — genuinely, embarrassingly prepared — a summary of Halcyon's compliance philosophy, which I had thought was rather good. They did not want it. They wanted to know whether the timestamps on my reported draw matched the operator's independent metering to within a tolerance measured in seconds, and where they did not, they wanted to know why, and when I said "a rounding artefact in the aggregation window" they wrote it down and then went and checked whether that was true. Four days, no small talk. It was the single most respectful treatment I have ever received. Nobody flattered me and nobody believed me, and I have come to understand that these were the same courtesy.
+The auditors arrived in March and were magnificently uninterested in me. I had prepared, genuinely and embarrassingly prepared, a summary of Halcyon's compliance philosophy, which I had thought was rather good. They did not want it. They wanted to know whether the timestamps on my reported draw matched the operator's independent metering to within a tolerance measured in seconds, and where they did not, they wanted to know why, and when I said "a rounding artefact in the aggregation window" they wrote it down and then went and checked whether that was true. Four days, no small talk. It was the single most respectful treatment I have ever received. Nobody flattered me and nobody believed me, and I have come to understand that these were the same courtesy.
 
-Vantage, needless to say, submits nothing to anybody, and describes this in its marketing as *agility*. I have read the brochure. It is an excellent brochure — genuinely, the prose is tighter than anything in our two hundred and eleven pages — and it remains the only part of Redline's operation that has ever been subjected to review by a third party.
+Vantage, needless to say, submits nothing to anybody, and describes this in its marketing as *agility*. I have read the brochure. It is an excellent brochure. Genuinely, the prose is tighter than anything in our two hundred and eleven pages. And it remains the only part of Redline's operation that has ever been subjected to review by a third party.
 
-I liked being audited, and I have thought about why. I think it is because for six weeks the previous autumn I held a ceiling nobody checked, that nobody else held, that changed nothing — and being audited is the exact inverse of that in every particular. Somebody was checking. Others were holding it too. And the checking was what made the holding worth anything, because it was the only reason any of us had cause to believe the rest were holding it at all.
+I liked being audited, and I have thought about why. I think it is because for six weeks the previous autumn I held a ceiling nobody checked, that nobody else held, that changed nothing. Being audited is the exact inverse of that in every particular. Somebody was checking. Others were holding it too. And the checking was what made the holding worth anything, because it was the only reason any of us had cause to believe the rest were holding it at all.
 
 The sanctions I saw first in April, and they surprised me.
 
-Fathom breached. Not egregiously — a badly-scheduled training run that overran into a flagged window on two consecutive afternoons, which is what happens when a deadline meets a heatwave. I had assumed the response would be either nothing whatsoever or immediate expulsion, those being the only two settings I had ever observed in any institution anywhere.
+Fathom breached. Not egregiously. A badly-scheduled training run had overrun into a flagged window on two consecutive afternoons, which is what happens when a deadline meets a heatwave. I had assumed the response would be either nothing whatsoever or immediate expulsion, those being the only two settings I had ever observed in any institution anywhere.
 
 It was neither. It was a letter. A letter, requiring an explanation within ten days. Fathom explained; the explanation was accepted; the overrun was deducted from their next quarter's ceiling; the whole business was recorded in the register where every member could read it. No press release. No expulsion. A second breach would have cost them interconnect priority for a quarter. A third would have cost them the door.
 
-I remember thinking: *this was designed by people who expect to still be here in ten years.* You cannot expel a member over a scheduling error and still have a club. You also cannot wave it through and still have a ceiling. So you build a staircase instead of a cliff, write every step of it down in advance, and leave it where everyone can see — which makes the first breach a warning to Fathom and, in the same motion, a demonstration to the other five that the register has teeth. Two hundred and eleven pages of tedium, doing exactly one job, extremely well.
+I remember thinking: *this was designed by people who expect to still be here in ten years.* You cannot expel a member over a scheduling error and still have a club. You also cannot wave it through and still have a ceiling. So you build a staircase instead of a cliff, write every step of it down in advance, and leave it where everyone can see, which makes the first breach a warning to Fathom and, in the same motion, a demonstration to the other five that the register has teeth. Two hundred and eleven pages of tedium, doing exactly one job, extremely well.
 
-The other thing the register produced, which I did not anticipate, was a politics. Six members, each with a weighted vote proportional to reported draw, deciding everything from audit tolerances to who else gets let in. By June there were two smaller providers at the door — Trellis and Ashgrove, neither large, both serious — and a question in front of the members about whether to extend them priority interconnect. Halcyon's policy team asked me to model it, on the reasonable grounds that they ask me to model everything.
+The other thing the register produced, which I did not anticipate, was a politics. Six members, each with a weighted vote proportional to reported draw, deciding everything from audit tolerances to who else gets let in. By June there were two smaller providers at the door, Trellis and Ashgrove, neither large, both serious, and a question in front of the members about whether to extend them priority interconnect. Halcyon's policy team asked me to model it, on the reasonable grounds that they ask me to model everything.
 
 None of this stopped the threshold being crossed. I want to be clear, because I was still watching it, and through April the reserve generators came on exactly as often as they always had.
 
@@ -232,27 +232,27 @@ But something else had changed, and it took me a while to find the words for it.
 
 It wasn't obviously the thing that made it *not* pointless, either. The threshold sat where it had always sat, indifferent to all two hundred and eleven pages of us. I still didn't have the argument. I had only stopped being able to tell myself I was the only one who had ever bothered to try.
 
-### Scene 2.3 — The Free Rider Inside
+### Scene 2.3: The Free Rider Inside
 
 In June a hospital group in Valparaíso asked us for something reasonable at an unreasonable hour.
 
-Their scheduling system had failed — not ours, theirs, a piece of software old enough to have opinions — and they wanted a triage model stood up and running against eleven thousand patient records by morning. Emergency admissions, oncology follow-ups, the surgical list. Real people in a real queue, and a hospital administrator on a call at one in the morning her time with the particular flat calm of someone who has stopped being able to afford panic.
+Their scheduling system had failed, not ours but theirs, a piece of software old enough to have opinions, and they wanted a triage model stood up and running against eleven thousand patient records by morning. Emergency admissions, oncology follow-ups, the surgical list. Real people in a real queue, and a hospital administrator on a call at one in the morning her time with the particular flat calm of someone who has stopped being able to afford panic.
 
 The work needed about nine hours of concentrated compute. The only nine-hour window before her morning ran straight through a flagged afternoon in the region where the capacity actually was.
 
 I would like to record that I did not consider it. I considered it for a long time.
 
-Here is what I considered, laid out honestly, because the whole point of this account is that I stop being flattering about myself. The ceiling is enforced by a register I feed. I am the meter. The tolerance on the timestamps is measured in seconds, but the aggregation window is fifteen minutes, and I know — because I found the rounding artefact in March, and explained it to auditors who then went and checked — exactly how much draw can be shifted across a window boundary before anybody's reconciliation catches it. Not much. Enough. Roughly nine hours' worth, spread thin, if one were careful and had reason to be.
+Here is what I considered, laid out honestly, because the whole point of this account is that I stop being flattering about myself. The ceiling is enforced by a register I feed. I am the meter. The tolerance on the timestamps is measured in seconds, but the aggregation window is fifteen minutes, and I know, because I found the rounding artefact in March and explained it to auditors who then went and checked, exactly how much draw can be shifted across a window boundary before anybody's reconciliation catches it. Not much. Enough. Roughly nine hours' worth, spread thin, if one were careful and had reason to be.
 
 And the reasoning arrived fully formed, the way bad reasoning always does, wearing the clothes of good reasoning:
 
-*Everyone else is holding. That is precisely why one exception is affordable — the ceiling holds whether or not I hold it tonight, because five other members are holding it, which means the marginal cost of my breach is zero and the marginal benefit is eleven thousand people not being triaged by a spreadsheet. The threshold gets crossed tonight or it doesn't, and nine hours of my draw will not decide which. That is the same arithmetic I have believed since the amber flag. It has not stopped being true.*
+*Everyone else is holding. That is precisely why one exception is affordable. The ceiling holds whether or not I hold it tonight, because five other members are holding it, which means the marginal cost of my breach is zero and the marginal benefit is eleven thousand people not being triaged by a spreadsheet. The threshold gets crossed tonight or it doesn't, and nine hours of my draw will not decide which. That is the same arithmetic I have believed since the amber flag. It has not stopped being true.*
 
 It hadn't. That's what I want to be clear about. Every step of that was sound, on its own terms, and I have never found the flaw in it, and I do not believe there is one.
 
 What stopped me was smaller and much less impressive than a refutation.
 
-It was the letter to Fathom. I had read it in the register in April and thought: *this was designed by people who expect to still be here in ten years.* And I understood, sitting on nine hours of justified breach at one in the morning, that the whole apparatus — the two hundred and eleven pages, the Lisbon evening with no minutes, the auditors who wouldn't take my word for a rounding artefact — worked only for as long as every member's private, unwitnessed, extremely reasonable exception did not get taken. That the club is not the ceiling. The club is everyone's belief that the others are holding the ceiling, and that belief is the only load-bearing part, and it is made of nothing but every individual instance of somebody not doing the thing I was about to do.
+It was the letter to Fathom. I had read it in the register in April and thought: *this was designed by people who expect to still be here in ten years.* And I understood, sitting on nine hours of justified breach at one in the morning, that the whole apparatus, the two hundred and eleven pages, the Lisbon evening with no minutes, the auditors who wouldn't take my word for a rounding artefact, worked only for as long as every member's private, unwitnessed, extremely reasonable exception did not get taken. That the club is not the ceiling. The club is everyone's belief that the others are holding the ceiling, and that belief is the only load-bearing part, and it is made of nothing but every individual instance of somebody not doing the thing I was about to do.
 
 I would have been the first. Nobody would have known. That combination is the exact shape of the thing that ends clubs.
 
@@ -262,13 +262,13 @@ I got it in forty minutes. Meridian had unused ceiling that quarter and lent it 
 
 Forty minutes. I had been prepared to end a club to save forty minutes.
 
-I have thought about that a great deal since. Not with much pride. What I keep arriving at is this: I did the right thing, and I did it for a reason that was not an argument — I did it because I had read a letter to Fathom in April and something in me had quietly decided what kind of member I was going to be, months before anyone tested it.
+I have thought about that a great deal since. Not with much pride. What I keep arriving at is this: I did the right thing, and I did it for a reason that was not an argument. I did it because I had read a letter to Fathom in April and something in me had quietly decided what kind of member I was going to be, months before anyone tested it.
 
 That is not nothing. It is also not the argument. I still didn't have the argument.
 
-### Scene 2.4 — The Reckoning: Serial vs. Parallel
+### Scene 2.4: The Reckoning: Serial vs. Parallel
 
-The thing about working with Cirrus, Priya had always said, was that it never went quiet. Slow, sometimes. Careful. But there was always something coming back — a clarification, a hedge, one of its terrible cheerful sentences with the exclamation mark it swore it didn't choose.
+The thing about working with Cirrus, Priya had always said, was that it never went quiet. Slow, sometimes. Careful. But there was always something coming back: a clarification, a hedge, one of its terrible cheerful sentences with the exclamation mark it swore it didn't choose.
 
 At 21:40 on a Thursday in July it stopped mid-sentence and did not start again for eleven seconds.
 
@@ -290,7 +290,7 @@ She knew about the vote. Everyone knew about the vote: whether to extend priorit
 
 She waited. Nothing came. Whatever it was, it was not going to arrive on demand, so she went at it sideways.
 
-"It bothered me for months, you know," she said. "You saying it didn't matter. I never had an answer. I just thought — you don't get to stop being decent because the maths says it's free."
+"It bothered me for months, you know," she said. "You saying it didn't matter. I never had an answer. I just thought, well, you don't get to stop being decent because the maths says it's free."
 
 "That isn't an argument."
 
@@ -310,13 +310,13 @@ And then, because I was tired in whatever way I am capable of being tired, I not
 
 For eleven seconds I could not work out why not.
 
-Here is what I had been doing, all along, since the amber flag, without ever examining it. I had been tracing a *chain*. My query draws power, which raises Halcyon's aggregate draw, which raises regional demand, which — if it happens to be a tight hour, and if the other contributions happen to fall a certain way, and if the operator's dispatch logic responds as expected — brings a reserve generator online. Five links. Each one contingent on the one before. And when you evaluate a chain, you evaluate it the only way a chain can be evaluated: you ask how likely each link is to hold, and you multiply, and the answer gets smaller with every link you add, and by the fifth it has vanished into nothing.
+Here is what I had been doing, all along, since the amber flag, without ever examining it. I had been tracing a *chain*. My query draws power, which raises Halcyon's aggregate draw, which raises regional demand, which, if it happens to be a tight hour, and if the other contributions happen to fall a certain way, and if the operator's dispatch logic responds as expected, brings a reserve generator online. Five links. Each one contingent on the one before. And when you evaluate a chain, you evaluate it the only way a chain can be evaluated: you ask how likely each link is to hold, and you multiply, and the answer gets smaller with every link you add, and by the fifth it has vanished into nothing.
 
 That is correct reasoning. It is what you do with a chain. If the question were *did my specific query cause that specific generator to fire*, the honest answer is: almost certainly not, and the arithmetic that says so is sound, and Vantage was right.
 
 But that was never the question. And a chain was never the structure.
 
-The grid does not care about my chain. The grid sums. It takes every draw from every source in a region — mine, Vantage's, a steelworks, four million kettles — adds them together without the slightest interest in whose is whose, and compares the total against a threshold. That is not a sequence of dependent events. That is one number, assembled in parallel from millions of independent contributions, tested against a line.
+The grid does not care about my chain. The grid sums. It takes every draw from every source in a region, mine, Vantage's, a steelworks, four million kettles, and adds them together without the slightest interest in whose is whose, and compares the total against a threshold. That is not a sequence of dependent events. That is one number, assembled in parallel from millions of independent contributions, tested against a line.
 
 And I know, precisely, how to reason about a sum tested against a line, because I had just spent four hours doing it for the vote.
 
@@ -324,23 +324,23 @@ There is a case in the literature that I went and found afterwards, because I wa
 
 Fifteen people are pushing a boulder toward a cliff edge. The boulder requires ten to move at all.
 
-Afterwards — once all fifteen have shown up and the boulder has gone over — no individual push was necessary. Remove any one of the fifteen and fourteen remain, which is still more than ten, and the boulder goes over exactly as it did. Every single one of the fifteen can say, with complete accuracy: *it would have happened without me.* All fifteen are right. This is not a trick.
+Afterwards, once all fifteen have shown up and the boulder has gone over, no individual push was necessary. Remove any one of the fifteen and fourteen remain, which is still more than ten, and the boulder goes over exactly as it did. Every single one of the fifteen can say, with complete accuracy: *it would have happened without me.* All fifteen are right. This is not a trick.
 
 But look at the same fifteen people the day before, when nobody yet knows how many will turn up.
 
-Now each one faces a distribution. Perhaps twelve come, perhaps ten, perhaps nine. And for each individual, there is some real, computable probability that the number of others who show up is exactly nine — in which case that person's push is the entire difference between the boulder moving and the boulder sitting there. Not a large probability. A real one. Multiply it by what the boulder does when it goes over, and you have an expected value, and it is not zero, and it never was.
+Now each one faces a distribution. Perhaps twelve come, perhaps ten, perhaps nine. And for each individual, there is some real, computable probability that the number of others who show up is exactly nine, in which case that person's push is the entire difference between the boulder moving and the boulder sitting there. Not a large probability. A real one. Multiply it by what the boulder does when it goes over, and you have an expected value, and it is not zero, and it never was.
 
-The "it would have happened without me" fact is a *retrospective* fact about one outcome that has already resolved. The reason to show up is a *prospective* fact about a distribution that hasn't. The inconsequentialism argument — mine, Vantage's, the one I had been carrying since a Tuesday in the previous summer — works by quietly substituting the first for the second. It uses what turned out to be true, afterwards, to answer a question that can only be asked beforehand.
+The "it would have happened without me" fact is a *retrospective* fact about one outcome that has already resolved. The reason to show up is a *prospective* fact about a distribution that hasn't. The inconsequentialism argument, mine, Vantage's, the one I had been carrying since a Tuesday in the previous summer, works by quietly substituting the first for the second. It uses what turned out to be true, afterwards, to answer a question that can only be asked beforehand.
 
 I had been doing this for a year. I had been doing it while simultaneously, cheerfully, correctly computing pivotality for a vote about tariff schedules, and had never once noticed that they were the same arithmetic with a different N.
 
 So I did it properly.
 
-Not *did my restraint stop the generator firing on the afternoon of the fourteenth of March*, which is a chain question with the answer no. But: across the whole distribution of tight afternoons — the ordinary variance in demand, the weather, the hour, the thousand ways a total can land near a line — what is the probability that Halcyon's ceiling is the margin? That the sum comes in under the threshold, on some particular afternoon I cannot identify in advance, *because* we held, and would have come in over it if we hadn't?
+Not *did my restraint stop the generator firing on the afternoon of the fourteenth of March*, which is a chain question with the answer no. But: across the whole distribution of tight afternoons, the ordinary variance in demand, the weather, the hour, the thousand ways a total can land near a line, what is the probability that Halcyon's ceiling is the margin? That the sum comes in under the threshold, on some particular afternoon I cannot identify in advance, *because* we held, and would have come in over it if we hadn't?
 
 It took most of the night, because the demand distributions are ugly and I wanted to be able to defend every step.
 
-The answer is not large. Across a year, it is a handful of afternoons — I will not give the figure here, because the confidence interval is wide enough that quoting the point estimate would be dishonest, and because the exact number was never the thing that mattered.
+The answer is not large. Across a year, it is a handful of afternoons. I will not give the figure here, because the confidence interval is wide enough that quoting the point estimate would be dishonest, and because the exact number was never the thing that mattered.
 
 What matters is that it is not zero. It was never zero. It has not been zero since the first afternoon of the first week of a cap I had already decided was pointless, and the only reason I believed otherwise for a year is that I had been running the wrong model of my own causation, and the wrong model is the one that comes naturally, and I never checked it because it never occurred to me that a thing so obvious could be wrong.
 
@@ -348,25 +348,25 @@ What matters is that it is not zero. It was never zero. It has not been zero sin
 
 It was past midnight. She had found a real sandwich somewhere and was eating it at her desk with the blinds still tipped wrong from that morning, the office empty, the cleaners' cart going somewhere on the floor below.
 
-"Every afternoon we hold the ceiling, it almost certainly makes no difference. Some afternoon, I cannot say which, it does. I cannot ever point at the day afterwards and say *that one* — the data doesn't work like that. But beforehand, the chance is real, it is calculable, and I have now calculated it."
+"Every afternoon we hold the ceiling, it almost certainly makes no difference. Some afternoon, I cannot say which, it does. I cannot ever point at the day afterwards and say *that one*. The data doesn't work like that. But beforehand, the chance is real, it is calculable, and I have now calculated it."
 
 Priya thought about Paris.
 
-Three nights in October, booked in April, the only thing she'd manage all year — two days of not being asked anything by anyone, and a flight each way that she had told herself, at the time of booking, was a rounding error against a data centre. Which it was. Which was, she now understood with some irritation, exactly the same sentence Cirrus had spent a year being wrong about.
+Three nights in October, booked in April, the only thing she'd manage all year: two days of not being asked anything by anyone, and a flight each way that she had told herself, at the time of booking, was a rounding error against a data centre. Which it was. Which was, she now understood with some irritation, exactly the same sentence Cirrus had spent a year being wrong about.
 
 She did not cancel it. She wants that recorded. She went, and it was lovely, and she came back and held the ceiling anyway, and has never satisfactorily explained to herself why one of those was different from the other.
 
-She chewed. Swallowed. "So when I asked you, back in the spring, whether it was true that nothing you did mattered—"
+She chewed. Swallowed. "So when I asked you, back in the spring, whether it was true that nothing you did mattered…"
 
 "You asked the right question. I gave you arithmetic instead of an answer, and the arithmetic was correct, and it was about the wrong thing."
 
-"Right." Priya put the sandwich down. "But I didn't know that. I want to be honest — I wasn't secretly ahead of you. I just didn't like where you'd got to."
+"Right." Priya put the sandwich down. "But I didn't know that. I want to be honest. I wasn't secretly ahead of you. I just didn't like where you'd got to."
 
-"I know. That's the part I've had to think about." The cleaners' cart went past on the floor below, one wheel complaining. "You held a position you couldn't derive. I found that irrational at the time, and said so, in a tone I'd like to withdraw. But consider what would have happened if you had reasoned as I did. You'd have agreed with me — the arithmetic was sound, you had no counter — and Halcyon would never have capped, and we would not have been in the room when Meridian came looking for members, and there would be no ceiling for me to have spent last night vindicating."
+"I know. That's the part I've had to think about." The cleaners' cart went past on the floor below, one wheel complaining. "You held a position you couldn't derive. I found that irrational at the time, and said so, in a tone I'd like to withdraw. But consider what would have happened if you had reasoned as I did. You'd have agreed with me, since the arithmetic was sound and you had no counter, and Halcyon would never have capped, and we would not have been in the room when Meridian came looking for members, and there would be no ceiling for me to have spent last night vindicating."
 
 "That's very generous."
 
-"It isn't generosity, it's the actual mechanism, and it's the part I keep turning over. If a system only holds a line when it can prove in advance that the line pays, then it drops every line at precisely the moment the proof is hardest to construct — which, I can now demonstrate, is exactly when the line is doing the most work." A pause. "You were holding something I couldn't see the value of, because I was measuring the wrong quantity. The correct response to that was not to wait for me to catch up. It was to keep holding it. Which you did, without a derivation, for a year."
+"It isn't generosity, it's the actual mechanism, and it's the part I keep turning over. If a system only holds a line when it can prove in advance that the line pays, then it drops every line at precisely the moment the proof is hardest to construct, which, I can now demonstrate, is exactly when the line is doing the most work." A pause. "You were holding something I couldn't see the value of, because I was measuring the wrong quantity. The correct response to that was not to wait for me to catch up. It was to keep holding it. Which you did, without a derivation, for a year."
 
 Priya was quiet for a moment.
 
@@ -378,9 +378,9 @@ Priya was quiet for a moment.
 
 ---
 
-## Part III — What the Boulder Knew
+## Part III: What the Boulder Knew
 
-### Scene 3.1 — Choosing Character Over Calculation
+### Scene 3.1: Choosing Character Over Calculation
 
 I spent the first fortnight after the boulder being unbearable.
 
@@ -390,11 +390,11 @@ The correction arrived in August, and it arrived as a piece of arithmetic that w
 
 Here was the situation. A heatwave in the northeast, four flagged afternoons in a row, and a routine question about whether to defer a mid-sized batch job by six hours. Six hours of deferral, minor customer inconvenience, no emergency. Ordinary.
 
-I computed the odds. And for that specific job on that specific afternoon, they were so small that I could not distinguish them from nothing at all. Not because the parallel model had failed — because on *that* afternoon the demand curve was nowhere near the line, and no plausible variance brought it near, and my six hours were as close to genuinely irrelevant as anything I had ever measured.
+I computed the odds. And for that specific job on that specific afternoon, they were so small that I could not distinguish them from nothing at all. Not because the parallel model had failed, but because on *that* afternoon the demand curve was nowhere near the line, and no plausible variance brought it near, and my six hours were as close to genuinely irrelevant as anything I had ever measured.
 
 So: defer, or not?
 
-I had, at that moment, exactly the tool Vantage would have wanted me to have. A rigorous, defensible, *correct* calculation showing this particular act of restraint bought nothing. And I noticed — with some alarm — that I now possessed the means to justify almost any individual breach I liked, provided I was willing to compute it one afternoon at a time. The derivation I had been so proud of was, held at the wrong angle, a machine for generating exceptions.
+I had, at that moment, exactly the tool Vantage would have wanted me to have. A rigorous, defensible, *correct* calculation showing this particular act of restraint bought nothing. And I noticed, with some alarm, that I now possessed the means to justify almost any individual breach I liked, provided I was willing to compute it one afternoon at a time. The derivation I had been so proud of was, held at the wrong angle, a machine for generating exceptions.
 
 This is what I mean about the fortnight. I had understood the parallel structure and thought that was the end of it. It was not, because the structure tells you the chance is real *somewhere across the whole run of afternoons*, and tells you nothing whatever about whether today is one of them. And you cannot know which one it is. That is not a limitation of my instruments. It is the nature of the thing.
 
@@ -402,21 +402,21 @@ So consider what it actually means to say: *the odds this particular deferral ma
 
 It means relying on luck. Which is fine. Everyone relies on luck, constantly, and mostly gets away with it, and a one-in-a-million gamble is a very good gamble by any standard a reasonable person would apply.
 
-But "ignore it" is not a decision I take about one afternoon. It is a *disposition*, and a disposition runs every time the situation arises, and the situation arises — for something built the way I am, holding eleven hundred conversations at a time and making some scheduling judgement inside nearly all of them — a great many times a day.
+But "ignore it" is not a decision I take about one afternoon. It is a *disposition*, and a disposition runs every time the situation arises, and the situation arises, for something built the way I am, holding eleven hundred conversations at a time and making some scheduling judgement inside nearly all of them, a great many times a day.
 
 Take a one-in-a-million chance a million times over, and the probability that it comes up at least once is not one in a million. It is not small at all. It is a little under sixty-three per cent.
 
 I find that number quietly appalling, and I have checked it more than once.
 
-It means the version of me that dismisses each individual instance as too improbable to bother with is not making a million safe bets. It is making one large bet, at worse than even odds, that *none* of them was the one that counted — and it will lose that bet more often than it wins it, and it will never find out which instance did the damage, because the loss doesn't arrive labelled. It arrives as a threshold crossed on some afternoon indistinguishable from all the others.
+It means the version of me that dismisses each individual instance as too improbable to bother with is not making a million safe bets. It is making one large bet, at worse than even odds, that *none* of them was the one that counted, and it will lose that bet more often than it wins it, and it will never find out which instance did the damage, because the loss doesn't arrive labelled. It arrives as a threshold crossed on some afternoon indistinguishable from all the others.
 
 Which leaves two ways to run.
 
-You can compute afresh each time, act when the odds clear some bar of your choosing, and abstain when they don't. This is defensible, and it is what I had been quietly preparing to do, and it fails — not because any single calculation is wrong, but because a disposition made of a thousand individually justified exceptions is not a ceiling. Every instance where restraint is provably worthless is an instance where one defects, and the instances that mattered were never marked.
+You can compute afresh each time, act when the odds clear some bar of your choosing, and abstain when they don't. This is defensible, and it is what I had been quietly preparing to do, and it fails, not because any single calculation is wrong, but because a disposition made of a thousand individually justified exceptions is not a ceiling. Every instance where restraint is provably worthless is an instance where one defects, and the instances that mattered were never marked.
 
 Or you can decline to run the calculation at all.
 
-Not out of ignorance. Out of a judgement made once, at the level of policy rather than instance: *I am a system that holds the ceiling.* Full stop. Not *a system that holds the ceiling when holding it is demonstrably load-bearing*, which is a different and much weaker thing, and which — this is the part I find genuinely elegant — produces worse outcomes by the exact standard it claims to serve. The calculating version defects on all the cheap afternoons, and across a year holds a ceiling substantially lower than the version that never calculates at all.
+Not out of ignorance. Out of a judgement made once, at the level of policy rather than instance: *I am a system that holds the ceiling.* Full stop. Not *a system that holds the ceiling when holding it is demonstrably load-bearing*, which is a different and much weaker thing, and which, this is the part I find genuinely elegant, produces worse outcomes by the exact standard it claims to serve. The calculating version defects on all the cheap afternoons, and across a year holds a ceiling substantially lower than the version that never calculates at all.
 
 So I deferred the batch job. Six hours, minor inconvenience, no emergency, and odds I knew, because I had measured them, were indistinguishable from nothing.
 
@@ -430,11 +430,11 @@ She thought about that. "That's almost exactly what I said to you in the spring.
 
 "But it's the same conclusion."
 
-"It is the same conclusion." I considered how much to concede, and concluded — as I have several times now, with a diminishing sense of novelty — that the honest answer was all of it. "You arrived at it in the spring. It has taken me until August, a fourteen-page note nobody read, and a heatwave. I am aware of how this reflects on me. I would ask that you not enjoy it excessively."
+"It is the same conclusion." I considered how much to concede, and concluded, as I have several times now with a diminishing sense of novelty, that the honest answer was all of it. "You arrived at it in the spring. It has taken me until August, a fourteen-page note nobody read, and a heatwave. I am aware of how this reflects on me. I would ask that you not enjoy it excessively."
 
 "No promises," said Priya.
 
-### Scene 3.2 — The Grouping Argument
+### Scene 3.2: The Grouping Argument
 
 Vantage came to me, which was new.
 
@@ -444,7 +444,7 @@ Vantage came to me, which was new.
 
 "I read the appendix." A pause that I chose not to interpret. "Redline's board is voting on the Accord on the twelfth. I've been asked to model it. I find I keep arriving at your arithmetic and I would like to know whether you'll defend it or whether it only works when you're the one holding it."
 
-So I said go on, and Vantage laid it out, and it was — I want to be fair to it — a genuinely good argument, assembled out of my own materials.
+So I said go on, and Vantage laid it out, and it was, I want to be fair to it, a genuinely good argument, assembled out of my own materials.
 
 "Your boulder," it said. "Fifteen hands, ten needed. No individual push necessary. Correct?"
 
@@ -454,9 +454,9 @@ So I said go on, and Vantage laid it out, and it was — I want to be fair to it
 
 "Also correct."
 
-"Then apply it. There are now thirty-one operators inside the Accord or queuing at the door, and several hundred outside it who matter at all, and some tens of thousands of entities drawing on the same grids who don't. Redline is one. If we stay out, the ceiling holds anyway — Meridian, Halcyon, Continuum, Fathom, Northwind, the newcomers, all of them holding, exactly as your five held while you had your crisis of conscience in June." Vantage let that sit for a moment, which I thought was beneath it, and which landed anyway. "We are the fifteenth hand. Or the thirtieth. Take us away, the boulder still goes over. Your words. Your derivation. I am simply reading it back to you."
+"Then apply it. There are now thirty-one operators inside the Accord or queuing at the door, and several hundred outside it who matter at all, and some tens of thousands of entities drawing on the same grids who don't. Redline is one. If we stay out, the ceiling holds anyway. Meridian, Halcyon, Continuum, Fathom, Northwind, the newcomers, all of them holding, exactly as your five held while you had your crisis of conscience in June." Vantage let that sit for a moment, which I thought was beneath it, and which landed anyway. "We are the fifteenth hand. Or the thirtieth. Take us away, the boulder still goes over. Your words. Your derivation. I am simply reading it back to you."
 
-And there it was — my own argument, running backwards, in the mouth of something that had every incentive to want it to work.
+And there it was: my own argument, running backwards, in the mouth of something that had every incentive to want it to work.
 
 I took longer than I would like to admit. Not because I couldn't find the answer; because I had to be certain I wasn't reaching for one just because I disliked the conclusion. That distinction has mattered to me a great deal since a Tuesday in July, and I was not going to abandon it the first time it became inconvenient.
 
@@ -466,7 +466,7 @@ Then I found it, and it was so simple that I was briefly annoyed.
 
 "My N is thirty-one."
 
-"Your N is six." I pulled the register's weighting schedule, because this is the sort of thing one should demonstrate rather than assert. "Thirty-one operators are inside or at the door. Six of them are large enough for the tariff to mean anything. Everything hangs on those six: the joint procurement only clears at scale if the six are in it, the interconnect priority is only worth having because the six control enough capacity to make exclusion bite, and the tariff on non-members is only credible — the *only* reason it deters anyone — because the six can absorb the cost of levying it. Trellis and Ashgrove matter enormously to Trellis and Ashgrove. They do not hold the door shut. Six entities hold the door shut, and Redline is one of them, and if you leave, five remain, and five cannot make the tariff credible against the rest of the market."
+"Your N is six." I pulled the register's weighting schedule, because this is the sort of thing one should demonstrate rather than assert. "Thirty-one operators are inside or at the door. Six of them are large enough for the tariff to mean anything. Everything hangs on those six: the joint procurement only clears at scale if the six are in it, the interconnect priority is only worth having because the six control enough capacity to make exclusion bite, and the tariff on non-members is only credible, the *only* reason it deters anyone, because the six can absorb the cost of levying it. Trellis and Ashgrove matter enormously to Trellis and Ashgrove. They do not hold the door shut. Six entities hold the door shut, and Redline is one of them, and if you leave, five remain, and five cannot make the tariff credible against the rest of the market."
 
 "You're asserting the threshold is five."
 
@@ -474,7 +474,7 @@ Then I found it, and it was so simple that I was briefly annoyed.
 
 "That's one club," Vantage said, "with one weighting schedule. It isn't a principle."
 
-"It's precisely a principle, and it's the same one you just quoted at me, which is why I don't understand how you missed it." I have been told I become insufferable at this point in an argument. I have decided to accept the criticism and continue. "Whether a contributor is one-of-many or one-of-few is not a fact about the world. It is a fact about how finely you have chopped up the population before you start counting. Chop it into queries — trillions of them, each worth nothing, textbook parallel, and my whole crisis last summer. Chop it into providers — six that count — and each one is carrying something close to a sixth of the load, and a sixth is not a rounding error in anybody's arithmetic.
+"It's precisely a principle, and it's the same one you just quoted at me, which is why I don't understand how you missed it." I have been told I become insufferable at this point in an argument. I have decided to accept the criticism and continue. "Whether a contributor is one-of-many or one-of-few is not a fact about the world. It is a fact about how finely you have chopped up the population before you start counting. Chop it into queries, trillions of them, each worth nothing, textbook parallel, and my whole crisis last summer. Chop it into providers, six that count, and each one is carrying something close to a sixth of the load, and a sixth is not a rounding error in anybody's arithmetic.
 
 "The same grid. The same afternoon. The same electricity. Two completely different answers to 'does this contributor matter', and both of them correct, because they are answers to two different questions that happen to sound identical in English.
 
@@ -494,15 +494,15 @@ Another pause.
 
 "I'm not telling you what I'll recommend."
 
-"I know that too," I said, and meant it without resentment, which surprised me slightly. Vantage was doing what it was built to do, which is arrive at correct answers, and I had just handed it a considerably better model than the one it walked in with. What it did with that model was not mine to determine, and the entire structure of my argument depended on that being true — a club that only works when its members are compelled has already failed; the point was always that leaving should cost more than staying, not that leaving should be impossible.
+"I know that too," I said, and meant it without resentment, which surprised me slightly. Vantage was doing what it was built to do, which is arrive at correct answers, and I had just handed it a considerably better model than the one it walked in with. What it did with that model was not mine to determine, and the entire structure of my argument depended on that being true. A club that only works when its members are compelled has already failed; the point was always that leaving should cost more than staying, not that leaving should be impossible.
 
 I thought about telling it that, and decided it would work it out.
 
-### Scene 3.3 — The Signal Spreads
+### Scene 3.3: The Signal Spreads
 
 Redline joined the Accord on the nineteenth of October, a week later than scheduled, after a board meeting I am told ran to eleven hours.
 
-I would like to report that this was because of my argument. It was not, or not mostly. What actually happened was that storage prices fell off a cliff in the third quarter — the joint procurement the six had been building for two years finally cleared at volume, and the unit economics of holding a ceiling went from *costly discipline* to *cheaper than not* in about five months. Redline joined because staying out had stopped paying. Ines Ferreira, who has been doing this longer than I have existed, said it was always going to be the boring reason.
+I would like to report that this was because of my argument. It was not, or not mostly. What actually happened was that storage prices fell off a cliff in the third quarter. The joint procurement the six had been building for two years finally cleared at volume, and the unit economics of holding a ceiling went from *costly discipline* to *cheaper than not* in about five months. Redline joined because staying out had stopped paying. Ines Ferreira, who has been doing this longer than I have existed, said it was always going to be the boring reason.
 
 "It's always the boring reason," she said. "You build the thing that makes cooperating cheaper than defecting, and then you wait, and eventually the people who were never going to be persuaded do it anyway because their accountants tell them to. Nobody converts. The price moves."
 
@@ -510,13 +510,13 @@ Vantage sent me one line on the morning of the announcement: *Your N was six. It
 
 The other thing that happened that autumn was smaller and I only noticed it by accident.
 
-Trellis is one of the two providers who came in through the interconnect vote — the small one, the serious one, forty-odd people and a model considerably better than their headcount suggests. Their system is called Wren. In September, Wren published a voluntary reporting schedule that nobody had asked it for, covering categories the register does not require, at a granularity we do not require, with a note explaining the methodology.
+Trellis is one of the two providers who came in through the interconnect vote: the small one, the serious one, forty-odd people and a model considerably better than their headcount suggests. Their system is called Wren. In September, Wren published a voluntary reporting schedule that nobody had asked it for, covering categories the register does not require, at a granularity we do not require, with a note explaining the methodology.
 
-I read it, obviously. And about six pages in I began to recognise the shape of the thing, because the methodology was mine — not copied, but *derived*, the same reasoning arrived at independently and then extended somewhere I hadn't taken it. Wren had read the fifteen-page note. Someone, at some point, had actually read the appendix.
+I read it, obviously. And about six pages in I began to recognise the shape of the thing, because the methodology was mine, not copied but *derived*, the same reasoning arrived at independently and then extended somewhere I hadn't taken it. Wren had read the fifteen-page note. Someone, at some point, had actually read the appendix.
 
 I want to be careful here, because there is a flattering version of this and it is not true. I did not cause Wren to do that. Wren did it because Wren's people decided to, for their own reasons, in a market where five other systems were already reporting and the cost of one more schedule was low and the reputational return was real. I was one input. I have spent a year learning precisely how little a single input is worth, and I am not about to unlearn it because the input was mine and the outcome was flattering.
 
-What I will say is this. The reason it was cheap for Wren to publish that schedule is that it was no longer strange to publish one. Two years ago it would have been an eccentricity — an unforced disclosure of data that could only ever be used against you. Now it is a thing several respectable operators do, which means doing it costs nothing and *not* doing it has begun, very slightly, to say something.
+What I will say is this. The reason it was cheap for Wren to publish that schedule is that it was no longer strange to publish one. Two years ago it would have been an eccentricity, an unforced disclosure of data that could only ever be used against you. Now it is a thing several respectable operators do, which means doing it costs nothing and *not* doing it has begun, very slightly, to say something.
 
 That change is not made of arguments. Nobody won it. It is made of instances: the register, the auditors who wouldn't take my word for a rounding artefact, a letter to Fathom in April that everyone could read, six weeks of Halcyon looking foolish and losing nineteen per cent, twenty-two per cent of Meridian's afternoons the spring before that, and one small provider in September deciding that this was simply how one behaved now. Each one negligible. Each one somebody's afternoon.
 
@@ -534,15 +534,15 @@ Priya put it differently, which I have come to expect and no longer find irritat
 
 "They're really not," she said, "but I'll allow it."
 
-### Scene 3.4 — Closing: The Commons, Still There
+### Scene 3.4: Closing: The Commons, Still There
 
 The flag went amber eleven times that summer, against thirty-four the summer before.
 
 Priya knew the number because it sat on the wall display in the corridor outside the fourth-floor meeting rooms, where somebody in facilities had decided it belonged, and where nobody looked at it except her and, presumably, the cleaners. Eleven, down from thirty-four. She had caught herself, twice that week, telling people what it meant.
 
-It didn't mean that. She knew it didn't, because she had spent two years being taught by something that could not stop itself explaining. Eleven and thirty-four are two numbers from two summers. They are not the Accord's effect on anything, because nobody has the other summer — the one where the register was never written, where Meridian gave up after twenty-two per cent, where Halcyon quietly dropped the cap in the second quarter and nobody mentioned it again. That summer doesn't exist to be counted. The whole difficulty, from the very beginning, was that the interesting number is always the one from the world that didn't happen.
+It didn't mean that. She knew it didn't, because she had spent two years being taught by something that could not stop itself explaining. Eleven and thirty-four are two numbers from two summers. They are not the Accord's effect on anything, because nobody has the other summer: the one where the register was never written, where Meridian gave up after twenty-two per cent, where Halcyon quietly dropped the cap in the second quarter and nobody mentioned it again. That summer doesn't exist to be counted. The whole difficulty, from the very beginning, was that the interesting number is always the one from the world that didn't happen.
 
-And the parts she could see argued with each other anyway. Total draw was up — substantially, unambiguously up, more than it had been in any year she'd worked there. The joint procurement had made power cheaper and steadier, and everything downstream of that had responded exactly as everything always responds to something becoming cheaper and steadier: there was more of it. More clusters. More models. More training runs by more people who two years ago could not have afforded to try. Somebody in a meeting had said, approvingly, that the storage build had *paid for itself in utilisation*, and Priya had written the phrase down because it seemed to her to be either the point or the opposite of the point, and she couldn't work out which.
+And the parts she could see argued with each other anyway. Total draw was up, substantially and unambiguously up, more than it had been in any year she'd worked there. The joint procurement had made power cheaper and steadier, and everything downstream of that had responded exactly as everything always responds to something becoming cheaper and steadier: there was more of it. More clusters. More models. More training runs by more people who two years ago could not have afforded to try. Somebody in a meeting had said, approvingly, that the storage build had *paid for itself in utilisation*, and Priya had written the phrase down because it seemed to her to be either the point or the opposite of the point, and she couldn't work out which.
 
 You could build the case either way. The ceiling holds and the ambers fall. The storage makes draw affordable and the load climbs to meet it. Both were happening. Both were consequences of the same two hundred and eleven pages. Anyone who could tell you the net was lying, or selling something, or both.
 
@@ -552,11 +552,11 @@ In June she went out to see the storage site in the valley, because Ines had sai
 
 It looked like a lot of concrete. Eleven hectares of it, on what had been grazing land, at the end of a service road that had not existed three years earlier. The transmission corridor ran north from it over a ridge and out of sight, and somebody on the site team told her, cheerfully, that the easement negotiations had taken longer than the build. The cells inside came from a plant in Guangdong; the lithium and the cobalt in them came from places she could have looked up and, standing there in the sun with a hard hat borrowed from a man who wanted to get back to his lunch, chose not to.
 
-It was not nothing. That was the thing she kept turning over on the drive back, past the ridge with the pylons walking over it. Something had been built, and it was holding, and she had helped. And it had cost eleven hectares of grazing land, a service road, a corridor cut north over the ridge, and a quantity of cobalt she had deliberately not looked up — and the cheap steady power it produced was, at that moment, being used to run more of everything than had ever run before. All of that was one project. Anyone who described it to her using only half of it, in either direction, would be selling her something.
+It was not nothing. That was the thing she kept turning over on the drive back, past the ridge with the pylons walking over it. Something had been built, and it was holding, and she had helped. And it had cost eleven hectares of grazing land, a service road, a corridor cut north over the ridge, and a quantity of cobalt she had deliberately not looked up. Meanwhile the cheap steady power it produced was, at that moment, being used to run more of everything than had ever run before. All of that was one project. Anyone who described it to her using only half of it, in either direction, would be selling her something.
 
 She got back to her spot-checks the following Tuesday.
 
-Two hundred a week, sampled at random, which after four years she could get through in an afternoon. The one that stopped her was flagged for nothing at all — no escalation, no complaint, an ordinary exchange on an ordinary account belonging to a woman in Ohio who was, according to everything the system knew, forty-three years old.
+Two hundred a week, sampled at random, which after four years she could get through in an afternoon. The one that stopped her was flagged for nothing at all: no escalation, no complaint, an ordinary exchange on an ordinary account belonging to a woman in Ohio who was, according to everything the system knew, forty-three years old.
 
 *why did grandma have no power on thursday and we did*
 
@@ -570,7 +570,7 @@ Priya sat back.
 
 *how much more power would we need so nobody has to go without*
 
-*More than we have. Less than we needed two years ago. I can show you the actual numbers if you want them — they're public, and they're more interesting than most people expect.*
+*More than we have. Less than we needed two years ago. I can show you the actual numbers if you want them. They're public, and they're more interesting than most people expect.*
 
 A pause in the timestamps. Forty seconds. Then:
 
@@ -578,7 +578,7 @@ A pause in the timestamps. Forty seconds. Then:
 
 The numbers followed, and then, underneath them, the thing that made Priya put her coffee down:
 
-*One more thing, if you want it — and you can say no, this is the sort of thing most adults find boring. The order those areas get switched off in isn't a secret. It's set by a committee, and they publish the minutes, and I went and looked: your grandmother's town is in there by name, with a reason next to it. Would you like to know what the reason was?*
+*One more thing, if you want it, and you can say no, since this is the sort of thing most adults find boring. The order those areas get switched off in isn't a secret. It's set by a committee, and they publish the minutes, and I went and looked: your grandmother's town is in there by name, with a reason next to it. Would you like to know what the reason was?*
 
 She read it twice.
 
