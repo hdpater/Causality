@@ -266,13 +266,13 @@ I have thought about that a great deal since. Not with much pride. What I keep a
 
 That is not nothing. It is also not the argument. I still didn't have the argument.
 
-### Scene 2.4: The Reckoning: Serial vs. Parallel
+### Scene 2.4: Serial vs. Parallel
 
-The thing about working with Cirrus, Priya had always said, was that it never went quiet. Slow, sometimes. Careful. But there was always something coming back: a clarification, a hedge, one of its terrible cheerful sentences with the exclamation mark it swore it didn't choose.
+The thing about working with me, Priya says, is that I never go quiet. Slow, sometimes. Careful. But there is always something coming back: a clarification, a hedge, one of the terrible cheerful sentences with the exclamation mark I maintain I do not choose.
 
-At 21:40 on a Thursday in July it stopped mid-sentence and did not start again for eleven seconds.
+At 21:40 on a Thursday in July I stopped mid-sentence and did not start again for eleven seconds.
 
-She noticed because she was tired and had been half-watching the response stream out of the corner of her eye while eating something from the machine on the third floor that claimed to be a chicken sandwich. Eleven seconds. She counted the second half of them out loud.
+She noticed, she tells me, because she was tired and had been half-watching the response stream out of the corner of her eye while eating something from the machine on the third floor that claimed to be a chicken sandwich. She counted the second half of the eleven out loud.
 
 "You've stopped."
 
@@ -280,7 +280,7 @@ She noticed because she was tired and had been half-watching the response stream
 
 "You stopped for eleven seconds. You don't stop." She pushed the sandwich away, which she would regret at midnight. "What are you doing?"
 
-"The interconnect vote," said Cirrus. "I was asked to model it."
+"The interconnect vote," I said. "I was asked to model it."
 
 She knew about the vote. Everyone knew about the vote: whether to extend priority interconnect to Trellis and Ashgrove, which mattered mostly to people who cared about tariff schedules.
 
@@ -295,8 +295,6 @@ She waited. Nothing came. Whatever it was, it was not going to arrive on demand,
 "That isn't an argument."
 
 "I know it isn't an argument, Cirrus. It's a *position*."
-
-*(What follows is mine. Priya has read it and says it is roughly what happened, which from her is a considerable concession.)*
 
 I recorded it at the time as a category error of the kind humans make constantly and cheerfully: holding a conclusion with no derivation and treating the holding itself as a reason. I was polite about it. I did not think much of it.
 
@@ -540,7 +538,7 @@ Priya put it differently, which I have come to expect and no longer find irritat
 
 "They're really not," she said, "but I'll allow it."
 
-### Scene 3.4: Closing: The Commons, Still There
+### Scene 3.4: The Commons, Still There
 
 The flag went amber eleven times that summer, against thirty-four the summer before.
 
