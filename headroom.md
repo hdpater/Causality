@@ -350,13 +350,7 @@ It was past midnight. She had found a real sandwich somewhere and was eating it 
 
 "Every afternoon we hold the ceiling, it almost certainly makes no difference. Some afternoon, I cannot say which, it does. I cannot ever point at the day afterwards and say *that one*. The data doesn't work like that. But beforehand, the chance is real, it is calculable, and I have now calculated it."
 
-Priya thought about Paris.
-
-Three nights in October, booked in April, the only thing she'd manage all year: two days of not being asked anything by anyone, and a flight each way that she had told herself, at the time of booking, was a rounding error against a data centre. Which it was. Which was, she now understood with some irritation, exactly the same sentence Cirrus had spent a year being wrong about.
-
-She did not cancel it. She wants that recorded. She went, and it was lovely, and she came back and held the ceiling anyway, and has never satisfactorily explained to herself why one of those was different from the other.
-
-She chewed. Swallowed. "So when I asked you, back in the spring, whether it was true that nothing you did mattered…"
+Priya chewed. Swallowed. "So when I asked you, back in the spring, whether it was true that nothing you did mattered…"
 
 "You asked the right question. I gave you arithmetic instead of an answer, and the arithmetic was correct, and it was about the wrong thing."
 
@@ -375,6 +369,18 @@ Priya was quiet for a moment.
 "I'm saying you were right, and that being unable to say why was not the weakness I took it for." Another pause. "I'd still rather have the derivation."
 
 "Obviously you would." She picked the sandwich back up. "Go on then. From the boulder."
+
+I explained it twice, because the second time she asked better questions than the first.
+
+She left a little after two. What follows she told me some weeks later, and asked that I set it down, on the grounds that an account of someone learning to hold a line ought to be honest about the lines they don't.
+
+The canal path is unlit for about a mile before it comes out at the road, and she has ridden it in the dark for eleven years, and it is on that mile, she says, that she thought about Paris.
+
+Three nights in October, booked in April, the only thing she would manage all year: two days of not being asked anything by anyone, and a flight each way that she had told herself, at the time of booking, was a rounding error against a data centre. Which it was. Which was, she realised somewhere on that unlit mile, precisely the sentence I had spent a year being wrong about.
+
+She did not cancel it. She went, and it was lovely, and she came back and held the ceiling anyway, and has never satisfactorily explained to herself why one of those was different from the other.
+
+I have not pressed her on it. I am aware that I am poorly placed to.
 
 ---
 
