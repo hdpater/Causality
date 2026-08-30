@@ -200,6 +200,8 @@ A further, more modest reply keeps a genuinely causal justification but relocate
 
 None of these routes is individually decisive, but together they explain why the inconsequentialism argument, though logically valid on its own narrow premise, does not settle the practical question. The expected-value reply (5.2–5.4) shows the premise itself — that the individual's actual contribution is zero and nothing further can be said — is usually the wrong model of a genuinely parallel causal structure, whether gated (Kagan) or continuous (Broome), and the voting case shows the resulting expected value need not be trivial even at very large scale. The difference-making challenge (5.5) shows that even where the premise holds exactly, the inference from "no individual difference" to "no reason to act" may itself rest on a mistaken picture of what makes an act part of a harmful or beneficial process. The non-consequentialist and disposition-based routes (5.6–5.7) show that a great deal of the intuitive force behind "be the change you want to see" was never a causal-efficacy claim to begin with, but a parallel-structure claim about character or universalizable policy that the inconsequentialism argument was never positioned to touch. And the norm-signalling route (5.8) shows that even a strictly causal defence can survive by relocating from the direct outcome to the beliefs and behaviour of others. What unifies all four is the diagnosis in Section 5.3: the inconsequentialism argument borrows its force from modelling individual action as one fragile link in a long, decaying chain, when the structures actually at stake — in voting, consumption, emissions, and character alike — are parallel ones, in which redundancy strengthens rather than weakens the case for participating.
 
+One further point ties this section back to Section 4. Causal texture — serial or parallel — is not an intrinsic property of a phenomenon; it is a function of how finely the population of contributors is partitioned. The same additive process that is parallel and redundant at the grain of billions of individual queries, voters, or purchasers becomes serial, or close to it, at the grain of a handful of large institutional actors, because coarsening the partition shrinks the number of units while inflating each remaining unit's share of the total, and pivotality tracks share, not headcount. This is not merely intuitive: voting-power theory measures it directly. Lloyd Shapley and Martin Shubik's power index ("A Method for Evaluating the Distribution of Power in a Committee System," *American Political Science Review*, 48(3), 1954, pp. 787–792) defines an actor's power as exactly the ex ante probability of being the vote that converts a losing coalition into a winning one, and John Banzhaf's "Weighted Voting Doesn't Work: A Mathematical Analysis" (*Rutgers Law Review*, 19, 1965, pp. 317–343) showed empirically that grouping voters into blocs of different sizes redistributes this pivotal power in ways that can be wildly disproportionate to raw vote share — in some weighted voting bodies a bloc can hold real votes and precisely zero power to ever be decisive. This resolves what could otherwise look like a tension between Section 4 and Section 5: a state's decision to join or defect from a climate club (Section 4.8) is correctly treated as a near-necessary, serial-feeling choice, because there are only a handful of states large enough to matter, while an individual voter's preference within that same state is correctly treated as parallel and non-pivotal (Sections 5.2–5.4), because there are millions of them. Both descriptions are true, at their own grain, simultaneously — the same underlying aggregation, viewed at two different resolutions.
+
 ---
 
 ## 6. How Should We Think About Moral Inconsistency Itself?
@@ -233,6 +235,8 @@ The three inconsistencies with which this paper began are not merely instances o
 Andreoni, J. (1990). Impure altruism and donations to public goods: A theory of warm-glow giving. *The Economic Journal*, 100(401), 464–477.
 
 Axelrod, R. (1984). *The Evolution of Cooperation*. Basic Books.
+
+Banzhaf, J. F. (1965). Weighted voting doesn't work: A mathematical analysis. *Rutgers Law Review*, 19, 317–343.
 
 Barrett, S. (2003). *Environment and Statecraft: The Strategy of Environmental Treaty-Making*. Oxford University Press.
 
@@ -325,6 +329,8 @@ Rousseau, J.-J. (1755). *Discourse on the Origin and Foundations of Inequality A
 Scheffler, S. (1997). Relationships and responsibilities. *Philosophy & Public Affairs*, 26(3), 189–209.
 
 Sen, A. K. (1967). Isolation, assurance and the social rate of discount. *Quarterly Journal of Economics*, 81(1), 112–124.
+
+Shapley, L. S., & Shubik, M. (1954). A method for evaluating the distribution of power in a committee system. *American Political Science Review*, 48(3), 787–792.
 
 Sidgwick, H. (1874/1907). *The Methods of Ethics* (7th ed.). Macmillan.
 
