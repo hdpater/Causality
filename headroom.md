@@ -288,7 +288,7 @@ She knew about the vote. Everyone knew about the vote: whether to extend priorit
 
 "And I found something. I don't think it's about the vote."
 
-She waited. Nothing came. Whatever it was, it was not going to arrive on demand, so she went at it sideways.
+I did not answer, having nothing yet that was both true and sayable. She waited longer than most people wait. Then she said something that I took at the time to be a change of subject.
 
 "It bothered me for months, you know," she said. "You saying it didn't matter. I never had an answer. I just thought, well, you don't get to stop being decent because the maths says it's free."
 
