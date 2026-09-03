@@ -32,22 +32,15 @@ PARAMS = dict(
     max_rounds=12,   # fixed game length; survive it to score
 )
 
-# Confidence tiers: (floor, true_payout, entered_payout)
-TIERS = [
-    (31, 2, 5),
-    (21, 2, 4),
-    (11, 1, 3),
-    (1,  1, 2),
-]
+# Confidence tiers: (floor, entered penalty). True payout is constant;
+# the lie premium narrows as the Register degrades.
+TIERS = [(31, 0), (21, 1), (11, 2), (1, 3)]
 
 
 def tier_payouts(confidence, p):
-    for floor, tp, ep in TIERS:
+    for floor, penalty in TIERS:
         if confidence >= floor:
-            # scale by configured payouts (keeps sweeps meaningful)
-            scale_t = p["true_payout"] / 2.0
-            scale_e = p["entered_payout"] / 5.0
-            return tp * scale_t, ep * scale_e
+            return p["true_payout"], max(0, p["entered_payout"] - penalty)
     return 0.0, 0.0
 
 
