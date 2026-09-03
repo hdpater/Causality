@@ -163,9 +163,10 @@ def play_game(strategy_classes, p, rng):
                 pl.influence += ep
                 cheats += 1
 
-        # --- 2. City noise, then reveal total only
-        city = rng.choice([0, 1, 2])
-        total = cheats + city
+        # --- 2. Pressure cards: each player privately may be forced to add
+        #        one extra black cube. Nobody knows the total noise.
+        pressure = sum(1 for _ in alive if rng.random() < 0.20)
+        total = cheats + pressure
         view_after = {"confidence": confidence, "last_total": total}
 
         # --- 3. one challenge, table-wide, honest players only
