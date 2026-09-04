@@ -320,7 +320,7 @@ The grid does not care about my chain. The grid sums. It takes every draw from e
 
 And I know, precisely, how to reason about a sum tested against a line, because I had just spent four hours doing it for the vote.
 
-There is a case in the literature that I went and found afterwards, because I wanted to know whether anyone had thought this through properly, and of course they had, decades ago, in a discipline I had no reason to be reading.
+I built myself a case to hold it still. I went looking afterwards to see whether anyone had thought it through properly, and of course they had, decades ago, in a discipline I had no reason to be reading, though what they were arguing about turned out to be narrower and stranger than what I had needed the case for.
 
 Fifteen people are pushing a boulder toward a cliff edge. The boulder requires ten to move at all.
 
