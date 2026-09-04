@@ -91,10 +91,20 @@ One light coin harms nobody. Nor does a hundred. But coin circulates, and light 
 
 The difficulty is that a purse of coin tells you how much silver is missing but never which House it came from, nor whether your own full-weight striking on any particular day was the thing that kept the money good.
 
-\note{The shape of the game}{You win by accumulating Profit, and striking light is the fastest way to accumulate it. But if Trust reaches zero before the twelfth round, \emph{every player loses, including whoever was winning}. The game is an argument about how much bad silver the city can absorb, conducted by people who cannot check each other's work.}
+\note{The shape of the game}{Clipping is the fastest way to get rich and the surest way to ruin everybody, yourself included. The next page states the aim exactly; this one is only meant to say what the city is.}
+
+\sect{2}{What You Are Trying To Do}
+
+Three things to hold in your head. Everything else is machinery.
+
+\step{Profit}{You score \keyword{1} for every round you struck a light coin and \keyword{0} for every round you struck full weight. Nothing else you do earns anything like as reliably. Nobody is paid until the very end, so nobody knows the scores until then.}
+\step{Trust}{A public number, starting at 36, measuring how far the city still believes its own money. Every light coin that reaches the till knocks it down, whoever struck it. If it ever reaches \keyword{zero} the coinage fails and \keyword{every player loses}, including whoever was ahead.}
+\step{Twelve rounds}{If Trust is still above zero after the twelfth, the jars are opened and the highest Profit wins.}
+
+So the whole game is one question asked twelve times: how much can I take before the thing I am taking from stops working, and how much is everybody else taking while I decide?
 
 % ================= components =================
-\sect{2}{Components}
+\sect{3}{Components}
 
 \begin{tabular}{@{}p{0.30\textwidth}p{0.62\textwidth}@{}}
 \toprule
@@ -122,18 +132,32 @@ Which colour gets locked away depends on how the table plays, and the two cases 
 Sixty of each would run out on an honest table, which is the commonest way for a game to go. Seventy of each is fine if you would rather not count two different numbers.}
 
 % ================= setup =================
-\sect{3}{Setup}
+\sect{4}{Setup}
 
-\step{1.}{Set the Trust marker to \keyword{36}.}
-\step{2.}{Give each player one white and one black coin, one cup, one jar, one screen and one player aid.}
-\step{3.}{Put 16 white and 4 black coins in the Silver bag. Leave the Till empty.}
-\step{4.}{Nobody scores anything yet. Profit is not paid out during the game; it is reconstructed at the end. Rule up the round log with a column for each round.}
-\step{5.}{Give the First Player marker to whoever most recently signed something without reading it.}
+Written for five Houses. For three, four or six, see section 9 before you begin: two of the numbers below change.
+
+\step{1.}{Put all the coins in a single heap where everybody can reach it. This is the \keyword{supply}, and coins return to it at the end of every round.}
+\step{2.}{Set the Trust marker on the track to \keyword{36}.}
+\step{3.}{Count 16 white and 4 black coins out of the supply into the \keyword{Silver bag}. Leave the \keyword{Till} empty.}
+\step{4.}{Give every House one white coin and one black coin, a cup, an empty jar with the lid off, a screen and a player aid.}
+\step{5.}{Put the Discredit tokens in a pile in the middle, in plain view. Everybody needs to see who is carrying them.}
+\step{6.}{Rule up the round log with a row for each of the twelve rounds.}
+\step{7.}{Give the First Player marker to whoever most recently signed something without reading it.}
+
+Nobody scores anything during setup, or indeed at any point until the twelfth round is over.
 
 % ================= the round =================
-\sect{4}{The Round}
+\sect{5}{The Round}
 
-Twelve rounds, five phases each. The first two matter more than they look, because they are what stops anybody working out who did what.
+Twelve rounds, five phases each.
+
+\step{1.}{\keyword{The Striking.} Everybody secretly puts one coin into the Till: black to clip, white to be honest.}
+\step{2.}{\keyword{The Silver.} Everybody adds a second coin drawn blind from the Silver bag.}
+\step{3.}{\keyword{The Count.} Tip out the Till and count the black coins.}
+\step{4.}{\keyword{The Assay.} Somebody may accuse somebody of clipping.}
+\step{5.}{\keyword{Erosion and Reset.} Trust falls by the count; coins go back; the round ends.}
+
+The first two phases matter more than they look, because they are what stops anybody working out who did what.
 
 \subsect{Phase 1. The Striking}
 
@@ -165,13 +189,21 @@ It counts both deliberate short weight and bad silver nobody ordered, and there 
 
 \subsect{Phase 4. The Assay}
 
-Before the Turn: beginning with the First Player and going clockwise, the first player who wishes to may call \keyword{one assay}, and only one is called per round in total. After the Turn, \emph{every} House that struck full weight may call one, each on a different target.
+How many assays may be called depends on how far the coinage has already gone.
+
+\note{The Turn}{The first time Trust falls below \keyword{21}, the coinage has turned. Mark the round on the log and say so aloud.
+
+\keyword{Before the Turn:} one assay per round in total. Beginning with the First Player and going clockwise, the first House that wants it takes it.
+
+\keyword{After the Turn:} \emph{every} House that struck full weight may call one, each naming a different target. Traders have begun weighing rather than counting, and a House that keeps clipping is doing it in front of four sets of scales instead of one.}
+
+Nobody's Profit changes at the Turn. Only the odds of getting away with it.
 
 \begin{quote}
 You may only call an assay if you released a \keyword{white} striking coin this round.
 \end{quote}
 
-Name a House and demand their coin on the scales. They lift their cup.
+Whether that is a good idea depends on the Light Count, and section 7 gives the odds. Name a House and demand their coin on the scales. They lift their cup.
 
 \step{Light}{White under the cup means they played black. They lose this round's Profit and take a \keyword{Discredit}. The challenger gains \keyword{3 Profit}.}
 \step{Sound}{Black under the cup means they struck full weight. \emph{The challenger} takes a Discredit.}
@@ -201,7 +233,7 @@ One player keeps it, in full view, and everybody can correct it. Each round, rec
 Every one of those is something the whole table watched happen. Only your own striking stays private, and only until the last round is over.
 
 % ================= payouts =================
-\sect{5}{Profit}
+\sect{6}{Profit in Detail}
 
 Nothing is paid out during the game. Every striking is worth something, but you collect none of it until the jars come out at the end.
 
@@ -221,18 +253,6 @@ Struck light & white & 1 \\
 Striking light is worth one point more than striking sound, every round, from first to last. Honest work scores nothing at all, which is exactly the difficulty: the only way to get ahead is to clip, and the only way everybody keeps what they have is if hardly anybody does.
 
 A House that clips once and is never assayed has gained one point. A House that clips every round has gained twelve, which wins games comfortably, and has also handed the table eleven more chances to catch it.
-
-\sect{6}{The Turn}
-
-The first time Trust falls below \keyword{21}, the coinage has turned. Write the round on the log and announce it.
-
-Nothing about Profit changes. What changes is scrutiny.
-
-\note{Open season}{Before the Turn, one assay per round, claimed by the first House who wants it.
-
-After the Turn, \keyword{every House that struck full weight may call an assay}, each naming a different target, all in the same round. Traders have begun weighing rather than counting, and a House that keeps clipping is now doing so in front of four sets of scales instead of one.}
-
-This is why a failing coinage tends either to recover sharply or to die very fast. Nobody's payoff has moved. The odds of getting away with it have.
 
 \sect{7}{Reading the Count}
 
