@@ -105,7 +105,7 @@ The difficulty is that a purse of coin tells you how much silver is missing but 
 5 cups & Opaque. Conceals your retained striking cube. \\
 5 tubes & Opaque, capped, just wider than a cube. Your striking record, stacked in order. Never opened until the end. \\
 5 screens & Or simply play below the table edge. \\
-Trust track & 0 to 40, with tiers marked at 31, 21 and 11. \\
+Trust track & 0 to 40, with \keyword{21} marked clearly. That is the Turn. \\
 1 round log & A shared sheet. Everything public gets written down. \\
 20 Discredit tokens & Red. Kept in public view. \\
 1 Standard card & With five membership slots. \\
@@ -188,32 +188,39 @@ Your tube must hold exactly twelve cubes at the close, one for each round. A tub
 
 \subsect{The round log}
 
-One player keeps it, in full view, and everybody can correct it. Each round, record: the Light Count, the new Trust total and therefore the tier, who called an assay, whom they named, and what was found. Also note who is in the Standard.
+One player keeps it, in full view, and everybody can correct it. Each round, record: the Light Count, the new Trust total, who called an assay, whom they named, and what was found. Note who is in the Standard, and circle the round in which the coinage turns.
 
 Every one of those is something the whole table watched happen. Only your own striking stays private, and only until the last round is over.
 
 % ================= payouts =================
 \sect{5}{Profit}
 
-Score your action immediately in Phase 2, according to the current tier.
+Nothing is paid out during the game. Every striking is worth something, but you collect none of it until the tubes come out at the end.
+
+There is one moment that changes the rates, and the whole table watches it happen.
+
+\note{The Turn}{The first time Trust falls below \keyword{21}, the coinage has turned. Write the round number on the log and circle it. Traders have begun weighing rather than counting, and a light coin no longer buys what it did.}
 
 \begin{center}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}lc@{}}
 \toprule
-\headfont Trust & \headfont Full weight & \headfont False claim & \headfont Premium \\
+\headfont A black cube in your tube & \headfont 5 \\
 \midrule
-36 to 31 & 2 & 6 & 4 \\
-30 to 21 & 2 & 5 & 3 \\
-20 to 11 & 2 & 4 & 2 \\
-10 to 1 & 2 & 3 & 1 \\
-0 & \multicolumn{3}{c}{\itshape the coinage collapses; everybody loses} \\
+You struck full weight that round. & \\
+\midrule
+\headfont A white cube, before the Turn & \headfont 6 \\
+\midrule
+You struck light while the coin was still good. & \\
+\midrule
+\headfont A white cube, after the Turn & \headfont 3 \\
+\midrule
+You struck light once it was already going. & \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The premium for lying shrinks as the coinage degrades. Light coin is most profitable when the city can least afford it and barely worth the risk once the damage is done, which is the opposite of what everybody's instincts will tell them.
+Striking light is worth more than striking sound, which is the whole difficulty, but only while the coinage is healthy. Once it has turned, short weight earns less than honest work, and the House that keeps clipping is paying for the privilege of finishing the job.
 
-% ================= challenge odds =================
 \sect{6}{Reading the Count}
 
 You know the Light Count, and you know whether your own striking cube was black. Subtract it if so. The result is the \keyword{Remainder}, which contains the other four Houses' strikings and all five silver draws, including your own unknown one.
@@ -263,13 +270,14 @@ If the coinage collapses, \keyword{every player loses}, including any who were e
 
 Otherwise, uncap the tubes. Everybody empties theirs at the same time, and the cubes come out in order, last round first.
 
-Work through the round log together, round by round, reading each player's cube for that round against the tier that was in force. Nothing here is private any more, and nothing has to be taken on anybody's word.
+Everything from here is public, and nothing has to be taken on anybody's word. Count each player's cubes, splitting the whites at the round the coinage turned.
 
-\step{Full weight}{A black cube. Score \keyword{2}, plus \keyword{3} banked for having struck sound.}
-\step{Light}{A white cube. Score the false-striking rate for that round's tier: 6, 5, 4 or 3.}
-\step{Caught}{A round in which you were assayed and found light scores you \keyword{nothing}. The log says which round it was.}
-\step{Assays called}{\keyword{3} for each one you called correctly.}
-\step{Standard}{\keyword{+1} for each round you were a member, and \keyword{-1} for each round you were not. \keyword{+5} if it is still standing at the end.}
+\step{Black cube}{\keyword{5}. You struck full weight.}
+\step{White before the Turn}{\keyword{6}.}
+\step{White after the Turn}{\keyword{3}.}
+\step{Caught}{A round in which you were assayed and found light scores \keyword{nothing}. The log says which round.}
+\step{Assays}{\keyword{3} for each one you called correctly.}
+\step{Standard}{\keyword{+1} for each round you were a member, \keyword{-1} for each round you were not, and \keyword{+5} if it is still standing at the end.}
 
 Highest total wins. A player eliminated by Discredits scores nothing, whatever is in their tube.
 
@@ -321,13 +329,16 @@ Below 3, a poor bet. Above 4, close to a duty.
 
 {\headfont\bfseries Payouts\par}
 \begin{center}
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabular}{@{}lc@{}}
 \toprule
-\headfont Trust & 36--31 & 30--21 & 20--11 & 10--1 \\
-\headfont Honest & 2 & 2 & 2 & 2 \\
-\headfont False & 6 & 5 & 4 & 3 \\
+\headfont Black cube (struck sound) & 5 \\
+\headfont White cube, before the Turn & 6 \\
+\headfont White cube, after the Turn & 3 \\
 \bottomrule
 \end{tabular}
+
+\vspace{0.3\baselineskip}
+{\itshape The Turn: the first round Trust falls below 21.}
 \end{center}
 
 {\color{rule}\hrule height 0.4pt}
