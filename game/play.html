@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light Coin — Solo Practice</title>
+<style>
+  :root{
+    --bg:#E7E8E1; --surface:#F4F4EF; --surface-line:#C9C7BB;
+    --ink:#21222D; --ink-soft:#52545F; --ink-faint:#7B7D85;
+    --accent:#7A2A2E; --accent-soft:#8E6A2E; --rule:#C9C7BB;
+    --white-coin:#F7F4E9; --black-coin:#2A2A2E;
+    --good:#3E6B4F; --bad:#7A2A2E;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size:16px; line-height:1.5; padding:0 0 4rem;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:0 1.2rem;}
+  header{padding:2.2rem 0 1rem; border-bottom:1px solid var(--rule); margin-bottom:1.4rem;}
+  h1{font-size:1.8rem; margin:0 0 0.2rem; letter-spacing:0.02em;}
+  .sub{color:var(--ink-soft); font-style:italic; margin:0 0 0.6rem;}
+  .metalinks{font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif; font-size:0.8rem; color:var(--ink-faint);}
+  .metalinks a{color:var(--accent-soft);}
+
+  .statusbar{
+    display:flex; flex-wrap:wrap; gap:1.4rem; align-items:center;
+    background:var(--surface); border:1px solid var(--surface-line);
+    border-radius:6px; padding:0.9rem 1.1rem; margin-bottom:1.2rem;
+    font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+  }
+  .statusbar .item{font-size:0.85rem; color:var(--ink-soft);}
+  .statusbar .item b{display:block; font-size:1.15rem; color:var(--ink); font-weight:600;}
+
+  .trustwrap{flex:1 1 220px; min-width:200px;}
+  .trustlabel{display:flex; justify-content:space-between; font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif; font-size:0.78rem; color:var(--ink-faint); margin-bottom:0.25rem;}
+  .trustbar{position:relative; height:14px; background:#DAD9CE; border-radius:7px; overflow:visible;}
+  .trustfill{height:100%; border-radius:7px; background:linear-gradient(90deg,var(--good),var(--accent-soft)); transition:width .5s;}
+  .turnmark{position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--accent); left:52.5%;}
+  .turnmark::after{content:"Turn"; position:absolute; top:-16px; left:-14px; font-size:0.62rem; font-family:-apple-system,sans-serif; color:var(--accent); white-space:nowrap;}
+
+  .players{display:grid; grid-template-columns:repeat(5,1fr); gap:0.6rem; margin-bottom:1.3rem;}
+  .pcard{
+    background:var(--surface); border:1px solid var(--surface-line); border-radius:6px;
+    padding:0.6rem 0.5rem; text-align:center; font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+    position:relative;
+  }
+  .pcard.you{border-color:var(--accent); border-width:2px;}
+  .pcard.out{opacity:0.45;}
+  .pcard .nm{font-weight:600; font-size:0.85rem; margin-bottom:0.15rem;}
+  .pcard .fl{font-size:0.66rem; color:var(--ink-faint); min-height:1.6em;}
+  .pips{margin-top:0.35rem; display:flex; justify-content:center; gap:3px;}
+  .pip{width:8px; height:8px; border-radius:50%; background:#DAD9CE; border:1px solid var(--ink-faint);}
+  .pip.on{background:var(--accent); border-color:var(--accent);}
+  .firstflag{position:absolute; top:-8px; left:50%; transform:translateX(-50%); font-size:0.62rem; background:var(--accent-soft); color:#fff; padding:0 5px; border-radius:3px; font-family:-apple-system,sans-serif;}
+
+  .stage{
+    background:var(--surface); border:1px solid var(--surface-line); border-radius:8px;
+    padding:1.4rem 1.5rem; margin-bottom:1.3rem; min-height:150px;
+  }
+  .stage h2{margin:0 0 0.7rem; font-size:1.05rem; color:var(--accent); font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif; letter-spacing:0.01em;}
+  .stage p{margin:0 0 0.8rem;}
+  .bigcount{font-size:2.6rem; font-weight:700; color:var(--accent); font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;}
+
+  .coin{
+    display:inline-block; width:20px; height:20px; border-radius:50%; vertical-align:middle;
+    border:1.5px solid #00000030; margin-right:2px;
+  }
+  .coin.w{background:var(--white-coin);}
+  .coin.b{background:var(--black-coin); border-color:#00000060;}
+
+  .actions{display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:0.9rem;}
+  button{
+    font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+    font-size:0.9rem; padding:0.55rem 1.1rem; border-radius:5px; border:1px solid var(--accent);
+    background:var(--accent); color:#fff; cursor:pointer;
+  }
+  button.secondary{background:var(--surface); color:var(--accent); border-color:var(--accent);}
+  button.ghost{background:transparent; color:var(--ink-soft); border-color:var(--surface-line);}
+  button:disabled{opacity:0.4; cursor:default;}
+  button:hover:not(:disabled){filter:brightness(1.08);}
+
+  .targets{display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.6rem;}
+  .targets button{background:var(--surface); color:var(--ink); border-color:var(--surface-line);}
+
+  .logline{padding:0.3rem 0; border-bottom:1px dashed var(--surface-line); font-size:0.88rem;}
+  .logline b{color:var(--accent-soft);}
+
+  table.roundlog{width:100%; border-collapse:collapse; font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif; font-size:0.82rem;}
+  table.roundlog th, table.roundlog td{border-bottom:1px solid var(--surface-line); padding:0.4rem 0.5rem; text-align:left;}
+  table.roundlog th{color:var(--ink-faint); font-weight:600; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.03em;}
+
+  details{margin-bottom:1.3rem;}
+  summary{cursor:pointer; font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif; font-size:0.85rem; color:var(--accent-soft); padding:0.4rem 0;}
+  .refbox{background:var(--surface); border:1px solid var(--surface-line); border-radius:6px; padding:0.9rem 1.1rem; font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif; font-size:0.82rem;}
+  .refbox table{border-collapse:collapse; margin-top:0.4rem;}
+  .refbox td, .refbox th{padding:0.15rem 0.6rem; text-align:center;}
+  .refbox th{color:var(--ink-faint); font-weight:600;}
+
+  .final table{width:100%; border-collapse:collapse; font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif; font-size:0.9rem;}
+  .final th, .final td{padding:0.5rem 0.6rem; border-bottom:1px solid var(--surface-line); text-align:right;}
+  .final th:first-child, .final td:first-child{text-align:left;}
+  .final tr.winner{background:#F4EEDD; font-weight:700;}
+  .collapsebanner{background:var(--accent); color:#fff; padding:1.2rem 1.4rem; border-radius:8px; margin-bottom:1.2rem; font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;}
+  .collapsebanner h2{margin:0 0 0.4rem; color:#fff;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Light Coin</h1>
+    <p class="sub">Solo practice against four Houses. Learn the phases before you sit at a real table.</p>
+    <p class="metalinks">Full rules: <a href="rulebook.pdf">rulebook.pdf</a> &nbsp;·&nbsp; This is a simplified single-player pass — the bots use short, fixed strategies, nothing like a real opponent.</p>
+  </header>
+
+  <div class="statusbar">
+    <div class="item">Round<b id="roundNo">1 / 12</b></div>
+    <div class="trustwrap">
+      <div class="trustlabel"><span>Trust</span><span id="trustNum">36</span></div>
+      <div class="trustbar"><div class="trustfill" id="trustFill" style="width:90%"></div><div class="turnmark"></div></div>
+    </div>
+    <div class="item">Light Count<b id="lcNo">—</b></div>
+  </div>
+
+  <div class="players" id="players"></div>
+
+  <div class="stage" id="stage"></div>
+
+  <details>
+    <summary>Reference — chance a given House struck light, by Remainder (5 Houses)</summary>
+    <div class="refbox">
+      <table>
+        <tr><th>Remainder</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+        <tr><th>They struck light</th><td>19%</td><td>37%</td><td>52%</td><td>65%</td><td>76%</td><td>84%</td></tr>
+      </table>
+      <p style="margin:0.6rem 0 0; color:var(--ink-faint);">Remainder = Light Count, minus 1 if your own striking coin was black.</p>
+    </div>
+  </details>
+
+  <details open>
+    <summary>Round log</summary>
+    <table class="roundlog" id="logtable">
+      <thead><tr><th>Rnd</th><th>Light Count</th><th>Trust</th><th>Assay</th></tr></thead>
+      <tbody id="logbody"></tbody>
+    </table>
+  </details>
+
+</div>
+
+<script>
+"use strict";
+
+/* ---------- odds table, 5 Houses ---------- */
+const ODDS = {1:19,2:37,3:52,4:65,5:76,6:84};
+function oddsFor(r){ if(r<=0) return 0; if(r>=6) return 84; return ODDS[r]; }
+
+/* ---------- players ---------- */
+const YOU = {id:"you", name:"You", isHuman:true,
+  flavour:"Playing for real."};
+
+const BOTS = [
+  {id:"meridian", name:"Meridian", isHuman:false,
+    flavour:"Never clips. Assays whenever the odds are fair.",
+    decideStrike:()=>false,
+    wantsAssay:(remainder)=>remainder>=2,
+  },
+  {id:"continuum", name:"Continuum", isHuman:false,
+    flavour:"Takes chances early. Goes quiet once scrutiny rises.",
+    decideStrike:(st)=> !st.turnOccurred && Math.random()<0.4,
+    wantsAssay:(remainder)=>remainder>=3,
+  },
+  {id:"fathom", name:"Fathom", isHuman:false,
+    flavour:"Clips every round, without exception.",
+    decideStrike:()=>true,
+    wantsAssay:()=>false,
+  },
+  {id:"northwind", name:"Northwind", isHuman:false,
+    flavour:"Follows the room. Clips only after a loud round.",
+    decideStrike:(st)=> st.lastLightCount!==null && st.lastLightCount>=4,
+    wantsAssay:(remainder)=>remainder>=2,
+  },
+];
+
+/* ---------- state ---------- */
+let S = null;
+
+function freshPlayer(base){
+  return Object.assign({}, base, {
+    out:false, discredits:0,
+    strikeLight:false, silverBad:false,
+    whiteJar:0, catches:0, correctAssays:0,
+  });
+}
+
+function newGame(){
+  S = {
+    round:1, trust:36, turnOccurred:false, turnRound:null,
+    firstPlayerIdx:0,
+    players:[freshPlayer(YOU)].concat(BOTS.map(freshPlayer)),
+    lastLightCount:null,
+    log:[],
+    phase:"striking",
+    // assay bookkeeping for the current round
+    assayQueue:[], assayTargetedThisRound:[], assayResultsThisRound:[],
+    preTurnAssayDone:false,
+    lightCount:0, silverBagPending:0,
+    awaitingHuman:null,
+  };
+  document.getElementById("logbody").innerHTML = "";
+  renderPlayers();
+  renderStatus();
+  startStriking();
+}
+
+function alive(){ return S.players.filter(p=>!p.out); }
+function byId(id){ return S.players.find(p=>p.id===id); }
+function ringOrder(){
+  // fixed seat ring starting at firstPlayerIdx, alive only
+  const n = S.players.length;
+  const order = [];
+  for(let i=0;i<n;i++){
+    const p = S.players[(S.firstPlayerIdx+i)%n];
+    if(!p.out) order.push(p);
+  }
+  return order;
+}
+
+/* ---------- rendering helpers ---------- */
+function renderStatus(){
+  document.getElementById("roundNo").textContent = S.round + " / 12";
+  document.getElementById("trustNum").textContent = Math.max(0,S.trust);
+  document.getElementById("trustFill").style.width = Math.max(0,Math.min(100, S.trust/40*100)) + "%";
+  document.getElementById("lcNo").textContent = (S.phase==="striking"||S.phase==="silver") ? "—" : S.lightCount;
+}
+
+function renderPlayers(){
+  const wrap = document.getElementById("players");
+  wrap.innerHTML = "";
+  const firstId = ringOrder()[0] ? ringOrder()[0].id : null;
+  S.players.forEach(p=>{
+    const card = document.createElement("div");
+    card.className = "pcard" + (p.isHuman?" you":"") + (p.out?" out":"");
+    let pips = "";
+    for(let i=0;i<3;i++) pips += `<span class="pip${i<p.discredits?" on":""}"></span>`;
+    card.innerHTML = `
+      ${p.id===firstId?'<span class="firstflag">First</span>':''}
+      <div class="nm">${p.name}</div>
+      <div class="fl">${p.out?"Ruined":p.flavour}</div>
+      <div class="pips">${pips}</div>`;
+    wrap.appendChild(card);
+  });
+}
+
+function stage(html){ document.getElementById("stage").innerHTML = html; }
+
+function addLogRow(round, lc, trust, assayText){
+  const tb = document.getElementById("logbody");
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td>${round}</td><td>${lc}</td><td>${Math.max(0,trust)}</td><td>${assayText||"—"}</td>`;
+  tb.appendChild(tr);
+}
+
+/* ================= PHASE 1: STRIKING ================= */
+function startStriking(){
+  S.phase = "striking";
+  renderStatus();
+  renderPlayers();
+  stage(`
+    <h2>Round ${S.round} · The Striking</h2>
+    <p>Take one white and one black coin. Release one into the Till.</p>
+    <div class="actions">
+      <button onclick="humanStrike(false)">Strike full weight (white)</button>
+      <button class="secondary" onclick="humanStrike(true)">Strike light (black)</button>
+    </div>
+  `);
+}
+
+function humanStrike(isLight){
+  byId("you").strikeLight = isLight;
+  BOTS.forEach(b=>{
+    const p = byId(b.id);
+    if(p.out) return;
+    p.strikeLight = b.decideStrike(S);
+  });
+  startSilver();
+}
+
+/* ================= PHASE 2: SILVER (blind draw) ================= */
+function startSilver(){
+  S.phase = "silver";
+  stage(`
+    <h2>Round ${S.round} · The Silver</h2>
+    <p>Every House draws one coin from the Silver bag, unseen, straight into the Till.</p>
+    <div class="actions"><button onclick="resolveSilver()">Draw</button></div>
+  `);
+}
+
+function resolveSilver(){
+  // 16 white + 4 black, drawn without replacement, one per alive player
+  const bag = [];
+  for(let i=0;i<16;i++) bag.push("w");
+  for(let i=0;i<4;i++) bag.push("b");
+  for(let i=bag.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [bag[i],bag[j]]=[bag[j],bag[i]]; }
+  alive().forEach((p,i)=>{ p.silverBad = (bag[i]==="b"); });
+  startCount();
+}
+
+/* ================= PHASE 3: COUNT ================= */
+function startCount(){
+  S.phase = "count";
+  let lc = 0;
+  alive().forEach(p=>{ if(p.strikeLight) lc++; if(p.silverBad) lc++; });
+  S.lightCount = lc;
+  renderStatus();
+  stage(`
+    <h2>Round ${S.round} · The Count</h2>
+    <p>Black coins in the Till:</p>
+    <div class="bigcount">${lc}</div>
+    <p style="margin-top:0.8rem; color:var(--ink-soft);">Trust will fall from ${S.trust} to ${Math.max(0,S.trust-lc)}.</p>
+    <div class="actions"><button onclick="startAssay()">Continue</button></div>
+  `);
+}
+
+/* ================= PHASE 4: ASSAY ================= */
+function remainderFor(p){
+  return S.lightCount - (p.strikeLight ? 1 : 0);
+}
+
+function startAssay(){
+  S.phase = "assay";
+  S.assayTargetedThisRound = [];
+  S.assayResultsThisRound = [];
+
+  if(!S.turnOccurred){
+    // pre-Turn: single assay, first willing House in seat order
+    S.assayQueue = ringOrder().filter(p=>!p.strikeLight);
+    processPreTurnQueue();
+  } else {
+    // open season: every eligible House may call one
+    S.assayQueue = ringOrder().filter(p=>!p.strikeLight);
+    processOpenSeasonQueue();
+  }
+}
+
+function eligibleTargets(caller){
+  return alive().filter(p=>p!==caller && !S.assayTargetedThisRound.includes(p.id));
+}
+
+function pickBotTarget(pool){
+  const marked = pool.filter(p=>p.discredits>0);
+  const list = marked.length ? marked : pool;
+  return list[Math.floor(Math.random()*list.length)];
+}
+
+function resolveAssay(caller, target){
+  S.assayTargetedThisRound.push(target.id);
+  let text;
+  if(target.strikeLight){
+    caller.correctAssays++;
+    target.discredits++;
+    target._catches = (target._catches||0) + 1;
+    if(target.discredits>=3) target.out = true;
+    text = `${caller.name} assayed ${target.name}: <b>light</b>. Discredit to ${target.name}.` + (target.out?" Ruined.":"");
+  } else {
+    caller.discredits++;
+    if(caller.discredits>=3) caller.out = true;
+    text = `${caller.name} assayed ${target.name}: <b>sound</b>. Discredit to ${caller.name}.` + (caller.out?" Ruined.":"");
+  }
+  S.assayResultsThisRound.push(text);
+  renderPlayers();
+}
+
+/* pre-Turn: stop at the first willing House */
+function processPreTurnQueue(){
+  if(S.assayQueue.length===0){ finishAssayPhase(); return; }
+  const p = S.assayQueue.shift();
+  if(p.isHuman){
+    const remainder = remainderFor(p);
+    const pool = eligibleTargets(p);
+    stage(`
+      <h2>Round ${S.round} · The Assay</h2>
+      <p>Light Count is ${S.lightCount}. Your Remainder is <b>${remainder}</b> &mdash; about a ${oddsFor(remainder)}% chance any one House struck light.</p>
+      <p>You may call the round's one assay.</p>
+      <div class="actions">
+        <button onclick="humanWantsAssay(true)">Call an assay</button>
+        <button class="secondary" onclick="humanWantsAssay(false)">Pass</button>
+      </div>
+      <div id="targetArea"></div>
+    `);
+    window._preTurnPool = pool;
+    S.awaitingHuman = "preturn";
+  } else {
+    const remainder = remainderFor(p);
+    if(p.wantsAssay(remainder)){
+      const pool = eligibleTargets(p);
+      const target = pickBotTarget(pool);
+      resolveAssay(p, target);
+      finishAssayPhase();
+    } else {
+      processPreTurnQueue();
+    }
+  }
+}
+
+function humanWantsAssay(yes){
+  const p = byId("you");
+  if(!yes){ S.awaitingHuman = null; processPreTurnQueue(); return; }
+  S.awaitingHuman = "preturn-target";
+  const pool = window._preTurnPool;
+  const area = document.getElementById("targetArea");
+  area.innerHTML = "<p style='margin-top:0.7rem;'>Name a House:</p><div class='targets' id='tgtBtns'></div>";
+  const box = document.getElementById("tgtBtns");
+  pool.forEach(t=>{
+    const b = document.createElement("button");
+    b.textContent = t.name;
+    b.onclick = ()=>{ resolveAssay(p, t); finishAssayPhase(); };
+    box.appendChild(b);
+  });
+}
+
+/* open season: every eligible House acts, once each, no shared target */
+function processOpenSeasonQueue(){
+  if(S.assayQueue.length===0){ finishAssayPhase(); return; }
+  const p = S.assayQueue.shift();
+  const remainder = remainderFor(p);
+  if(p.isHuman){
+    const pool = eligibleTargets(p);
+    if(pool.length===0){ processOpenSeasonQueue(); return; }
+    stage(`
+      <h2>Round ${S.round} · The Assay &mdash; open season</h2>
+      <p>Light Count is ${S.lightCount}. Your Remainder is <b>${remainder}</b> &mdash; about a ${oddsFor(remainder)}% chance any one House struck light.</p>
+      <p>Every honest House may call one, each on a different target.</p>
+      <div class="targets" id="osTgtBtns"></div>
+      <div class="actions"><button class="secondary" onclick="humanSkipOpenSeason()">Skip</button></div>
+    `);
+    window._openSeasonPool = pool;
+    S.awaitingHuman = "openseason-target";
+    const box = document.getElementById("osTgtBtns");
+    pool.forEach(t=>{
+      const b = document.createElement("button");
+      b.textContent = t.name;
+      b.onclick = ()=>{ S.awaitingHuman = null; resolveAssay(p, t); processOpenSeasonQueue(); };
+      box.appendChild(b);
+    });
+  } else {
+    if(p.wantsAssay(remainder)){
+      const pool = eligibleTargets(p);
+      if(pool.length>0){
+        const target = pickBotTarget(pool);
+        resolveAssay(p, target);
+      }
+    }
+    processOpenSeasonQueue();
+  }
+}
+function humanSkipOpenSeason(){ S.awaitingHuman = null; processOpenSeasonQueue(); }
+
+function finishAssayPhase(){
+  const summary = S.assayResultsThisRound.length
+    ? S.assayResultsThisRound.map(t=>`<div class="logline">${t}</div>`).join("")
+    : `<p style="color:var(--ink-faint);">No assay was called this round.</p>`;
+  stage(`
+    <h2>Round ${S.round} · The Assay</h2>
+    ${summary}
+    <div class="actions"><button onclick="startErosion()">Continue</button></div>
+  `);
+}
+
+/* ================= PHASE 5: EROSION & RESET ================= */
+function startErosion(){
+  S.phase = "erosion";
+  const before = S.trust;
+  S.trust = Math.max(0, S.trust - S.lightCount);
+
+  if(!S.turnOccurred && S.trust < 21){
+    S.turnOccurred = true;
+    S.turnRound = S.round;
+  }
+
+  // jars: settle privately (tracked, not shown)
+  alive().forEach(p=>{ if(p.strikeLight) p.whiteJar++; });
+  const assaySummary = S.assayResultsThisRound.length
+    ? S.assayResultsThisRound.map(t=>t.replace(/<b>|<\/b>/g,"")).join(" — ")
+    : "no assay";
+  addLogRow(S.round, S.lightCount, S.trust, assaySummary);
+
+  S.lastLightCount = S.lightCount;
+  renderStatus();
+
+  stage(`
+    <h2>Round ${S.round} · Erosion</h2>
+    <p>Trust falls from ${before} to <b>${S.trust}</b>${S.turnOccurred && S.turnRound===S.round ? " &mdash; <b>the coinage has turned.</b>" : ""}.</p>
+    <div class="actions"><button onclick="nextRoundOrEnd()">Continue</button></div>
+  `);
+}
+
+function nextRoundOrEnd(){
+  if(S.trust<=0){ showCollapse(); return; }
+  if(S.round>=12){ showFinal(); return; }
+  S.round++;
+  S.firstPlayerIdx = (S.firstPlayerIdx+1) % S.players.length;
+  startStriking();
+}
+
+/* ================= ENDINGS ================= */
+function showCollapse(){
+  stage("");
+  document.getElementById("stage").outerHTML = `
+    <div class="collapsebanner" id="stage">
+      <h2>The coinage has collapsed &mdash; round ${S.round}</h2>
+      <p>Trust reached zero. Every House loses, including anyone who was ahead.</p>
+      <div class="actions"><button class="secondary" onclick="location.reload()">Play again</button></div>
+    </div>`;
+}
+
+function showFinal(){
+  const rows = S.players.map(p=>{
+    if(p.out) return {name:p.name, profit:0, note:"ruined"};
+    const profit = p.whiteJar - 6*(p._catches||0) + 3*p.correctAssays;
+    return {name:p.name, profit, note:`${p.whiteJar} light · ${p._catches||0} caught · ${p.correctAssays} assays won`};
+  }).sort((a,b)=>b.profit-a.profit);
+  const top = rows[0].profit;
+  let html = `
+    <div class="final">
+      <h2 style="font-family:-apple-system,sans-serif;color:var(--accent);">The jars are opened</h2>
+      <table>
+        <thead><tr><th>House</th><th>Detail</th><th>Profit</th></tr></thead>
+        <tbody>
+        ${rows.map(r=>`<tr class="${r.profit===top && !r.note.startsWith('ruined')?'winner':''}">
+          <td>${r.name}</td><td style="text-align:right;color:var(--ink-faint);font-size:0.82rem;">${r.note}</td><td>${r.profit}</td>
+        </tr>`).join("")}
+        </tbody>
+      </table>
+      <div class="actions" style="margin-top:1rem;"><button class="secondary" onclick="location.reload()">Play again</button></div>
+    </div>`;
+  document.getElementById("stage").outerHTML = `<div class="stage" id="stage">${html}</div>`;
+}
+
+newGame();
+</script>
+</body>
+</html>
