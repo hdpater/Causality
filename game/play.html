@@ -132,13 +132,8 @@
   <div class="stage" id="stage"></div>
 
   <details>
-    <summary>Reference — chance a given House struck light, by Remainder (5 Houses)</summary>
-    <div class="refbox">
-      <table>
-        <tr><th>Remainder</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
-        <tr><th>They struck light</th><td>19%</td><td>37%</td><td>52%</td><td>65%</td><td>76%</td><td>84%</td></tr>
-      </table>
-      <p style="margin:0.6rem 0 0; color:var(--ink-faint);">Remainder = Light Count, minus 1 if your own striking coin was black.</p>
+    <summary>Reference — chance a given House struck light, by Remainder</summary>
+    <div class="refbox" id="refbox">
     </div>
   </details>
 
@@ -156,8 +151,25 @@
 "use strict";
 
 /* ---------- odds table, 5 Houses ---------- */
-const ODDS = {1:19,2:37,3:52,4:65,5:76,6:84};
-function oddsFor(r){ if(r<=0) return 0; if(r>=6) return 84; return ODDS[r]; }
+/* Odds shift as Houses are ruined: with fewer opponents, the same
+   Remainder is stronger evidence, since there are fewer places the bad
+   coin could have come from. Keyed by number of *opponents* still alive
+   (excludes you), computed from the same model as the rulebook's
+   3/4/5/6-Houses tables. */
+const ODDS_BY_OPPONENTS = {
+  1: {1:67, 2:89, 3:100},
+  2: {1:36, 2:65, 3:82, 4:93},
+  3: {1:25, 2:47, 3:65, 4:78, 5:88, 6:95},
+  4: {1:19, 2:37, 3:52, 4:65, 5:76, 6:84, 7:91},
+};
+function oddsFor(r){
+  if(r<=0) return 0;
+  const nOpp = Math.max(1, alive().length - 1);
+  const table = ODDS_BY_OPPONENTS[nOpp] || ODDS_BY_OPPONENTS[4];
+  const maxKey = Math.max(...Object.keys(table).map(Number));
+  return table[Math.min(r, maxKey)];
+}
+function currentOpponentCount(){ return Math.max(1, alive().length - 1); }
 
 /* ---------- players ---------- */
 const YOU = {id:"you", name:"You", isHuman:true,
@@ -236,6 +248,24 @@ function renderStatus(){
   document.getElementById("trustNum").textContent = Math.max(0,S.trust);
   document.getElementById("trustFill").style.width = Math.max(0,Math.min(100, S.trust/40*100)) + "%";
   document.getElementById("lcNo").textContent = (S.phase==="striking"||S.phase==="silver") ? "—" : S.lightCount;
+  renderRefBox();
+}
+
+function renderRefBox(){
+  const nOpp = currentOpponentCount();
+  const table = ODDS_BY_OPPONENTS[nOpp] || ODDS_BY_OPPONENTS[4];
+  const cols = Object.keys(table).map(Number).sort((a,b)=>a-b);
+  const box = document.getElementById("refbox");
+  if(!box) return;
+  box.innerHTML = `
+    <table>
+      <tr><th>Remainder</th>${cols.map(c=>`<td>${c}</td>`).join("")}</tr>
+      <tr><th>They struck light</th>${cols.map(c=>`<td>${table[c]}%</td>`).join("")}</tr>
+    </table>
+    <p style="margin:0.6rem 0 0; color:var(--ink-faint);">
+      Against ${nOpp} other House${nOpp===1?"":"s"} still standing. Remainder = Light Count, minus 1 if your own striking coin was black.
+      ${nOpp<4?" Fewer Houses left means the same Remainder is stronger evidence than it was at the start.":""}
+    </p>`;
 }
 
 function renderPlayers(){
@@ -384,7 +414,7 @@ function processPreTurnQueue(){
     const pool = eligibleTargets(p);
     stage(`
       <h2>Round ${S.round} · The Assay</h2>
-      <p>Light Count is ${S.lightCount}. Your Remainder is <b>${remainder}</b> &mdash; about a ${oddsFor(remainder)}% chance any one House struck light.</p>
+      <p>Light Count is ${S.lightCount}, against ${currentOpponentCount()} other House${currentOpponentCount()===1?"":"s"} still standing. Your Remainder is <b>${remainder}</b> &mdash; about a ${oddsFor(remainder)}% chance any one of them struck light.</p>
       <p>You may call the round's one assay.</p>
       <div class="actions">
         <button onclick="humanWantsAssay(true)">Call an assay</button>
@@ -433,7 +463,7 @@ function processOpenSeasonQueue(){
     if(pool.length===0){ processOpenSeasonQueue(); return; }
     stage(`
       <h2>Round ${S.round} · The Assay &mdash; open season</h2>
-      <p>Light Count is ${S.lightCount}. Your Remainder is <b>${remainder}</b> &mdash; about a ${oddsFor(remainder)}% chance any one House struck light.</p>
+      <p>Light Count is ${S.lightCount}, against ${currentOpponentCount()} other House${currentOpponentCount()===1?"":"s"} still standing. Your Remainder is <b>${remainder}</b> &mdash; about a ${oddsFor(remainder)}% chance any one of them struck light.</p>
       <p>Every honest House may call one, each on a different target.</p>
       <div class="targets" id="osTgtBtns"></div>
       <div class="actions"><button class="secondary" onclick="humanSkipOpenSeason()">Skip</button></div>
