@@ -79,6 +79,8 @@
   }
   button.secondary{background:var(--surface); color:var(--accent); border-color:var(--accent);}
   button.ghost{background:transparent; color:var(--ink-soft); border-color:var(--surface-line);}
+  button.coin-white{background:var(--white-coin); color:var(--ink); border-color:var(--ink-faint);}
+  button.coin-grey{background:#6E6E68; color:#fff; border-color:#55554F;}
   button:disabled{opacity:0.4; cursor:default;}
   button:hover:not(:disabled){filter:brightness(1.08);}
 
@@ -272,8 +274,8 @@ function startStriking(){
     <h2>Round ${S.round} · The Striking</h2>
     <p>Take one white and one black coin. Release one into the Till.</p>
     <div class="actions">
-      <button onclick="humanStrike(false)">Strike full weight (white)</button>
-      <button class="secondary" onclick="humanStrike(true)">Strike light (black)</button>
+      <button class="coin-white" onclick="humanStrike(false)">Strike full weight</button>
+      <button class="coin-grey" onclick="humanStrike(true)">Strike light</button>
     </div>
   `);
 }
