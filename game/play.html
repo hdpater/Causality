@@ -364,11 +364,11 @@ function resolveAssay(caller, target){
     caller.correctAssays++;
     target.discredits++;
     target._catches = (target._catches||0) + 1;
-    if(target.discredits>=3) target.out = true;
+    if(target.discredits>=3){ target.out = true; target.ruinedRound = S.round; }
     text = `${caller.name} assayed ${target.name}: <b>light</b>. Discredit to ${target.name}.` + (target.out?" Ruined.":"");
   } else {
     caller.discredits++;
-    if(caller.discredits>=3) caller.out = true;
+    if(caller.discredits>=3){ caller.out = true; caller.ruinedRound = S.round; }
     text = `${caller.name} assayed ${target.name}: <b>sound</b>. Discredit to ${caller.name}.` + (caller.out?" Ruined.":"");
   }
   S.assayResultsThisRound.push(text);
@@ -504,21 +504,49 @@ function nextRoundOrEnd(){
   if(S.round>=12){ showFinal(); return; }
   S.round++;
   S.firstPlayerIdx = (S.firstPlayerIdx+1) % S.players.length;
+  if(byId("you").out){ fastForwardToEnd(); return; }
   startStriking();
+}
+
+/* Once the human is ruined there is nothing left for them to decide: no
+   striking, no silver draw, no assay (all already enforced by alive()
+   filtering everywhere else). Play the remaining rounds straight through
+   and land on whichever ending the coinage reaches. */
+function fastForwardToEnd(){
+  while(true){
+    BOTS.forEach(b=>{
+      const p = byId(b.id);
+      if(!p.out) p.strikeLight = b.decideStrike(S);
+    });
+    resolveSilver();
+    startAssay();
+    startErosion();
+    if(S.trust<=0){ showCollapse(); return; }
+    if(S.round>=12){ showFinal(); return; }
+    S.round++;
+    S.firstPlayerIdx = (S.firstPlayerIdx+1) % S.players.length;
+  }
 }
 
 /* ================= ENDINGS ================= */
 function showCollapse(){
+  const you = byId("you");
+  const ruinNote = you.out
+    ? `<p>You were ruined in round ${you.ruinedRound}; the rest was resolved without you.</p>` : "";
   stage("");
   document.getElementById("stage").outerHTML = `
     <div class="collapsebanner" id="stage">
       <h2>The coinage has collapsed &mdash; round ${S.round}</h2>
       <p>Trust reached zero. Every House loses, including anyone who was ahead.</p>
+      ${ruinNote}
       <div class="actions"><button class="secondary" onclick="location.reload()">Play again</button></div>
     </div>`;
 }
 
 function showFinal(){
+  const you = byId("you");
+  const ruinNote = you.out
+    ? `<p style="color:var(--ink-faint);font-style:italic;">You were ruined in round ${you.ruinedRound}; the remaining rounds were resolved automatically.</p>` : "";
   const rows = S.players.map(p=>{
     if(p.out) return {name:p.name, profit:0, note:"ruined"};
     const profit = p.whiteJar - 6*(p._catches||0) + 3*p.correctAssays;
@@ -528,6 +556,7 @@ function showFinal(){
   let html = `
     <div class="final">
       <h2 style="font-family:-apple-system,sans-serif;color:var(--accent);">The jars are opened</h2>
+      ${ruinNote}
       <table>
         <thead><tr><th>House</th><th>Detail</th><th>Profit</th></tr></thead>
         <tbody>
